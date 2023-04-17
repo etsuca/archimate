@@ -1,6 +1,9 @@
 ■ figmaリンク
 https://www.figma.com/file/BaXInUfwCKFp8vtqC02B7c/%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB%E5%9B%B3?node-id=0-1&t=9qrkiJEpzoTeg0De-0
 
+■ ER図リンク
+https://gyazo.com/cc78f93b47d675b71a6dcd67b3c1cfe7
+
 ■ サービス概要
 新たな建築と出会い、訪れた建築を記録したい人に
 建築に関する情報の収集、記録機能を提供する
