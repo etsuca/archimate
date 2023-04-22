@@ -7,11 +7,19 @@ ja:
     new:
       title: 'サインアップ'
       to_login_page: 'ログインはこちら→'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
   user_sessions:
     new:
       title: 'ログイン'
       to_register_page: 'サインアップはこちら→'
       password_forget: 'パスワードをお忘れの方はこちら→'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
   contents:
     index:
       title: 'これまでに記録した建築一覧'
