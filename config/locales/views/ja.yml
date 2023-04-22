@@ -1,0 +1,24 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    sign_up: 'サインアップ'
+    logout: 'ログアウト'
+  users:
+    new:
+      title: 'サインアップ'
+      to_login_page: 'ログインはこちら→'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: 'サインアップはこちら→'
+      password_forget: 'パスワードをお忘れの方はこちら→'
+  contents:
+    index:
+      title: 'これまでに記録した建築一覧'
+    new:
+      title: '建築を記録する'
+    likes:
+      title: 'Like一覧'
+  profiles:
+    show:
+      title: 'プロフィール'
