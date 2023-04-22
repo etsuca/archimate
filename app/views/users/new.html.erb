@@ -1,4 +1,4 @@
-<h1>ユーザー登録</h1>
+<h1><%= t '.title' %></h1>
 <%= form_with model: @user, local: true do |f| %>
   <div>
     <%= f.label :name %>
@@ -16,8 +16,8 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <%= f.submit '登録' %>
+  <%= f.submit t 'defaults.sign_up' %>
 <% end %>
 <div>
-  <%= link_to 'ログインページへ', login_path %>
+  <%= link_to (t '.to_login_page'), login_path %>
 </div>
