@@ -9,3 +9,13 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+      architecture:
+        name: '建築名'
+        location: '所在地'
+        architect: '建築家'
+        description: 'メモ'
+        image: '写真'
+        created_at: '作成日時'
+        updated_at: '更新日時'
+      open_range:
+        name: '公開範囲'
