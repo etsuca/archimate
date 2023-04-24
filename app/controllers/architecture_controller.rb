@@ -1,6 +1,6 @@
 class ArchitectureController < ApplicationController
   def index
-    @architecture = Architecture.all.includes(:user, :open_range).order(created_at: :desc)
+    @architecture = Architecture.all.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -8,7 +8,7 @@ class ArchitectureController < ApplicationController
   end
 
   def create
-    @architecture = Architecture.new(architecture_params)
+    @architecture = current_user.architecture.build(architecture_params)
     if @architecture.save
       redirect_to architecture_index_path, notice: t('defaults.message.created', item: Architecture.model_name.human)
     else
@@ -24,6 +24,6 @@ class ArchitectureController < ApplicationController
   private
 
   def architecture_params
-    params.require(:architecture).permit(:name, :description, :user_id, :open_range_id)
+    params.require(:architecture).permit(:name, :location, :architect, :description, :open_range)
   end
 end
