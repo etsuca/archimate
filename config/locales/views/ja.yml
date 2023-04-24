@@ -5,6 +5,8 @@ ja:
     logout: 'ログアウト'
     message:
       require_login: 'ログインしてください'
+      created: "%{item}を記録しました"
+      not_created: "%{item}の記録に失敗しました"
   static_pages:
     top:
       record: '訪れた建築を記録する✍️'
@@ -26,12 +28,12 @@ ja:
       fail: 'ログインに失敗しました'
     destroy:
       success: 'ログアウトしました'
-  contents:
+  architecture:
     index:
       title: 'これまでに記録した建築一覧'
       no_result: '記録した建築がありません'
     new:
-      title: '建築を記録する'
+      title: '訪れた建築を記録しよう✍️'
     likes:
       title: 'Like一覧'
   profiles:

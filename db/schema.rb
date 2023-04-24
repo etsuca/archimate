@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_22_095156) do
+ActiveRecord::Schema.define(version: 2023_04_24_154613) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,18 +20,11 @@ ActiveRecord::Schema.define(version: 2023_04_22_095156) do
     t.string "location", null: false
     t.string "architect"
     t.text "description"
+    t.integer "open_range", null: false
     t.bigint "user_id", null: false
-    t.bigint "open_range_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["open_range_id"], name: "index_architecture_on_open_range_id"
     t.index ["user_id"], name: "index_architecture_on_user_id"
-  end
-
-  create_table "open_ranges", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,6 +37,5 @@ ActiveRecord::Schema.define(version: 2023_04_22_095156) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "architecture", "open_ranges"
   add_foreign_key "architecture", "users"
 end

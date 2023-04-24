@@ -70,6 +70,8 @@ GEM
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.12.0)
     faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
@@ -236,6 +238,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
+  enum_help
   font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.3)
