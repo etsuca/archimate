@@ -1,0 +1,24 @@
+<%= form_with model: architecture, local: true do |f| %>
+	<div>
+		<%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+		<%= f.label :location %>
+    <%= f.text_area :location %>
+	</div>
+  <div>
+    <%= f.label :architect %>
+    <%= f.text_field :architect %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+	<%= f.submit %>
+<% end %>
