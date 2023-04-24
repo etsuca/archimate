@@ -32,6 +32,7 @@ gem 'font-awesome-sass'
 gem 'sorcery'
 gem 'pry-byebug'
 gem 'rails-i18n'
+gem 'enum_help'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
