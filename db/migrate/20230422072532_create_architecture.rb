@@ -4,9 +4,9 @@ class CreateArchitecture < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.string :location, null: false
       t.string :architect
-      t.text :introduction
+      t.text :description
+      t.integer :open_range, null: false, default: 0
       t.references :user, null: false, foreign_key: true
-      t.references :open_range, null: false, foreign_key: true
 
       t.timestamps
     end
