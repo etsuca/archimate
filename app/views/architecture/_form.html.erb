@@ -1,5 +1,6 @@
 <%= form_with model: architecture, local: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <%= javascript_pack_tag 'architecture/render' %>
 	<div>
 		<%= f.label :name %>
     <%= f.text_field :name %>
