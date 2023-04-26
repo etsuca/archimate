@@ -1,4 +1,6 @@
 <%= form_with model: architecture, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= javascript_pack_tag 'architecture/render' %>
 	<div>
 		<%= f.label :name %>
     <%= f.text_field :name %>
@@ -17,7 +19,7 @@
   </div>
   <div>
     <%= f.label :open_range %>
-    <%= f.select :open_range, {'公開': 'publish', '非公開': 'unpublish'}, { include_blank: "選択してください" } %>
+    <%= f.select :open_range, {'公開': 'publish', '非公開': 'unpublish'} %>
   </div>
 
 	<%= f.submit %>

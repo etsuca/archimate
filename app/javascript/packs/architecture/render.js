@@ -1,0 +1,1 @@
+history.replaceState('', '', '/architecture/new')

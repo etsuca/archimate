@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'font-awesome-sass'
 gem 'sorcery'
 gem 'pry-byebug'
+gem 'pry-rails'
 gem 'rails-i18n'
 gem 'enum_help'
 
