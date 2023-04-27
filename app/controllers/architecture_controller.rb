@@ -24,6 +24,6 @@ class ArchitectureController < ApplicationController
   private
 
   def architecture_params
-    params.require(:architecture).permit(:name, :location, :architect, :description, :open_range, :architecture_image, :architecture_image_cache)
+    params.require(:architecture).permit(:name, :location, :architect, :description, :open_range, { images: [] }, { images_cache: [] })
   end
 end

@@ -1,11 +1,18 @@
 <div>
-  <%= image_tag architecture.architecture_image.url, size: '300x200' %>
+  <% if architecture.images.any? %>
+    <% architecture.images.each do |image| %>
+      <%= image_tag image.url, size: '300x200' %>
+    <% end %>
+  <% else %>
+    <%= image_tag 'architecture_placeholder.png' %>
+  <% end %>
   <div>
     <h4>
       <a href="#" style="color: black;">
         <%= architecture.name %>
       </a>
     </h4>
+    <p><%= architecture.description %></p>
     <div>
       <a href="#"><%= icon 'fas', 'trash', style: 'color: #ee5858' %></a>
       <a href="#"><%= icon 'fa', 'pen', style: 'color: #ee5858' %></a>
@@ -20,6 +27,5 @@
         <%= l architecture.created_at, format: :long %>
       </li>
     </ul>
-    <p><%= architecture.description %></p>
   </div>
 </div>

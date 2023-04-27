@@ -22,9 +22,9 @@
     <%= f.text_area :description %>
   </div>
   <div>
-    <%= f.label :architecture_image %>
-    <%= f.file_field :architecture_image %>
-    <%= f.hidden_field :architecture_image_cache %>
+    <%= f.label :images %>
+    <%= f.file_field :images, multiple: true, onchange: 'previewImage()', accept: 'image/*' %>
+    <%= f.hidden_field :images_cache %>
   </div>
  
 	<%= f.submit %>

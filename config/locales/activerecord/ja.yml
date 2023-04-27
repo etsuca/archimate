@@ -15,7 +15,7 @@ ja:
         open_range: '公開範囲'
         architect: '設計者'
         description: 'メモ'
-        architecture_image: '写真'
+        images: '写真'
         created_at: '作成日時'
         updated_at: '更新日時'
         

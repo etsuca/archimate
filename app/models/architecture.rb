@@ -1,6 +1,6 @@
 class Architecture < ApplicationRecord
-  mount_uploader :architecture_image, ArchitectureImageUploader
-
+  mount_uploaders :images, ImagesUploader
+  serialize :images, JSON
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 255 }
