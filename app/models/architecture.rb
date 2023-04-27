@@ -1,4 +1,6 @@
 class Architecture < ApplicationRecord
+  mount_uploader :architecture_image, ArchitectureImageUploader
+
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 255 }

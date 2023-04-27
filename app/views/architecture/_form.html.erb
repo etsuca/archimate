@@ -10,6 +10,10 @@
     <%= f.text_area :location %>
 	</div>
   <div>
+    <%= f.label :open_range %>
+    <%= f.select :open_range, {'公開': 'publish', '非公開': 'unpublish'} %>
+  </div>
+  <div>
     <%= f.label :architect %>
     <%= f.text_field :architect %>
   </div>
@@ -18,9 +22,10 @@
     <%= f.text_area :description %>
   </div>
   <div>
-    <%= f.label :open_range %>
-    <%= f.select :open_range, {'公開': 'publish', '非公開': 'unpublish'} %>
+    <%= f.label :architecture_image %>
+    <%= f.file_field :architecture_image %>
+    <%= f.hidden_field :architecture_image_cache %>
   </div>
-
+ 
 	<%= f.submit %>
 <% end %>
