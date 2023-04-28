@@ -34,6 +34,8 @@ ja:
       no_result: '記録した建築がありません'
     new:
       title: '訪れた建築を記録しよう✍️'
+    show:
+      title: '%{architecture_name}'
     likes:
       title: 'Like一覧'
   profiles:

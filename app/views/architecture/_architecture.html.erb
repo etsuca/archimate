@@ -9,14 +9,11 @@
   <div>
     <h4>
       <a href="#" style="color: black;">
-        <%= architecture.name %>
+        <%= link_to architecture.name, architecture_path(architecture) %>
       </a>
     </h4>
     <p><%= architecture.description %></p>
-    <div>
-      <a href="#"><%= icon 'fas', 'trash', style: 'color: #ee5858' %></a>
-      <a href="#"><%= icon 'fa', 'pen', style: 'color: #ee5858' %></a>
-    </div>
+    <%= render 'crud_menus', architecture: architecture %>
     <ul>
       <li>
         <%= icon 'far', 'user' %>
