@@ -34,7 +34,7 @@ ja:
       success: 'ログアウトしました'
   architecture:
     index:
-      title: 'これまでに記録した建築一覧'
+      title: 'これまでに訪れた建築一覧🚶'
       no_result: '記録した建築がありません'
     new:
       title: '訪れた建築を記録しよう✍️'
