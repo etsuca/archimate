@@ -1,6 +1,6 @@
 class ArchitectureController < ApplicationController
   def index
-    @architecture = Architecture.all.includes(:user).order(created_at: :desc)
+    @architecture = Architecture.where(user_id: current_user.id).includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -18,7 +18,7 @@ class ArchitectureController < ApplicationController
   end
 
   def show
-    @architecture = Architecture.find(params[:id])
+    @architecture = current_user.architecture.find(params[:id])
   end
 
   def edit
