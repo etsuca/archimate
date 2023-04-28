@@ -1,0 +1,9 @@
+<% content_for(:title, @architecture.name) %>
+<h2><%= t('.title', architecture_name: @architecture.name) %></h2>
+<div>
+  <div>
+    <div>
+      <%= render 'form', { architecture: @architecture } %>
+    </div>
+  </div>
+</div>

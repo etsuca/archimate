@@ -7,6 +7,10 @@ ja:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"
       not_created: "%{item}の記録に失敗しました"
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+      delete_confirm: '削除しますか？'
   static_pages:
     top:
       record: '訪れた建築を記録する✍️'
@@ -36,8 +40,10 @@ ja:
       title: '訪れた建築を記録しよう✍️'
     show:
       title: '%{architecture_name}'
+    edit:
+      title: '建築の詳細を編集✍️'
     likes:
-      title: 'Like一覧'
+      title: 'Like一覧❤️'
   profiles:
     show:
       title: 'プロフィール'

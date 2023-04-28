@@ -1,1 +1,1 @@
-history.replaceState('', '', '/architecture/new')
+// history.replaceState('', '', '/architecture/new')

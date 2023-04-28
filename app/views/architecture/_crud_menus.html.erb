@@ -1,11 +1,11 @@
 <ul>
   <li>
-    <%= link_to '#' do %>
+    <%= link_to edit_architecture_path(architecture), id: "button-edit-#{architecture.id}" do %>
       <%= icon 'fa', 'pen', style: 'color: #ee5858' %>
     <% end %>
   </li>
   <li>
-    <%= link_to '#' do %>
+    <%= link_to architecture_path(architecture), id: "button-delete-#{architecture.id}", method: :delete, data: { confirm: t('defaults.message.delete_confirm') } do %>
       <%= icon 'fas', 'trash', style: 'color: #ee5858' %>
     <% end %>
   </li>

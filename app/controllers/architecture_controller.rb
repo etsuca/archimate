@@ -21,6 +21,26 @@ class ArchitectureController < ApplicationController
     @architecture = Architecture.find(params[:id])
   end
 
+  def edit
+    @architecture = current_user.architecture.find(params[:id])
+  end
+
+  def update
+    @architecture = current_user.architecture.find(params[:id])
+    if @architecture.update(architecture_params)
+      redirect_to @architecture, notice: t('defaults.message.updated', item: Architecture.model_name.human)
+    else
+      flash.now['notice'] = t('defaults.message.not_updated', item: Architecture.model_name.human)
+      render :edit
+    end
+  end
+
+  def destroy
+    @architecture = current_user.architecture.find(params[:id])
+    @architecture.destroy!
+    redirect_to architecture_index_path, notice: t('defaults.message.deleted', item: Architecture.model_name.human)
+  end
+
   private
 
   def architecture_params
