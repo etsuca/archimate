@@ -1,9 +1,9 @@
 <% content_for(:title, @architecture.name) %>
-<h1><%= t('.title', architecture_name: @architecture.name) %></h1>
-<article class="card">
-  <div class="card-body">
-    <div class='row'>
-      <div class='col-md-3'>
+<h2><%= t('.title', architecture_name: @architecture.name) %></h2>
+<article>
+  <div>
+    <div>
+      <div>
         <% if @architecture.images.any? %>
           <% @architecture.images.each do |image| %>
             <%= image_tag image.url, size: '300x200' %>
@@ -12,12 +12,11 @@
           <%= image_tag 'architecture_placeholder.png' %>
         <% end %>
       </div>
-      <div class='col-md-9'>
-        <h3 class="d-inline"><%= t('.title', architecture_name: @architecture.name) %></h3>
-        <%= render 'crud_menus', architecure: @architecture %>
-        <ul class="list-inline">
-          <li class="list-inline-item">by <%= @architecture.user.name %></li>
-          <li class="list-inline-item"><%= l @architecture.created_at, format: :long  %></li>
+      <div>
+        <%= render 'crud_menus', architecture: @architecture if current_user.own?(@architecture) %>
+        <ul>
+          <li>by <%= @architecture.user.name %></li>
+          <li><%= l @architecture.created_at, format: :long  %></li>
         </ul>
       </div>
     </div>
