@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :architecture do
     collection do
       get :random
+      get :likes
     end
   end
+  resources :likes, only: %i[create destroy]
 end

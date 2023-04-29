@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_27_151755) do
+ActiveRecord::Schema.define(version: 2023_04_29_055739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2023_04_27_151755) do
     t.index ["user_id"], name: "index_architecture_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "architecture_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["architecture_id"], name: "index_likes_on_architecture_id"
+    t.index ["user_id", "architecture_id"], name: "index_likes_on_user_id_and_architecture_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "crypted_password"
@@ -39,4 +49,6 @@ ActiveRecord::Schema.define(version: 2023_04_27_151755) do
   end
 
   add_foreign_key "architecture", "users"
+  add_foreign_key "likes", "architecture"
+  add_foreign_key "likes", "users"
 end
