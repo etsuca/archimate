@@ -7,7 +7,6 @@
       <%= render 'search_form', url: likes_architecture_index_path %>
     </div>
   </div>
-
   <!-- 建築一覧 -->
   <div>
     <% if @like_architecture.present? %>
@@ -16,4 +15,6 @@
       <p><%= t('.no_result') %></p>
     <% end %>
   </div>
+  <!-- ページネーション -->
+  <%= paginate @like_architecture %>
 </div>
