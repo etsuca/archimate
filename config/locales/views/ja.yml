@@ -3,6 +3,7 @@ ja:
     login: 'ログイン'
     sign_up: 'サインアップ'
     logout: 'ログアウト'
+    search_word: '建築名を入力'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"

@@ -10,6 +10,10 @@ class Architecture < ApplicationRecord
 
   enum open_range: { unpublish: 0, publish: 1 }
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["architect", "created_at", "description", "id", "images", "location", "name", "open_range", "updated_at", "user_id"]
+  end
+
   def self.not_by(user)
     self.where.not(user_id: user.id)
   end
