@@ -9,4 +9,8 @@ class Architecture < ApplicationRecord
   validates :description, length: { maximum: 65_535 }
 
   enum open_range: { unpublish: 0, publish: 1 }
+
+  def self.not_by(user)
+    self.where.not(user_id: user.id)
+  end
 end
