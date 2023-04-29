@@ -41,6 +41,10 @@ class ArchitectureController < ApplicationController
     redirect_to architecture_index_path, notice: t('defaults.message.deleted', item: Architecture.model_name.human)
   end
 
+  def random
+    @architecture = Architecture.not_by(current_user).offset( rand(Architecture.not_by(current_user).count) ).first
+  end
+
   private
 
   def architecture_params

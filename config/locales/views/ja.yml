@@ -42,6 +42,8 @@ ja:
       title: '%{architecture_name}'
     edit:
       title: '建築の詳細を編集✍️'
+    random:
+      title: 'ランダムで建築を表示🎲'
     likes:
       title: 'Like一覧❤️'
   profiles:
