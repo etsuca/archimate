@@ -44,8 +44,15 @@ ja:
       title: '建築の詳細を編集✍️'
     random:
       title: 'ランダムで建築を表示🎲'
+      no_result: 'すべての建築をLikeしました❤️'
     likes:
       title: 'Like一覧❤️'
+      no_result: 'Likeした建築がありません..'
+  likes:
+    create:
+      success: 'Like!!'
+    destroy:
+      success: 'Unlike💔'
   profiles:
     show:
       title: 'プロフィール'

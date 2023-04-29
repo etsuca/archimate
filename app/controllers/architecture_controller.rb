@@ -18,7 +18,7 @@ class ArchitectureController < ApplicationController
   end
 
   def show
-    @architecture = current_user.architecture.find(params[:id])
+    @architecture = Architecture.find(params[:id])
   end
 
   def edit
@@ -42,7 +42,13 @@ class ArchitectureController < ApplicationController
   end
 
   def random
-    @architecture = Architecture.not_by(current_user).offset( rand(Architecture.not_by(current_user).count) ).first
+    user_liked_architecture_ids = Like.where(user_id: current_user.id).pluck(:architecture_id)
+    architecture = Architecture.where.not(id: user_liked_architecture_ids)
+    @architecture = architecture.not_by(current_user).offset( rand(architecture.not_by(current_user).count) ).first
+  end
+
+  def likes
+    @like_architecture = current_user.like_architecture.includes(:user).order(created_at: :desc)
   end
 
   private

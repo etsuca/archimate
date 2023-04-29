@@ -13,7 +13,11 @@
       </a>
     </h4>
     <p><%= architecture.description %></p>
-    <%= render 'crud_menus', architecture: architecture if current_user.own?(architecture) %>
+    <% if current_user.own?(architecture) %>
+      <%= render 'crud_menus', architecture: architecture %>
+    <% else %>
+      <%= render 'like_button', architecture: architecture %>
+    <% end %>
     <ul>
       <li>
         <%= icon 'far', 'user' %>

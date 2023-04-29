@@ -1,0 +1,26 @@
+<% content_for(:title, @like_architecture.name) %>
+<h2><%= t('.title', architecture_name: @like_architecture.name) %></h2>
+<div>
+  <div>
+    <div>
+      <!-- 検索フォーム -->
+      <form>
+        <div>
+          <input placeholder="検索ワード" type="search" />
+          <div>
+            <input type="submit" value="検索" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 建築一覧 -->
+  <div>
+    <% if @like_architecture.present? %>
+      <%= render @like_architecture %>
+    <% else %>
+      <p><%= t('.no_result') %></p>
+    <% end %>
+  </div>
+</div>

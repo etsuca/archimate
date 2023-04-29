@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_many :architecture, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_architecture, through: :likes, source: :architecture
   
   authenticates_with_sorcery!
 
@@ -12,5 +14,17 @@ class User < ApplicationRecord
 
   def own?(object)
     id == object.user_id
+  end
+
+  def like(architecture)
+    like_architecture << architecture
+  end
+
+  def unlike(architecture)
+    like_architecture.delete(architecture)
+  end
+
+  def like?(architecture)
+    like_architecture.include?(architecture)
   end
 end

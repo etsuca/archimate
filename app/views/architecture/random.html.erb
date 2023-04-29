@@ -1,26 +1,31 @@
-<% content_for(:title, @architecture.name) %>
-<h2><%= t('.title', architecture_name: @architecture.name) %></h2>
-<h3><%= @architecture.name %></h3>
-<article>
-  <div>
+<% if @architecture.present? %>
+  <% content_for(:title, @architecture.name) %>
+  <h2><%= t('.title', architecture_name: @architecture.name) %></h2>
+  <h3><%= @architecture.name %></h3>
+  <article>
     <div>
       <div>
-        <% if @architecture.images.any? %>
-          <% @architecture.images.each do |image| %>
-            <%= image_tag image.url, size: '300x200' %>
+        <div>
+          <% if @architecture.images.any? %>
+            <% @architecture.images.each do |image| %>
+              <%= image_tag image.url, size: '300x200' %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'architecture_placeholder.png' %>
           <% end %>
-        <% else %>
-          <%= image_tag 'architecture_placeholder.png' %>
-        <% end %>
-      </div>
-      <p><%= simple_format(@architecture.description) %></p>
-      <div>
-        <%= render 'crud_menus', architecture: @architecture if current_user.own?(@architecture) %>
-        <ul>
-          <li>by <%= @architecture.user.name %></li>
-          <li><%= l @architecture.created_at, format: :long  %></li>
-        </ul>
+        </div>
+        <p><%= simple_format(@architecture.description) %></p>
+        <div>
+          <%= render 'crud_menus', architecture: @architecture if current_user.own?(@architecture) %>
+          <%= render 'like_button', architecture: @architecture %>
+          <ul>
+            <li>by <%= @architecture.user.name %></li>
+            <li><%= l @architecture.created_at, format: :long  %></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</article>
+  </article>
+  <% else %>
+    <p><%= t('.no_result') %></p>
+  <% end %>
