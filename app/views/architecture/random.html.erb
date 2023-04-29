@@ -7,9 +7,7 @@
       <div>
         <div>
           <% if @architecture.images.any? %>
-            <% @architecture.images.each do |image| %>
-              <%= image_tag image.url, size: '300x200' %>
-            <% end %>
+            <%= image_tag @architecture.images.sample.url, size: '300x200' %>
           <% else %>
             <%= image_tag 'architecture_placeholder.png' %>
           <% end %>
@@ -22,6 +20,6 @@
       </div>
     </div>
   </article>
-  <% else %>
-    <p><%= t('.no_result') %></p>
-  <% end %>
+<% else %>
+  <p><%= t('.no_result') %></p>
+<% end %>
