@@ -1,6 +1,7 @@
 class ArchitectureController < ApplicationController
   def index
-    @architecture = Architecture.where(user_id: current_user.id).includes(:user).order(created_at: :desc)
+    @q = Architecture.ransack(params[:q])
+    @architecture = @q.result(distinct: true).where(user_id: current_user.id).includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -48,7 +49,8 @@ class ArchitectureController < ApplicationController
   end
 
   def likes
-    @like_architecture = current_user.like_architecture.includes(:user).order(created_at: :desc)
+    @q = current_user.like_architecture.ransack(params[:q])
+    @like_architecture = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
   private
