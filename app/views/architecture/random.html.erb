@@ -18,10 +18,6 @@
         <div>
           <%= render 'crud_menus', architecture: @architecture if current_user.own?(@architecture) %>
           <%= render 'like_button', architecture: @architecture %>
-          <ul>
-            <li>by <%= @architecture.user.name %></li>
-            <li><%= l @architecture.created_at, format: :long  %></li>
-          </ul>
         </div>
       </div>
     </div>

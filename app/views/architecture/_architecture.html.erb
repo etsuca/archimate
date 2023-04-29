@@ -18,15 +18,5 @@
     <% else %>
       <%= render 'like_button', architecture: architecture %>
     <% end %>
-    <ul>
-      <li>
-        <%= icon 'far', 'user' %>
-        <%= architecture.user.name %>
-      </li>
-      <li>
-        <%= icon 'far', 'calendar' %>
-        <%= l architecture.created_at, format: :long %>
-      </li>
-    </ul>
   </div>
 </div>
