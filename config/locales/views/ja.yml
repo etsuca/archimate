@@ -69,6 +69,7 @@ ja:
     new:
       title: 'パスワードリセット申請'
       submit: '送信'
+      to_login_page: 'ログインはこちら→'
     edit:
       title: 'パスワードリセット'
     create:

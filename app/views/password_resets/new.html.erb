@@ -7,5 +7,6 @@
       <%= f.email_field :email %>
     </div>
     <%= f.submit t('password_resets.new.submit') %>
-<% end %>
+  <% end %>
+  <%= link_to (t '.to_login_page'), login_path %>
 </div>
