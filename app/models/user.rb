@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+
   has_many :architecture, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_architecture, through: :likes, source: :architecture

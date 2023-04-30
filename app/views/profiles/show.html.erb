@@ -1,0 +1,19 @@
+<% content_for(:title, t('.title')) %>
+<div>
+  <h1><%= t('.title') %></h1>
+  <%= link_to t('defaults.edit'), edit_profile_path %>
+  <table>
+    <tr>
+      <th scope="row"><%= t(User.human_attribute_name(:email)) %></th>
+      <td><%= current_user.email %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= t(User.human_attribute_name(:name)) %></th>
+      <td><%= current_user.name %></td>
+    </tr>
+    <tr>
+      <th scope="row"><%= t(User.human_attribute_name(:avatar)) %></th>
+      <td><%= image_tag current_user.avatar.url, size: '200x200' %></td>
+    </tr>
+  </table>
+</div>
