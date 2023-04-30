@@ -60,6 +60,7 @@ ja:
       success: 'Unlike💔'
   profiles:
     show:
-      title: 'プロフィール'
+      title: 'プロフィール👀'
+      recorded_architecture_count: '記録した建築総数は、、、'
     edit:
       title: 'プロフィールを編集✍️'
