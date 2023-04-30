@@ -9,6 +9,7 @@ ja:
         email: 'メールアドレス'
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
+        avatar: 'プロフィール画像'
       architecture:
         name: '建築名'
         location: '所在地'

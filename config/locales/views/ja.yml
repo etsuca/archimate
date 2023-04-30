@@ -4,6 +4,8 @@ ja:
     sign_up: 'サインアップ'
     logout: 'ログアウト'
     search_word: '建築名を入力'
+    edit: '編集'
+    delete: '退会する'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"
@@ -12,6 +14,8 @@ ja:
       not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
       delete_confirm: '削除しますか？'
+      logout_confirm: 'ログアウトしますか？'
+      user_delete_confirm: '退会しますか？'
   static_pages:
     top:
       record: '訪れた建築を記録する✍️'
@@ -56,4 +60,7 @@ ja:
       success: 'Unlike💔'
   profiles:
     show:
-      title: 'プロフィール'
+      title: 'プロフィール👀'
+      recorded_architecture_count: '記録した建築総数は、、、'
+    edit:
+      title: 'プロフィールを編集✍️'
