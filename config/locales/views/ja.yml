@@ -6,6 +6,7 @@ ja:
     search_word: '建築名を入力'
     edit: '編集'
     delete: '退会する'
+    password_reset: 'パスワードリセット'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"
@@ -64,3 +65,15 @@ ja:
       recorded_architecture_count: '記録した建築総数は、、、'
     edit:
       title: 'プロフィールを編集✍️'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+      to_login_page: 'ログインはこちら→'
+    edit:
+      title: 'パスワードリセット'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    update:
+      success: 'パスワードを変更しました'
+      fail: 'パスワードの変更に失敗しました'

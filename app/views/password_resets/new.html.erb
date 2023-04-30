@@ -1,0 +1,12 @@
+<% content_for(:title, t('.title')) %>
+<div>
+  <h2><%= t('.title') %></h2>
+  <%= form_with url: password_resets_path, local: true do |f| %>
+    <div>
+      <%= f.label :email, t(User.human_attribute_name(:email)) %><br />
+      <%= f.email_field :email %>
+    </div>
+    <%= f.submit t('password_resets.new.submit') %>
+  <% end %>
+  <%= link_to (t '.to_login_page'), login_path %>
+</div>
