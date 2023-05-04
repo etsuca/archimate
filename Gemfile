@@ -38,6 +38,7 @@ gem 'carrierwave'
 gem 'ransack'
 gem 'kaminari'
 gem 'config'
+gem 'tailwindcss-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
