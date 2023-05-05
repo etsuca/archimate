@@ -1,34 +1,39 @@
-<header>
-  <nav>
-    <%= link_to root_path, class: 'header-logo' do %>
-      <%= image_tag 'archimate.png', size: '200x43' %>
+<header class="py-12">
+  <div class="container mx-auto flex justify-between items-center px-8 md:px-14 lg:px-24 w-full">
+    <%= link_to "archimate", root_path, class: "text-2xl font-bold" %>
+    <% if logged_in? %>
+      <div class="space-x-12 hidden md:flex items-center">
+        <%= link_to new_architecture_path do %>
+          <i class="fa-solid fa-pen text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+        <%= link_to random_architecture_index_path do %>
+          <i class="fa-solid fa-search text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+        <%= link_to architecture_index_path do %>
+          <i class="fa-solid fa-file text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+        <%= link_to likes_architecture_index_path do %>
+          <i class="fa-regular fa-heart text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+        <%= link_to '#' do %>
+          <i class="fa-solid fa-earth-asia text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+        <%= link_to profile_path do %>
+          <i class="fa-sharp fa-solid fa-user text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+        <%= link_to logout_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } do %>
+          <i class="fa-solid fa-arrow-right-from-bracket text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="hidden md:flex">
+        <%= link_to login_path do %>
+          <i class="fa-solid fa-arrow-right-from-bracket text-3xl hover:text-secondary transition-all duration-300"></i>
+        <% end %>
+      </div>
     <% end %>
-
-    <hr class="style1">
-
-    <div>
-      <ul>
-        <li>
-          <%= link_to architecture_index_path, class: 'icon' do %>
-            <i class="fa-solid fa-book fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to likes_architecture_index_path, class: 'icon' do %>
-            <i class="fa-regular fa-heart fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to '#', class: 'icon' do %>
-            <%= image_tag 'japan.png', size: '35x35' %>
-          <% end %>
-          <%= link_to new_architecture_path, class: 'icon' do %>
-            <i class="fa-solid fa-pen fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to profile_path, class: 'icon' do %>
-            <i class="fa-sharp fa-solid fa-user fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to logout_path, class: 'icon', method: :delete, data: { confirm: t('defaults.message.logout_confirm') } do %>
-            <i class="fa-solid fa-arrow-right-from-bracket fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-        </li>
-      </ul>
+    <div class="md:hidden">
+      <i class="fa-solid fa-bars text-2xl"></i>
     </div>
-  </nav>
+  </div>
 </header>
