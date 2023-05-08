@@ -1,26 +1,55 @@
 <% content_for(:title, t('.title')) %>
-<h1><%= t '.title' %></h1>
-<%= form_with model: @user, local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= javascript_pack_tag 'users/render' %>
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+<h2 class="px-16 pt-6 text-xl text-center"><%= t('.title') %></h2>
+<section>
+  <div class="p-12 md:p-24">
+    <div class="max-w-md mx-auto">
+      <%= form_with model: @user, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+        <div class="space-y-2">
+          <%= f.label :name, class: "block text-md text-neutral-600" %>
+          <%= f.text_field :name, placeholder: "Name", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+        </div>
+        <div class="space-y-2">
+          <%= f.label :email, class: "mt-8 block text-md text-neutral-600" %>
+          <%= f.email_field :email, placeholder: "Email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+        </div>
+        <div class="space-y-2">
+          <%= f.label :password, class: "mt-8 block text-md text-neutral-600" %>
+          <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+        </div>
+        <div>
+          <%= f.label :password_confirmation, class: "mt-8 block text-md text-neutral-600" %>
+          <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+        </div>
+        <%= f.submit (t '.title'), class: "mt-16 py-4 w-full bg-black text-white transition duration-200 hover:scale-105 rounded-full" %>
+      <% end %>
+
+      <div class="relative my-4">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 text-neutral-600 bg-third"> <%= (t 'defaults.Or continue with') %></span>
+        </div>
+      </div>
+      <button type="submit" class="w-full py-4 text-theme shadow-md rounded-full transition duration-200 hover:shadow-fourth">
+        <div class="flex items-center justify-center">
+          <i class="fa-brands fa-google"></i>
+          <span class="ml-4"> <%= (t '.Sign Up with Google') %></span>
+        </div>
+      </button>
+
+      <div class="relative mt-12 mb-4">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 text-neutral-600 bg-third"> <%= (t '.For member') %> </span>
+        </div>
+      </div>
+      <div class="relative mb-24">
+        <%= link_to (t 'user_sessions.new.title'), login_path, class: "absolute py-4 w-full text-center text-white bg-black rounded-full" %>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-  <div>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <%= f.submit t 'defaults.sign_up' %>
-<% end %>
-<div>
-  <%= link_to (t '.to_login_page'), login_path %>
-</div>
+</section>

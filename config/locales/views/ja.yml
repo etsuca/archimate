@@ -7,6 +7,8 @@ ja:
     edit: '編集'
     delete: '退会する'
     password_reset: 'パスワードリセット'
+    Or continue with: '又は'
+    record: '記録する✍️'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"
@@ -23,16 +25,22 @@ ja:
       search: 'みんなの建築を見てみる👀'
   users:
     new:
-      title: 'サインアップ'
-      to_login_page: 'ログインはこちら→'
+      title: '新規会員登録'
+      Sign Up with Google: 'Googleで登録'
+      For member: 'すでに会員の方'
     create:
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'
   user_sessions:
     new:
       title: 'ログイン'
-      to_register_page: 'サインアップはこちら→'
-      password_forget: 'パスワードをお忘れの方はこちら→'
+      Log in with Google: 'Googleでログイン'
+      Guest Login: 'ゲストログイン'
+      Forget password?: 'パスワードをお忘れですか？'
+      Want to try?: 'お試しはこちらから'
+      to_register_page: '新規会員登録'
+      Guest Login: 'ゲストログイン'
+      For beginner: 'はじめてご利用の方'
     create:
       success: 'ログインしました'
       fail: 'ログインに失敗しました'
@@ -40,28 +48,28 @@ ja:
       success: 'ログアウトしました'
   architecture:
     index:
-      title: 'これまでに訪れた建築一覧🚶'
+      title: '訪れた建築一覧'
       no_result: '記録した建築がありません'
     new:
-      title: '訪れた建築を記録しよう✍️'
+      title: '建築を記録'
     show:
       title: '%{architecture_name}'
     edit:
-      title: '建築の詳細を編集✍️'
+      title: '建築を編集'
     random:
-      title: 'ランダムで建築を表示🎲'
+      title: '建築を探す'
       no_result: 'すべての建築をLikeしました❤️'
     likes:
-      title: 'Like一覧❤️'
+      title: 'Like一覧'
       no_result: 'Likeした建築がありません..'
   likes:
     create:
-      success: 'Like!!'
+      success: 'Like'
     destroy:
-      success: 'Unlike💔'
+      success: 'Unlike'
   profiles:
     show:
-      title: 'プロフィール👀'
+      title: 'プロフィール'
       recorded_architecture_count: '記録した建築総数は、、、'
     edit:
       title: 'プロフィールを編集✍️'
