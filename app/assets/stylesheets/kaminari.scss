@@ -1,0 +1,22 @@
+.pagination {
+  width: fit-content;
+  margin: 25px auto;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.first a, .prev a, .page a, .next a, .last a {
+  color: #131335;
+  padding: 5px;
+  border: 1px solid #131335;
+}
+
+.first a:hover, .prev a:hover, .page a:hover, .next a:hover, .last a:hover {
+  border: 1px solid #ffffff;
+  background-color: #131335;
+  color: #ffffff;
+}
+
+span.current {
+  color: #6e5777;
+}

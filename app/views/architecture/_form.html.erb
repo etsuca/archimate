@@ -1,31 +1,35 @@
-<%= form_with model: architecture, local: true do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= javascript_pack_tag 'architecture/render' %>
-	<div>
-		<%= f.label :name %>
-    <%= f.text_field :name %>
+<div class="container mx-auto">
+  <div class="max-w-lg mx-auto p-4">
+    <%= form_with model:architecture, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="mb-12">
+        <%= f.label :name, class: "block text-black-500 mb-2" %>
+        <%= f.text_field :name, class: "form-input w-full px-4 rounded-md border-1 border-gray-500 focus:outline-none focus:border-theme", required: true %>
+      </div>
+      <div class=" mb-12">
+        <%= f.label :location, class: "block text-black-500 mb-2" %>
+        <%= f.text_field :location, class: "form-input w-full px-4 rounded-md border-1 border-gray-500 focus:outline-none focus:border-theme", required: true %>
+      </div>
+      <div class=" mb-12">
+        <%= f.label :open_range, class: "block text-black-500 mb-2" %>
+        <%= f.select :open_range, {'公開': 'publish', '非公開': 'unpublish'}, {}, class: "form-select w-full px-4 rounded-md border-1 border-gray-500 focus:outline-none focus:border-theme", required: true %>
+      </div>
+      <div class=" mb-12">
+        <%= f.label :architect, class: "block text-black-500 mb-2" %>
+        <%= f.text_field :architect, class: "form-input w-full px-4 rounded-md border-1 border-gray-500 focus:outline-none focus:border-theme" %>
+      </div>
+      <div class=" mb-12">
+        <%= f.label :description, class: "block text-black-500 mb-2" %>
+        <%= f.text_area :description, size: "40x10", class: "form-textarea w-full px-4 rounded-md border-1 border-gray-500 focus:outline-none focus:border-theme" %>
+      </div>
+      <div class=" mb-12">
+        <%= f.label :images, class: "block text-black-500 mb-2" %>
+        <%= f.file_field :images, multiple: true, accept: 'image/*', class: "form-input w-full px-4 rounded-md border-1 border-gray-500 focus:outline-none focus:border-theme", required: true %>
+        <%= f.hidden_field :images_cache %>
+      </div>
+      <div class="flex justify-center">
+        <%= f.submit (t 'defaults.record'), class: "bg-theme hover:bg-selected text-white py-2 px-4 mb-12 rounded-md focus:outline-none focus:shadow-outline" %>
+      </div>
+    <% end %>
   </div>
-  <div>
-		<%= f.label :location %>
-    <%= f.text_area :location %>
-	</div>
-  <div>
-    <%= f.label :open_range %>
-    <%= f.select :open_range, {'公開': 'publish', '非公開': 'unpublish'} %>
-  </div>
-  <div>
-    <%= f.label :architect %>
-    <%= f.text_field :architect %>
-  </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-  <div>
-    <%= f.label :images %>
-    <%= f.file_field :images, multiple: true, onchange: 'previewImage()', accept: 'image/*' %>
-    <%= f.hidden_field :images_cache %>
-  </div>
- 
-	<%= f.submit %>
-<% end %>
+</div>

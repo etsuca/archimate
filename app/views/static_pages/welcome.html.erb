@@ -1,0 +1,25 @@
+<div class="flex flex-col md:flex-row items-center">
+  <div class="w-full md:w-3/4 h-96 md:h-screen relative">
+    <%= image_tag 'lp_top.jpg', class: 'absolute inset-0 object-cover object-top h-full w-full' %>
+  </div>
+  <div class="w-full md:w-144 px-4 md:pt-0 pt-4">
+    <h1 class="text-3xl md:text-5xl mb-4">次はどこ行く？</h1>
+    <div class="relative my-8 text-xs md:text-sm mb-20">
+      <p>archimateは、建築を記録し、新たな建築に出会うためのプラットフォームです。<br><br>クールな建築を見つけましょう。</p>
+      <%= link_to 'Search', architecture_index_path, class: "absolute w-full mt-6 md:mt-12 text-center text-white bg-black rounded-full" %>
+    </div>
+  </div>
+</div>
+
+<div class="flex flex-col md:flex-row items-center">
+  <div class="w-full md:w-3/4 h-96 md:h-screen relative">
+    <%= image_tag 'lp_bottom.jpg', class: 'absolute inset-0 object-cover object-top h-full w-full' %>
+  </div>
+  <div class="w-full md:w-144 px-4 md:pt-0 pt-4">
+    <h1 class="text-3xl md:text-5xl mb-4">最近どこいった？</h1>
+    <div class="relative my-8 text-xs md:text-sm mb-20">
+      <p>あなたが訪れた建築にチェックインしましょう。<br><br>チェックインした建築は他のユーザーの次の目的地になります。</p>
+      <%= link_to 'Check in', new_architecture_path, class: "absolute w-full mt-6 md:mt-12 text-center text-black bg-second rounded-full" %>
+    </div>
+  </div>
+</div>

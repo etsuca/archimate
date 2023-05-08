@@ -1,34 +1,22 @@
-<header>
-  <nav>
-    <%= link_to root_path, class: 'header-logo' do %>
-      <%= image_tag 'archimate.png', size: '200x43' %>
+<header class="py-1">
+  <div class="container mx-auto flex justify-between items-center px-4 md:px-8 lg:px-12 w-full text-theme">
+    <%= link_to "archimate", root_path, class: "text-xl mr-12" %>
+    <% if logged_in? %>
+      <div class="space-x-12 hidden lg:flex items-center text-sm">
+        <%= link_to (t 'architecture.new.title'), new_architecture_path %>
+        <%= link_to (t 'architecture.random.title'), random_architecture_index_path %>
+        <%= link_to (t 'architecture.index.title'), architecture_index_path %>
+        <%= link_to (t 'architecture.likes.title'), likes_architecture_index_path %>
+        <%= link_to (t 'profiles.show.title'), profile_path %>
+        <%= link_to (t 'defaults.logout'), logout_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %>
+      </div>
+    <% else %>
+      <div class="hidden lg:flex">
+        <%= link_to (t 'defaults.login'), login_path %>
+      </div>
     <% end %>
-
-    <hr class="style1">
-
-    <div>
-      <ul>
-        <li>
-          <%= link_to architecture_index_path, class: 'icon' do %>
-            <i class="fa-solid fa-book fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to likes_architecture_index_path, class: 'icon' do %>
-            <i class="fa-regular fa-heart fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to '#', class: 'icon' do %>
-            <%= image_tag 'japan.png', size: '35x35' %>
-          <% end %>
-          <%= link_to new_architecture_path, class: 'icon' do %>
-            <i class="fa-solid fa-pen fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to profile_path, class: 'icon' do %>
-            <i class="fa-sharp fa-solid fa-user fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-          <%= link_to logout_path, class: 'icon', method: :delete, data: { confirm: t('defaults.message.logout_confirm') } do %>
-            <i class="fa-solid fa-arrow-right-from-bracket fa-2x" style="color: #ee5858;"></i>
-          <% end %>
-        </li>
-      </ul>
+    <div class="lg:hidden">
+      <i class="fa-solid fa-bars text-2xl"></i>
     </div>
-  </nav>
+  </div>
 </header>

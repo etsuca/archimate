@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <th scope="row"><%= t(User.human_attribute_name(:avatar)) %></th>
-      <td><%= image_tag current_user.avatar.url, size: '200x200' %></td>
+      <td><%= image_tag current_user.avatar.url, class: 'inline-block h-[12rem] w-[12rem] rounded-full ring-2 ring-white dark:ring-gray-800' %></td>
     </tr>
   </table>
 </div>
