@@ -1,5 +1,3 @@
 <% content_for(:title, t('.title')) %>
-<div>
-  <h2><%= t('.title') %></h2>
-  <%= render 'form', { architecture: @architecture } %>
-</div>
+<h2 class="py-12 md:py-24 text-xl text-center"><%= t('.title') %></h2>
+<%= render 'form', { architecture: @architecture } %>
