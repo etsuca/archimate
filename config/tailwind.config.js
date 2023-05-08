@@ -10,15 +10,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "selected-text": "#6e5777",
-        theme: "#131335",
-        secondary: "#e3ddc3",
-        badge: "#d1b5ce",
-        inputBorder: "#d0c3a4",
-        input: "#2A2A33"
+        theme: "#2c2c2c",
+        second: "#f4e464",
+        third: "#f3f4f6",
+        fourth: "#b2b2b2",
+        fifth: "#c7e3fa"
       },
       fontFamily: {
         open_sans: ["Open Sans", "sans-serif"],
+      },
+      width: {
+        '128': '32rem',
+        '144': '36rem',
+        '160': '40rem',
       },
     },
   },
