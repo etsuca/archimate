@@ -4,9 +4,9 @@
     <% if logged_in? %>
       <div class="space-x-12 hidden lg:flex items-center text-sm">
         <%= link_to (t 'architecture.new.title'), new_architecture_path %>
-        <%= link_to (t 'architecture.random.title'), random_architecture_index_path %>
         <%= link_to (t 'architecture.index.title'), architecture_index_path %>
         <%= link_to (t 'architecture.likes.title'), likes_architecture_index_path %>
+        <%= link_to (t 'header.detailed_search'), architecture_index_path %>
         <%= link_to (t 'profiles.show.title'), profile_path %>
         <%= link_to (t 'defaults.logout'), logout_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %>
       </div>
