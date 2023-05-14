@@ -16,7 +16,30 @@
       </div>
     <% end %>
     <div class="lg:hidden">
-      <i class="fa-solid fa-bars text-2xl"></i>
+      <nav>
+        <button id="button" type="button" class="fixed z-20 top-1 right-6">
+          <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+          <i id="xmark" class="hidden fa-solid fa-x text-2xl"></i>
+        </button>
+        <ul id="menu" class="fixed top-0 left-0 z-10 w-full translate-x-full text-sm bg-third text-center transition duration-300 ease-linear">
+          <li class="p-3"><%= link_to (t 'header.top'), root_path %></li>
+          <li class="p-3"><%= link_to (t 'architecture.new.title'), new_architecture_path %></li>
+          <li class="p-3"><%= link_to (t 'architecture.index.title'), architecture_index_path %></li>
+          <li class="p-3"><%= link_to (t 'architecture.likes.title'), likes_architecture_index_path %></li>
+          <li class="p-3"><%= link_to (t 'header.detailed_search'), architecture_index_path %></li>
+          <li class="p-3"><%= link_to (t 'profiles.show.title'), profile_path %></li>
+          <li class="p-3"><%= link_to (t 'defaults.logout'), logout_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %></li>
+        </ul>
+      </nav>
     </div>
   </div>
 </header>
+<main>
+  <script>
+    button.addEventListener('click', event => {
+      bars.classList.toggle('hidden');
+      xmark.classList.toggle('hidden');
+      menu.classList.toggle('translate-x-full');
+    })
+  </script>
+</main>
