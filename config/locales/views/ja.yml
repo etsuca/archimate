@@ -19,10 +19,11 @@ ja:
       delete_confirm: '削除しますか？'
       logout_confirm: 'ログアウトしますか？'
       user_delete_confirm: '退会しますか？'
+  header:
+    detailed_search: "詳細検索"
   static_pages:
     top:
-      record: '訪れた建築を記録する✍️'
-      search: 'みんなの建築を見てみる👀'
+      no_result: '指定距離内に建築がありません'
   users:
     new:
       title: '新規会員登録'
@@ -56,9 +57,6 @@ ja:
       title: '%{architecture_name}'
     edit:
       title: '建築を編集'
-    random:
-      title: '建築を探す'
-      no_result: 'すべての建築をLikeしました❤️'
     likes:
       title: 'Like一覧'
       no_result: 'Likeした建築がありません..'

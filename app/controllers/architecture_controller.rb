@@ -42,12 +42,6 @@ class ArchitectureController < ApplicationController
     redirect_to architecture_index_path, notice: t('defaults.message.deleted', item: Architecture.model_name.human)
   end
 
-  def random
-    user_liked_architecture_ids = Like.where(user_id: current_user.id).pluck(:architecture_id)
-    architecture = Architecture.where.not(id: user_liked_architecture_ids).where(open_range: 'publish')
-    @architecture = architecture.not_by(current_user).offset( rand(architecture.not_by(current_user).count) ).first
-  end
-
   def likes
     @q = current_user.like_architecture.ransack(params[:q])
     @like_architecture = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
