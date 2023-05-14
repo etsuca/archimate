@@ -20,6 +20,7 @@ ja:
       logout_confirm: 'ログアウトしますか？'
       user_delete_confirm: '退会しますか？'
   header:
+    top: 'トップ'
     detailed_search: "詳細検索"
   static_pages:
     top:
