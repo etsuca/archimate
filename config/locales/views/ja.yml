@@ -8,7 +8,8 @@ ja:
     delete: '退会する'
     password_reset: 'パスワードリセット'
     Or continue with: '又は'
-    record: '記録する✍️'
+    record: '記録'
+    Taito-ku, Tokyo-to 110-0007 Japan: '例 : 東京都台東区上野公園7-7-7'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"
@@ -21,7 +22,7 @@ ja:
       user_delete_confirm: '退会しますか？'
   header:
     top: 'トップ'
-    detailed_search: "詳細検索"
+    detailed_search: '詳細検索'
   static_pages:
     top:
       no_result: '指定距離内に建築がありません'

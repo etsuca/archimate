@@ -14,7 +14,7 @@ module.exports = {
         second: "#f4e464",
         third: "#f3f4f6",
         fourth: "#b2b2b2",
-        fifth: "#c7e3fa"
+        fifth: "#0E3068"
       },
       fontFamily: {
         open_sans: ["Open Sans", "sans-serif"],
