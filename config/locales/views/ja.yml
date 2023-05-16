@@ -3,13 +3,14 @@ ja:
     login: 'ログイン'
     sign_up: 'サインアップ'
     logout: 'ログアウト'
-    search_word: '建築名を入力'
     edit: '編集'
     delete: '退会する'
     password_reset: 'パスワードリセット'
     Or continue with: '又は'
     record: '記録'
+    National Museum of Western Art: '例 : 国立西洋美術館'
     Taito-ku, Tokyo-to 110-0007 Japan: '例 : 東京都台東区上野公園7-7-7'
+    Le Corbusier: '例 : ル・コルビュジエ'
     message:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"
@@ -51,7 +52,7 @@ ja:
       success: 'ログアウトしました'
   architecture:
     index:
-      title: '訪れた建築一覧'
+      title: '訪れた建築'
       no_result: '記録した建築がありません'
     new:
       title: '建築を記録'
@@ -60,7 +61,7 @@ ja:
     edit:
       title: '建築を編集'
     likes:
-      title: 'Like一覧'
+      title: 'Likeした建築'
       no_result: 'Likeした建築がありません..'
   likes:
     create:
@@ -69,7 +70,7 @@ ja:
       success: 'Unlike'
   profiles:
     show:
-      title: 'プロフィール'
+      title: 'ログ'
       recorded_architecture_count: '記録した建築総数は、、、'
     edit:
       title: 'プロフィールを編集✍️'

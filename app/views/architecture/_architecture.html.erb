@@ -1,22 +1,11 @@
-<div>
-  <% if architecture.images.any? %>
-    <% architecture.images.each do |image| %>
-      <%= image_tag image.url, size: '300x200' %>
-    <% end %>
-  <% else %>
-    <%= image_tag 'architecture_placeholder.png' %>
+<div class="group relative flex h-80 items-end overflow-hidden rounded-md bg-gray-100 p-4 shadow-lg">
+  <%= link_to architecture_path(architecture) do %>
+    <%= image_tag architecture.images.first.url, class: 'absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110'%>
   <% end %>
-  <div>
-    <h4>
-      <a href="#" style="color: black;">
-        <%= link_to architecture.name, architecture_path(architecture) %>
-      </a>
-    </h4>
-    <p><%= architecture.description %></p>
-    <% if current_user.own?(architecture) %>
-      <%= render 'crud_menus', architecture: architecture %>
-    <% else %>
-      <%= render 'like_button', architecture: architecture %>
-    <% end %>
+  <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-50"></div>
+
+  <div class="relative flex flex-col">
+    <span class="text-gray-300"><%= architecture.location %></span>
+    <span class="text-lg text-white lg:text-xl"><%= architecture.name %></span>
   </div>
 </div>

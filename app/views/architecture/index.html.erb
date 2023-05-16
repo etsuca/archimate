@@ -1,16 +1,17 @@
 <% content_for(:title, t('.title')) %>
-<h2><%= t('.title', architecture_name: @architecture.name) %></h2>
-<div>
-  <!-- 検索フォーム -->
-  <%= render 'search_form', url: architecture_index_path %> 
-   <!-- 建築一覧 -->
-  <div>
-    <% if @architecture.present? %>
-      <%= render @architecture %>
-    <% else %>
-      <p><%= t('.no_result') %></p>
-    <% end %>
+<div class="bg-white py-6 sm:py-8 lg:py-12">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+    <%= render 'search_form', url: architecture_index_path %>
+    <div class="m-10 md:m-16">
+      <h2 class="text-center text-xl"><%= t('.title') %></h2>
+    </div>
+    <div class="grid gap-6 sm:grid-cols-2">
+      <% if @architecture.present? %>
+        <%= render @architecture %>
+      <% else %>
+        <p><%= t('.no_result') %></p>
+      <% end %>
+    </div>
+    <%= paginate @architecture %>
   </div>
-  <!-- ページネーション -->
-  <%= paginate @architecture %>
 </div>

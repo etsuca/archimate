@@ -4,7 +4,7 @@
       <%= render 'shared/error_messages', object: f.object %>
       <div class="mb-12">
         <%= f.label :name, class: 'block text-black mb-2' %>
-        <%= f.text_field :name, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', required: true %>
+        <%= f.text_field :name, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', placeholder: (t 'defaults.National Museum of Western Art'), required: true %>
       </div>
       <div class="mb-12">
         <%= f.label :location, class: 'block text-black mb-2' %>
@@ -17,7 +17,7 @@
       </div>
       <div class="mb-12">
         <%= f.label :architect, class: 'block text-black mb-2' %>
-        <%= f.text_field :architect, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500' %>
+        <%= f.text_field :architect, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', placeholder: (t 'defaults.Le Corbusier') %>
       </div>
       <div class="mb-12">
         <%= f.label :description, class: 'block text-black mb-2' %>
