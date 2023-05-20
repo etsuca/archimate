@@ -20,6 +20,7 @@ ja:
       deleted: "%{item}を削除しました"
       delete_confirm: '削除しますか？'
       logout_confirm: 'ログアウトしますか？'
+      destroy_confirm: '削除しますか？'
       user_delete_confirm: '退会しますか？'
   header:
     top: 'トップ'

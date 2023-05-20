@@ -17,4 +17,8 @@ class Architecture < ApplicationRecord
   def self.not_by(user)
     self.where.not(user_id: user.id)
   end
+
+  def by?(user)
+    self.user_id == user.id
+  end
 end
