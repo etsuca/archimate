@@ -25,7 +25,11 @@
       </div>
       <div class="mb-20">
         <%= f.label :images, class: 'block text-black mb-2' %>
-        <%= f.file_field :images, multiple: true, accept: 'image/*', class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', required: true %>
+        <div id="image-preview-container">
+          <div class="mb-4">
+            <%= f.file_field :images, accept: 'image/*', class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', multiple: true, onchange: 'showPreview(event)' %>
+          </div>
+        </div>
         <%= f.hidden_field :images_cache %>
       </div>
       <div class="flex justify-center">
@@ -34,3 +38,45 @@
     <% end %>
   </div>
 </div>
+
+<!-- turbolinksの無効化 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // turbolinksを無効化するための設定
+    var turbolinksEnabled = <%= Rails.configuration.action_view.form_with_generates_remote_forms %>;
+
+    if (turbolinksEnabled) {
+      document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        Turbolinks.visit(event.target.action + '?' + new URLSearchParams(new FormData(event.target)).toString());
+      });
+    }
+  });
+</script>
+
+<script>
+  // 画像ファイルのプレビューを表示する関数
+  function showPreview(event) {
+    const previewContainer = document.getElementById('image-preview-container');
+
+    const files = Array.from(event.target.files); // 選択されたファイルを配列に保存
+
+    files.forEach((file) => {
+      const reader = new FileReader();
+
+      reader.onload = function(e) {
+        const previewDiv = document.createElement('div');
+        previewDiv.classList.add('mb-4');
+
+        const image = document.createElement('img');
+        image.src = e.target.result;
+        image.classList.add('block', 'object-cover', 'rounded-md', 'mr-2');
+
+        previewDiv.appendChild(image);
+        previewContainer.appendChild(previewDiv);
+      };
+
+      reader.readAsDataURL(file); // ファイルの内容を読み込む
+    });
+  }
+</script>

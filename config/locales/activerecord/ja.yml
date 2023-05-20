@@ -15,7 +15,7 @@ ja:
         location: '所在地'
         open_range: '公開範囲'
         architect: '設計者'
-        description: 'メモ'
+        description: 'ノート'
         images: '写真'
         created_at: '作成日時'
         updated_at: '更新日時'

@@ -6,8 +6,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    architecture = current_user.likes.find(params[:id]).architecture
+    architecture = current_user.likes.find_by(architecture_id: params[:id]).architecture
     current_user.unlike(architecture)
-    redirect_back fallback_location: root_path, success: t('.success')
+    redirect_to likes_architecture_index_path, success: t('.success')
   end
 end
