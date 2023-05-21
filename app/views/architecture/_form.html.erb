@@ -26,8 +26,12 @@
       <div class="mb-20">
         <%= f.label :images, class: 'block text-black mb-2' %>
         <div id="image-preview-container">
-          <div class="mb-4">
-            <%= f.file_field :images, accept: 'image/*', class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', multiple: true, onchange: 'showPreview(event)' %>
+          <div class="mb-2">
+            <label class="mt-2 py-2 bg-white rounded-full flex justify-center items-center border border-gray-400">
+              <i class="fa-solid fa-camera"></i>
+              <span class="ml-2">画像を選択する</span> 
+              <%= f.file_field :images, class: "hidden", multiple: true, onchange: 'showPreview(event)' %>
+            </label>
           </div>
         </div>
         <%= f.hidden_field :images_cache %>
