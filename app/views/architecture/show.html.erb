@@ -21,6 +21,10 @@
             <% if @architecture.architect.present? %>
               <p><%= Architecture.human_attribute_name(:architect) %> : <%= @architecture.architect %></p>
             <% end %>
+            <br>
+            <% @architecture.tags.each do |tag| %>
+              <a>#<%= tag.name %> </a>
+            <% end %>
           </div>
         </div>
       </div>

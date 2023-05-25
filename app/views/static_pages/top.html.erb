@@ -16,10 +16,13 @@
         </button>
         <div class="flex flex-col justify-center items-center h-full">
           <div class="max-w-2xl sm:mt-12 mt-6">
-            <p><%= safe_join(@architecture.description.split("\n"), tag(:br)) %></p>
             <br>
             <% if @architecture.architect.present? %>
               <p><%= Architecture.human_attribute_name(:architect) %> : <%= @architecture.architect %></p>
+            <% end %>
+            <br>
+            <% @architecture.tags.each do |tag| %>
+              <a>#<%= tag.name %> </a>
             <% end %>
           </div>
         </div>
@@ -64,7 +67,7 @@
   });
 
   function initializeArchitecture() {
-    const images = <%= @architecture.images.to_json.html_safe %>;
+    const images = <%= @architecture&.images.to_json.html_safe %>;
     const image = document.querySelector(".image");
     const progressBar = document.querySelector(".progress-bar");
     const toggleBtn = document.querySelector(".toggle-btn");

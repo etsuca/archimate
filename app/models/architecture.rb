@@ -1,6 +1,8 @@
 class Architecture < ApplicationRecord
   mount_uploaders :images, ImagesUploader
   serialize :images, JSON
+  has_many :tag_architecture_relationships, dependent: :destroy
+  has_many :tags, through: :tag_architecture_relationships, dependent: :destroy
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 255 }
@@ -9,6 +11,7 @@ class Architecture < ApplicationRecord
   validates :description, length: { maximum: 65_535 }
 
   enum open_range: { unpublish: 0, publish: 1 }
+  enum experience: { possible: 0, impossible: 1 }
 
   def self.ransackable_attributes(auth_object = nil)
     ["architect", "created_at", "description", "id", "images", "location", "name", "open_range", "updated_at", "user_id"]
