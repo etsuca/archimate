@@ -16,6 +16,7 @@
         </button>
         <div class="flex flex-col justify-center items-center h-full">
           <div class="max-w-2xl sm:mt-12 mt-6">
+            <p><%= safe_join(@architecture.description.split("\n"), tag(:br)) %></p>
             <br>
             <% if @architecture.architect.present? %>
               <p><%= Architecture.human_attribute_name(:architect) %> : <%= @architecture.architect %></p>
