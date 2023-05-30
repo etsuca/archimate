@@ -21,7 +21,7 @@
           <%= f.label :password_confirmation, class: "mt-8 block text-md text-neutral-600" %>
           <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
         </div>
-        <%= f.submit (t '.title'), class: "mt-16 py-4 w-full bg-black text-white transition duration-200 hover:scale-105 rounded-full" %>
+        <%= f.submit (t '.title'), class: "mt-16 py-4 w-full bg-black text-white transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
       <% end %>
 
       <div class="relative my-4">
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="relative mb-24">
-        <%= link_to (t 'user_sessions.new.title'), login_path, class: "absolute py-4 w-full text-center text-white bg-black rounded-full" %>
+        <%= link_to (t 'user_sessions.new.title'), login_path, class: "absolute py-4 w-full text-center text-white bg-black  transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
       </div>
     </div>
   </div>
