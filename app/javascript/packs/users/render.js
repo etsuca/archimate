@@ -1,1 +1,0 @@
-history.replaceState('', '', '/users/new')

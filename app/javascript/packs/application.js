@@ -13,3 +13,4 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require('jquery')
+import "../javascripts/architecture";
