@@ -42,11 +42,6 @@ class ArchitectureController < ApplicationController
     redirect_to architecture_index_path, notice: t('defaults.message.deleted', item: Architecture.model_name.human)
   end
 
-  def likes
-    @q = current_user.like_architecture.ransack(params[:q])
-    @like_architecture = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
-  end
-
   private
 
   def architecture_params
