@@ -44,16 +44,8 @@
           <p class="px-2">距離 28km</p>
         </div>
         <div class="pt-4">
-          <% if @architecture.by?(current_user) %>
-            <%= button_to 'Edit', edit_architecture_path(@architecture), method: :get, class: 'w-full bg-sixth text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
-            <%= button_to 'Destroy', architecture_path(@architecture), method: :delete, data: { confirm: t('defaults.message.destroy_confirm') }, class: 'w-full bg-seventh text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
-          <% elsif current_user.like?(@architecture) %>
-            <%= button_to 'Check in', new_architecture_path, method: :get, class: 'w-full bg-second text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
-            <%= button_to 'Not Like', like_path, method: :delete, class: 'w-full bg-seventh text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
-          <% else %>
-            <%= button_to 'Like', likes_path(architecture_id: @architecture.id), method: :post, class: 'w-full bg-second text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
-            <%= button_to 'Reload', root_path, method: :get, class: 'w-full bg-black text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
-          <% end %>
+          <%= button_to 'Like', likes_path(architecture_id: @architecture.id), method: :post, class: 'w-full bg-second text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
+          <%= button_to 'Reload', root_path, method: :get, class: 'w-full bg-black text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
         </div>
       </div>
     </div>
