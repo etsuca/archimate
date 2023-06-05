@@ -5,8 +5,8 @@
       <div class="space-x-12 hidden lg:flex items-center text-sm">
         <%= link_to (t 'architecture.new.title'), new_architecture_path %>
         <%= link_to (t 'architecture.index.title'), architecture_index_path %>
-        <%= link_to (t 'architecture.likes.title'), likes_architecture_index_path %>
-        <%= link_to (t 'header.detailed_search'), architecture_index_path %>
+        <%= link_to (t 'likes.index.title'), likes_path %>
+        <%= link_to (t 'diagnosis.new.title'), new_diagnosis_path %>
         <%= link_to (t 'profiles.show.title'), profile_path %>
         <%= link_to (t 'defaults.logout'), logout_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %>
       </div>
@@ -26,8 +26,8 @@
             <li class="p-3"><%= link_to (t 'header.top'), root_path %></li>
             <li class="p-3"><%= link_to (t 'architecture.new.title'), new_architecture_path %></li>
             <li class="p-3"><%= link_to (t 'architecture.index.title'), architecture_index_path %></li>
-            <li class="p-3"><%= link_to (t 'architecture.likes.title'), likes_architecture_index_path %></li>
-            <li class="p-3"><%= link_to (t 'header.detailed_search'), architecture_index_path %></li>
+            <li class="p-3"><%= link_to (t 'likes.index.title'), likes_path %></li>
+            <li class="p-3"><%= link_to (t 'diagnosis.new.title'), new_diagnosis_path %></li>
             <li class="p-3"><%= link_to (t 'profiles.show.title'), profile_path %></li>
             <li class="p-3"><%= link_to (t 'defaults.logout'), logout_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %></li>
           </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_30_070853) do
+ActiveRecord::Schema.define(version: 2023_05_24_144442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2023_04_30_070853) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "images"
+    t.integer "experience", null: false
     t.index ["user_id"], name: "index_architecture_on_user_id"
   end
 
@@ -36,6 +37,22 @@ ActiveRecord::Schema.define(version: 2023_04_30_070853) do
     t.index ["architecture_id"], name: "index_likes_on_architecture_id"
     t.index ["user_id", "architecture_id"], name: "index_likes_on_user_id_and_architecture_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "tag_architecture_relationships", force: :cascade do |t|
+    t.bigint "architecture_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["architecture_id"], name: "index_tag_architecture_relationships_on_architecture_id"
+    t.index ["tag_id", "architecture_id"], name: "tag_archi_relationships", unique: true
+    t.index ["tag_id"], name: "index_tag_architecture_relationships_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +74,6 @@ ActiveRecord::Schema.define(version: 2023_04_30_070853) do
   add_foreign_key "architecture", "users"
   add_foreign_key "likes", "architecture"
   add_foreign_key "likes", "users"
+  add_foreign_key "tag_architecture_relationships", "architecture"
+  add_foreign_key "tag_architecture_relationships", "tags"
 end

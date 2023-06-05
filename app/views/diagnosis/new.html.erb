@@ -1,0 +1,33 @@
+<% tags = Tag.all.to_a %>
+<% query = [] %>
+<% questions = [
+  {title: 'コンクリート打ち放しが好き！', tag_id: Tag.find(1).id},
+  {title: '木の空間に癒されたい', tag: Tag.find(2).id},
+  {title: 'ガラスの空間が好き', tag_id: Tag.find(3).id},
+  {title: '自然に癒されたい', tag_id: Tag.find(4).id},
+  {title: '田舎より都会派', tag_id: Tag.find(5).id},
+  {title: '静かな空間が好き', tag_id: Tag.find(6).id},
+  {title: '活気のある場所で元気をもらいたい！', tag_id: Tag.find(7).id},
+  {title: 'ゆっくりしたい', tag_id: Tag.find(8).id},
+  {title: '素敵な眺めを楽しみたい', tag_id: Tag.find(9).id},
+  {title: '建築が好き！', tag_id: Tag.find(10).id},
+  {title: '歴史を感じたい', tag_id: Tag.find(11).id},
+  {title: '軽やかな建築が好き', tag_id: Tag.find(12).id},
+  {title: '重厚感を感じる建築が好き', tag_id: Tag.find(13).id},
+  {title: '開放感を感じたい', tag_id: Tag.find(14).id},
+  {title: '曲線に惹かれる', tag_id: Tag.find(15).id},
+  {title: 'カラフルな建築が好き', tag_id: Tag.find(16).id},
+  {title: '常識なんてクソ喰らえ！', tag_id: Tag.find(16).id}
+] %>
+<% selected_questions = questions.sample(5) %>
+
+<%= form_with url: diagnosis_index_path, method: :get do %>
+  <% selected_questions.each do |q| %>
+    <div class="question-container">
+      <%= q[:title] %>
+      <input type="checkbox" id="checkbox<%= q[:tag_id] %>" name="answer[]" value="<%= q[:tag_id] %>" >
+      <label for="checkbox<%= q[:tag_id] %>"></label>
+    </div>
+  <% end %>
+  <%= submit_tag %>
+<% end %>

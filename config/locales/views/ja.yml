@@ -44,7 +44,6 @@ ja:
       Forget password?: 'パスワードをお忘れですか？'
       Want to try?: 'お試しはこちらから'
       to_register_page: '新規会員登録'
-      Guest Login: 'ゲストログイン'
       For beginner: 'はじめてご利用の方'
     create:
       success: 'ログインしました'
@@ -61,10 +60,10 @@ ja:
       title: '%{architecture_name}'
     edit:
       title: '建築を編集'
-    likes:
-      title: 'Likeした建築'
-      no_result: 'Likeした建築がありません..'
   likes:
+    index:
+      title: 'Likeした建築'
+      no_result: 'Likeした建築がありません'
     create:
       success: 'Like'
     destroy:
@@ -87,3 +86,8 @@ ja:
     update:
       success: 'パスワードを変更しました'
       fail: 'パスワードの変更に失敗しました'
+  diagnosis:
+    new:
+      title: '建築マッチング'
+    index:
+      title: 'マッチング結果'

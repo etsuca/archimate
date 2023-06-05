@@ -21,6 +21,10 @@
             <% if @architecture.architect.present? %>
               <p><%= Architecture.human_attribute_name(:architect) %> : <%= @architecture.architect %></p>
             <% end %>
+            <br>
+            <% @architecture.tags.each do |tag| %>
+              <a>#<%= tag.name %> </a>
+            <% end %>
           </div>
         </div>
       </div>
@@ -40,16 +44,8 @@
           <p class="px-2">距離 28km</p>
         </div>
         <div class="pt-4">
-          <% if @architecture.by?(current_user) %>
-            <%= button_to 'Edit', edit_architecture_path(@architecture), method: :get, class: 'w-full bg-sixth text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
-            <%= button_to 'Destroy', architecture_path(@architecture), method: :delete, data: { confirm: t('defaults.message.destroy_confirm') }, class: 'w-full bg-seventh text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
-          <% elsif current_user.like?(@architecture) %>
-            <%= button_to 'Check in', new_architecture_path, method: :get, class: 'w-full bg-second text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
-            <%= button_to 'Not Like', like_path, method: :delete, class: 'w-full bg-seventh text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
-          <% else %>
-            <%= button_to 'Like', likes_path(architecture_id: @architecture.id), method: :post, class: 'w-full bg-second text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
-            <%= button_to 'Reload', root_path, method: :get, class: 'w-full bg-black text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
-          <% end %>
+          <%= button_to 'Like', likes_path(architecture_id: @architecture.id), method: :post, class: 'w-full bg-second text-black mb-4 rounded-full hover:scale-105 hover:drop-shadow-lg' %>
+          <%= button_to 'Reload', root_path, method: :get, class: 'w-full bg-black text-white rounded-full mt-4 hover:scale-105 hover:drop-shadow-lg' %>
         </div>
       </div>
     </div>
@@ -57,55 +53,3 @@
 <% else %>
   <p><%= t('.no_result') %></p>
 <% end %>
-
-<script>
-  document.addEventListener("turbolinks:load", function() {
-    initializeArchitecture();
-  });
-
-  function initializeArchitecture() {
-    const images = <%= @architecture.images.to_json.html_safe %>;
-    const image = document.querySelector(".image");
-    const progressBar = document.querySelector(".progress-bar");
-    const toggleBtn = document.querySelector(".toggle-btn");
-    const description = document.querySelector(".description");
-    const closeBtn = document.querySelector(".close-btn");
-    let currentIndex = 0;
-
-    updateProgressBar();
-
-    image.addEventListener("click", function(event) {
-      const clickedX = event.clientX - event.target.getBoundingClientRect().left;
-      const halfWidth = event.target.clientWidth / 2;
-
-      if (clickedX >= halfWidth) {
-        currentIndex = (currentIndex + 1) % images.length;
-      } else {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-      }
-
-      image.src = images[currentIndex].url;
-      updateProgressBar();
-      hideDescription();
-    });
-
-    toggleBtn.addEventListener("click", toggleDescription);
-
-    closeBtn.addEventListener("click", hideDescription);
-
-    function updateProgressBar() {
-      const progressBarWidth = (currentIndex + 1) * (100 / images.length);
-      progressBar.style.width = `${progressBarWidth}%`;
-    }
-
-    function toggleDescription() {
-      description.classList.toggle("hidden");
-      toggleBtn.classList.toggle("hidden");
-    }
-
-    function hideDescription() {
-      description.classList.add("hidden");
-      toggleBtn.classList.remove("hidden");
-    }
-  }
-</script>
