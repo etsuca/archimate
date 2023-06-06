@@ -14,4 +14,5 @@ ActiveStorage.start()
 
 require('jquery')
 import "../javascripts/architecture";
-import "../javascripts/diagnosis"
+import "../javascripts/diagnosis";
+import "../javascripts/shared";
