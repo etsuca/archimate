@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   def top
     others_architecture = Architecture.not_by(current_user)
     user_liked_architecture_ids = Like.where(user_id: current_user.id).pluck(:architecture_id)
-    @architecture = others_architecture.where.not(id: user_liked_architecture_ids).where(open_range: 'publish').offset( rand(others_architecture.count) ).first
+    @architecture = others_architecture.where.not(id: user_liked_architecture_ids).where(open_range: 'publish').shuffle.first
   end
 
   def welcome
