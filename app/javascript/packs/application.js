@@ -13,6 +13,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require('jquery')
-import "../javascripts/architecture";
 import "../javascripts/diagnosis";
 import "../javascripts/shared";
