@@ -88,6 +88,6 @@ ja:
       fail: 'パスワードの変更に失敗しました'
   diagnosis:
     new:
-      title: '建築マッチング'
+      title: 'マッチング'
     index:
       title: 'マッチング結果'
