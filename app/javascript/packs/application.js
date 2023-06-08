@@ -13,5 +13,6 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require('jquery')
-import "../javascripts/diagnosis";
-import "../javascripts/shared";
+import "../javascripts/diagnosis/like_modal";
+import "../javascripts/shared/description";
+import "../javascripts/shared/hamburger_menu";
