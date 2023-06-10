@@ -14,5 +14,6 @@ ActiveStorage.start()
 
 require('jquery')
 import "../javascripts/diagnosis/like_modal";
+import "../javascripts/diagnosis/new";
 import "../javascripts/shared/description";
 import "../javascripts/shared/hamburger_menu";
