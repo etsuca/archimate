@@ -1,18 +1,16 @@
-<p class="text-center w-full bg-black text-white">次の目的地はこちらにしませんか？</p>
-<div class="flex flex-col items-center px-5 pt-8 pb-24 mx-auto max-w-7xl sm:px-6 lg:px-8">
-  <div class="flex flex-col w-full max-w-3xl mx-auto text-center prose text-left prose-blue">
-    <div class="w-full mx-auto">
-      <h1 class="my-24 text-3xl md:text-5xl font-normal">あなたにぴったりな建築をセレクトしました</h1>
-      <div class="bg-white p-6 rounded-md">
-        <% @matched_architecture.each_with_index do |architecture, idx| %>
-          <p class="my-12 text-base md:text-lg"><%= idx + 1 %>. <%= architecture.name %></p>
-        <% end %>
-      </div>
-      <a href="#matched_architecture" class="block mt-36 bg-second text-black none text-center rounded-full no-underline hover:scale-105 hover:drop-shadow-lg cursor-pointer">詳細はこちら↓↓↓</a>
+<p class="text-center w-full bg-black text-white">好みを教えてくれてありがとう！</p>
+<div class="mx-6 my-24 inset-0">
+  <div class="w-full max-w-3xl mx-auto text-center">
+    <h1 class="w-full pb-24 text-3xl md:text-6xl font-normal">あなたにぴったりな建築をセレクトしました。</h1>
+    <div class="bg-white p-6 mb-24 md:mb-36 rounded-md">
+      <% @matched_architecture.each_with_index do |architecture, idx| %>
+        <p class="my-12 text-base md:text-lg"><%= idx + 1 %>. <%= architecture.name %></p>
+      <% end %>
     </div>
+    <a href="#matched_architecture" class="block bg-second text-black none text-center rounded-full no-underline hover:scale-105 hover:drop-shadow-lg cursor-pointer">詳細はこちら↓↓↓</a>
   </div>
 </div>
-  
+
 <% @matched_architecture.each do |architecture| %>
   <% if architecture.present? %>
     <div id="matched_architecture" class="flex flex-col md:flex-row items-end">
