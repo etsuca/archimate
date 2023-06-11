@@ -29,7 +29,6 @@ class DiagnosisController < ApplicationController
     others_architecture = Architecture.where.not(user_id: current_user&.id).where(experience: 0)
     selected_tag_ids = params[:answer]
     @match_tag_count = [0]
-    tmp_match_tag_count = 0
     @matched_architecture = []
     @all_tmp_match_tag_count = []
 
@@ -40,10 +39,10 @@ class DiagnosisController < ApplicationController
           tmp_match_tag_count += 1
         end
       end
-      if @match_tag_count&.min < tmp_match_tag_count
+      if @match_tag_count.min < tmp_match_tag_count
         @match_tag_count << tmp_match_tag_count
         if @match_tag_count.length > 3
-          @match_tag_count&.delete(@match_tag_count.min)
+          @match_tag_count.delete(@match_tag_count.min)
         end
         @matched_architecture << architecture
         if @matched_architecture.length > 3

@@ -21,7 +21,7 @@
             <% else %>
               <p onclick="yesAndSubmitForm(<%= idx %>)", class="bg-eighth h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full md:mb-8 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">YES</p>
             <% end %>
-            <i class="fa-solid fa-rotate-left fa-xl md:text-black md:mb-8 hover:scale-110 hover:drop-shadow-lg cursor-pointer"></i>
+            <i onclick="reverseButton(<%= idx %>)", class="fa-solid fa-rotate-left fa-xl md:text-black md:mb-8 hover:scale-110 hover:drop-shadow-lg cursor-pointer"></i>
             <% if idx < @selected_questions.length - 1 %>
               <p onclick="showNextQuestion(<%= idx %>)", class="bg-seventh h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">NO</p>
             <% else %>
