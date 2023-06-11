@@ -22,6 +22,7 @@ ja:
       logout_confirm: 'ログアウトしますか？'
       destroy_confirm: '削除しますか？'
       user_delete_confirm: '退会しますか？'
+      keywords: 'キーワードを入力'
   header:
     top: 'トップ'
     detailed_search: '詳細検索'
