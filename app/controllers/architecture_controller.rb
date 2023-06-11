@@ -20,6 +20,7 @@ class ArchitectureController < ApplicationController
 
   def show
     @architecture = Architecture.find(params[:id])
+    @images = @architecture.images.to_json.html_safe
   end
 
   def edit
