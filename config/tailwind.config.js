@@ -16,7 +16,8 @@ module.exports = {
         fourth: "#b2b2b2",
         fifth: "#0E3068",
         sixth: "#A6F147",
-        seventh: "#C96040"
+        seventh: "#C96040",
+        eighth: '#1D9BF0',
       },
       fontFamily: {
         open_sans: ["Open Sans", "sans-serif"],
@@ -25,6 +26,12 @@ module.exports = {
         '128': '32rem',
         '144': '36rem',
         '160': '40rem',
+      },
+      height: {
+        '128': '32rem',
+      },
+      lineHeight: {
+        '16': '4rem',
       },
     },
   },

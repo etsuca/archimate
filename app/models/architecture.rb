@@ -24,4 +24,8 @@ class Architecture < ApplicationRecord
   def by?(user)
     self.user_id == user.id
   end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["tag_architecture_relationships", "tags", "user"]
+  end
 end

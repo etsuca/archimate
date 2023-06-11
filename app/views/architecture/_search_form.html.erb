@@ -1,9 +1,9 @@
 <%= search_form_for @q, url: url do |f| %>
   <div class="flex justify-center sm:justify-end items-center text-xs mb-12">
     <form class="flex">
-      <%= f.search_field :name_cont, placeholder: 'Search', class: 'w-60 px-4 py-0 rounded-full focus:border-transparent focus:ring-2 focus:ring-second' %>
+      <%= f.search_field :name_or_location_or_architect_or_description_cont, placeholder: t('defaults.message.keywords'), class: 'w-60 px-4 py-0 rounded-full focus:border-transparent focus:ring-2 focus:ring-second' %>
       <div class="ml-2 px-4 py-1 bg-second text-black text-sm rounded-full hover:scale-110 hover:shadow-lg">
-        <%= f.submit 'Search' %>
+        <%= f.submit %>
       </div>
     </form>
   </div>
