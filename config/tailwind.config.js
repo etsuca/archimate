@@ -27,6 +27,9 @@ module.exports = {
         '144': '36rem',
         '160': '40rem',
       },
+      lineHeight: {
+        '16': '4rem',
+      },
     },
   },
   plugins: [
