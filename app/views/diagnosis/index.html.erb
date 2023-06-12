@@ -13,8 +13,8 @@
 <% @matched_architecture.each do |architecture| %>
   <% @images = architecture.images.to_json.html_safe %>
   <input name="images" type="hidden" value="<%= @images %>" class="images" />
-  <div id="matched_architecture_<%= architecture.id %>" class="flex flex-col md:flex-row items-end">
-    <div class="w-full md:w-3/4 h-96 md:h-screen relative">
+  <div id="matched_architecture_<%= architecture.id %>" class="flex flex-col h-screen md:flex-row items-end">
+    <div class="w-full md:w-3/4 h-full relative">
       <%= render 'shared/architecture', architecture: architecture %>
     </div>
     <div class="w-full md:w-144 px-4 md:pt-0 pt-4">
