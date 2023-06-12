@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener('turbolinks:load', () => {
   const toggleBtns = document.querySelectorAll('.toggle-btn');
   const descriptions = document.querySelectorAll('.description');
   const closeBtns = document.querySelectorAll('.close-btn');
