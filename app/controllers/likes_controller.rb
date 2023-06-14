@@ -5,14 +5,18 @@ class LikesController < ApplicationController
   end
 
   def create
-    architecture = Architecture.find(params[:architecture_id])
-    current_user.like(architecture)
-    redirect_back fallback_location: root_path, success: t('.success')
+    @architecture = Architecture.find(params[:architecture_id])
+    current_user.like(@architecture)
+    if URI(request.referer.to_s).path == root_path
+      redirect_back fallback_location: root_path
+    end
   end
 
   def destroy
-    architecture = current_user.likes.find_by(architecture_id: params[:id]).architecture
-    current_user.unlike(architecture)
-    redirect_to likes_path, success: t('.success')
+    @architecture = current_user.likes.find(params[:id]).architecture
+    current_user.unlike(@architecture)
+    if URI(request.referer.to_s).path == architecture_path(@architecture)
+      redirect_to likes_path
+    end
   end
 end

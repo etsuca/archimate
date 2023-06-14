@@ -1,0 +1,6 @@
+<%= link_to 'Like', likes_path(architecture_id: architecture.id),
+                    method: :post,
+                    remote: true,
+                    id: "js-like-button-for-architecture-#{architecture.id}",
+                    class: 'bg-second text-black h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full md:mb-8 mr-20 md:mr-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer'
+                    %>

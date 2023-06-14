@@ -1,0 +1,5 @@
+<% if current_user.like?(architecture) %>
+  <%= render 'likes/nope', architecture: architecture %>
+<% else %>
+  <%= render 'likes/like', architecture: architecture %>
+<% end %>
