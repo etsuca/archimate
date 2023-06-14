@@ -15,8 +15,5 @@ class LikesController < ApplicationController
   def destroy
     @architecture = current_user.likes.find(params[:id]).architecture
     current_user.unlike(@architecture)
-    if URI(request.referer.to_s).path == architecture_path(@architecture)
-      redirect_to likes_path
-    end
   end
 end
