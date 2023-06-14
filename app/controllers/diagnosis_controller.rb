@@ -4,7 +4,7 @@ class DiagnosisController < ApplicationController
   def new
     questions = [
       { title: 'RC打ち放しが好き', tag_id: Tag.find(1).id, image: '1.jpg' },
-      { title: '木の空間に癒されたい', tag: Tag.find(2).id, image: '2.jpg' },
+      { title: '木の空間に癒されたい', tag_id: Tag.find(2).id, image: '2.jpg' },
       { title: 'ガラスの空間が好き', tag_id: Tag.find(3).id, image: '3.jpg' },
       { title: '自然に癒されたい', tag_id: Tag.find(4).id, image: '4.jpg' },
       { title: '私はシティボーイ or シティガール', tag_id: Tag.find(5).id, image: '5.jpg' },
@@ -23,7 +23,7 @@ class DiagnosisController < ApplicationController
       { title: '直線の美しさに心が惹かれる', tag_id: Tag.find(18).id, image: '18.jpg' },
       { title: '論理より感性に忠実でいたい', tag_id: Tag.find(19).id, image: '19.jpg' },
       { title: '常識に縛られずに生きていたい', tag_id: Tag.find(20).id, image: '20.jpg' },
-      { title: '自分はミニマリストだ', tag_id: Tag.find(21).id, image: '21.jpg' },
+      { title: '自分はミニマリストだ', tag_id: Tag.find(21).id, image: '21.jpg' }
     ]
     @selected_questions = questions.sample(5)
   end
