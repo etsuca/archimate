@@ -1,0 +1,6 @@
+<%= link_to 'Nope', like_path(current_user.likes.find_by(architecture_id: architecture.id)),
+                    method: :delete,
+                    remote: true,
+                    id: "js-nope-button-for-architecture-#{architecture.id}",
+                    class: 'bg-seventh text-white h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full md:mb-8 mr-20 md:mr-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer'
+                    %>

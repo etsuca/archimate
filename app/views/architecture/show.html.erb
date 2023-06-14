@@ -16,12 +16,12 @@
             <% if @architecture.by?(current_user) %>
               <%= link_to 'Edit', edit_architecture_path(@architecture), method: :get, class: 'bg-sixth text-black h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full md:mb-8 mr-20 md:mr-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' %>
               <%= link_to 'Destroy', architecture_path(@architecture), method: :delete, data: { confirm: t('defaults.message.destroy_confirm') }, class: 'bg-seventh h-16 w-16 leading-16 md:leading-normal md:w-full md:h-fit ml-20 md:ml-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' %>
-            <% elsif current_user.like?(@architecture) %>
-              <%= link_to 'Check in', new_architecture_path, method: :get, class: 'bg-second text-black h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full md:mb-8 mr-20 md:mr-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' %>
-              <%= link_to 'Nope', like_path, method: :delete, class: 'bg-seventh h-16 w-16 leading-16 md:leading-normal md:w-full md:h-fit ml-20 md:ml-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' %>
-            <% else %>
-              <%= link_to 'Like', likes_path(architecture_id: @architecture.id), method: :post, class: 'bg-second text-black h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full md:mb-8 mr-20 md:mr-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' %>
+            <% elsif current_page?(root_path) %>
+              <%= render 'shared/like_nope_button', architecture: @architecture %>
               <%= link_to 'Reload', root_path, method: :get, class: 'bg-black h-16 w-16 leading-16 md:leading-normal md:w-full md:h-fit ml-20 md:ml-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' %>
+            <% else %>
+              <%= render 'shared/like_nope_button', architecture: @architecture %>
+              <%= link_to 'Check in', new_architecture_path, method: :get, class: 'bg-black h-16 w-16 leading-16 md:leading-normal md:w-full md:h-fit ml-20 md:ml-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' %>
             <% end %>
           </div>
         </div>
