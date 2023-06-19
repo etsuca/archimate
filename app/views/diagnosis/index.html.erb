@@ -11,7 +11,7 @@
 </div>
 
 <% @matched_architecture.each do |architecture| %>
-  <% @images = architecture.images.to_json.html_safe %>
+  <% @images = architecture.images.map { |image| rails_blob_path(image) }.to_json.html_safe %>
   <input name="images" type="hidden" value="<%= @images %>" class="images" />
   <div id="matched_architecture_<%= architecture.id %>" class="flex flex-col h-screen md:flex-row items-end">
     <div class="w-full md:w-3/4 h-full md:h-screen relative">
