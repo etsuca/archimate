@@ -1,6 +1,5 @@
 class Architecture < ApplicationRecord
-  mount_uploaders :images, ImagesUploader
-  serialize :images, JSON
+  has_many_attached :images
   has_many :tag_architecture_relationships, dependent: :destroy
   has_many :tags, through: :tag_architecture_relationships, dependent: :destroy
   belongs_to :user
@@ -9,6 +8,10 @@ class Architecture < ApplicationRecord
   validates :location, presence: true, length: { maximum: 255 }
   validates :architect, length: { maximum: 255 }
   validates :description, length: { maximum: 65_535 }
+  validates :images, attached_file_presence: true
+  validates :images, attached_file_number: { maximum: 10 }
+  validates :images, attached_file_size: { maximum: 5.megabytes }
+  validates :images, attached_file_type: { pattern: /^image\// }
 
   enum open_range: { unpublish: 0, publish: 1 }
   enum experience: { possible: 0, impossible: 1 }

@@ -11,13 +11,13 @@ ja:
         password_confirmation: 'パスワード確認'
         avatar: 'プロフィール画像'
       architecture:
-        name: '名称'
-        location: '所在地'
-        open_range: '公開範囲'
-        experience: '体験の可否'
+        name: '名称（必須）'
+        location: '所在地（必須）'
+        open_range: '公開範囲（必須）'
+        experience: '体験の可否（必須）'
         architect: '設計者'
         description: 'ノート'
-        images: '写真'
+        images: '写真（必須）'
         created_at: '作成日時'
         updated_at: '更新日時'
 
