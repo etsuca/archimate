@@ -10,6 +10,9 @@ class ArchitectureController < ApplicationController
 
   def create
     @architecture = current_user.architecture.build(architecture_params)
+    if params[:architecture][:new_images].present?
+      @architecture.images.attach(params[:architecture][:new_images])
+    end
     if @architecture.save
       redirect_to architecture_index_path, notice: t('defaults.message.created', item: Architecture.model_name.human)
     else
@@ -20,7 +23,7 @@ class ArchitectureController < ApplicationController
 
   def show
     @architecture = Architecture.find(params[:id])
-    @images = @architecture.images.to_json.html_safe
+    @images = @architecture.images.map { |image| rails_blob_path(image) }.to_json.html_safe
   end
 
   def edit
@@ -29,14 +32,32 @@ class ArchitectureController < ApplicationController
 
   def update
     @architecture = current_user.architecture.find(params[:id])
-    if @architecture.update(architecture_params)
-      redirect_to @architecture, notice: t('defaults.message.updated', item: Architecture.model_name.human)
+    existing_images = params[:architecture][:existing_images]
+    new_images = params[:architecture][:new_images]
+    
+    if existing_images.present? || new_images.present?
+      @architecture.images.where.not(id: existing_images).purge
     else
-      flash.now['notice'] = t('defaults.message.not_updated', item: Architecture.model_name.human)
+      @architecture.errors.add(:images, '写真が一枚も選択されていません')
+    end
+  
+    if new_images.present?
+      @architecture.images.attach(new_images)
+    end
+      
+    if @architecture.errors.empty?
+      if @architecture.update(architecture_params)
+        redirect_to @architecture, notice: t('defaults.message.updated', item: Architecture.model_name.human)
+      else
+        flash.now['notice'] = t('defaults.message.not_updated', item: Architecture.model_name.human)
+        render :edit
+      end
+    else
+      flash.now['notice'] = @architecture.errors.full_messages.first
       render :edit
     end
   end
-
+  
   def destroy
     @architecture = current_user.architecture.find(params[:id])
     @architecture.destroy!
@@ -46,6 +67,6 @@ class ArchitectureController < ApplicationController
   private
 
   def architecture_params
-    params.require(:architecture).permit(:name, :location, :architect, :description, :open_range, :experience, { images: [] }, { images_cache: [] },  tag_ids: [])
+    params.require(:architecture).permit(:name, :location, :architect, :description, :open_range, :experience, images: [], tag_ids: [])
   end
 end

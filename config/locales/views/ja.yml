@@ -23,6 +23,11 @@ ja:
       destroy_confirm: '削除しますか？'
       user_delete_confirm: '退会しますか？'
       keywords: 'キーワードを入力'
+  errors:
+    messages:
+      too_many_files: は%{count}枚以内で入力してください
+      too_few_files: は%{count}枚以上で入力してください
+      invalid_file_type: は不正なファイル形式です
   header:
     top: 'トップ'
     detailed_search: '詳細検索'
