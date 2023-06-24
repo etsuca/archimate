@@ -194,6 +194,8 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.2)
+    meta-tags (2.18.0)
+      actionpack (>= 3.2.0, < 7.1)
     method_source (1.0.0)
     mini_magick (4.12.0)
     mini_mime (1.1.2)
@@ -371,6 +373,7 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   listen (~> 3.3)
+  meta-tags
   pg (~> 1.1)
   pry-byebug
   pry-rails
