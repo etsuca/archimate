@@ -6,11 +6,11 @@
       <%= form_with url: login_path, local: true do |f| %>
         <div class="space-y-2">
           <%= f.label :email, User.human_attribute_name(:email), class: "block text-md text-neutral-600" %>
-          <%= f.text_field :email, placeholder: "Email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+          <%= f.text_field :email, placeholder: "Email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
         </div>
         <div class="space-y-2">
           <%= f.label :password, User.human_attribute_name(:password), class: "mt-8 block text-md text-neutral-600" %>
-          <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+          <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
           <div class="pt-2 text-end">
             <%= link_to (t '.Forget password?'), new_password_reset_path, class: "block text-xs sm:text-sm text-neutral-600 hover:text-theme" %>
           </div>
@@ -30,20 +30,6 @@
         <div class="flex items-center justify-center">
           <i class="fa-brands fa-google"></i>
           <span class="ml-4"> <%= (t '.Log in with Google') %></span>
-        </div>
-      </button>
-      
-      <div class="relative mt-12 mb-4">
-        <div class="absolute inset-0 flex items-center">
-          <div class="w-full border-t border-gray-300"></div>
-        </div>
-        <div class="relative flex justify-center text-sm">
-          <span class="px-2 text-neutral-600 bg-third"> <%= (t '.Want to try?') %> </span>
-        </div>
-      </div>
-      <button type="submit" class="w-full py-4 text-theme rounded-full shadow-md transition duration-200 hover:shadow-fourth">
-        <div class="flex items-center justify-center">
-          <span><%= (t '.Guest Login') %></span>
         </div>
       </button>
 

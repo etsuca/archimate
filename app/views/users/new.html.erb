@@ -7,19 +7,19 @@
       <%= render 'shared/error_messages', object: f.object %>
         <div class="space-y-2">
           <%= f.label :name, class: "block text-md text-neutral-600" %>
-          <%= f.text_field :name, placeholder: "Name", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+          <%= f.text_field :name, placeholder: "Name", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
         </div>
         <div class="space-y-2">
           <%= f.label :email, class: "mt-8 block text-md text-neutral-600" %>
-          <%= f.email_field :email, placeholder: "Email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+          <%= f.email_field :email, placeholder: "Email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
         </div>
         <div class="space-y-2">
           <%= f.label :password, class: "mt-8 block text-md text-neutral-600" %>
-          <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+          <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
         </div>
         <div>
           <%= f.label :password_confirmation, class: "mt-8 block text-md text-neutral-600" %>
-          <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" %>
+          <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
         </div>
         <%= f.submit (t '.title'), class: "mt-16 py-4 w-full bg-black text-white transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
       <% end %>
