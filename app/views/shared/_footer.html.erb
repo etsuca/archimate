@@ -4,8 +4,8 @@
       <p>allrights reserved by archimate 2023</p>
     </div>
     <div class="w-full md:w-auto text-center">
-      <a href="#" class="inline-block mr-4">Privacy Policy</a>
-      <a href="#" class="inline-block">Terms of Use</a>
+      <%= link_to (t 'footer.Privacy Policy'), privacy_policy_path, class: 'inline-block mr-4' %>
+      <%= link_to (t 'footer.Terms of Use'), terms_path, class: 'inline-block mr-4' %>
     </div>
   </div>
 </footer>

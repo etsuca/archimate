@@ -31,6 +31,9 @@ ja:
   header:
     top: 'トップ'
     detailed_search: '詳細検索'
+  footer:
+    Privacy Policy: 'プライバシーポリシー'
+    Terms of Use: '利用規約'
   static_pages:
     top:
       no_result: '指定距離内に建築がありません'

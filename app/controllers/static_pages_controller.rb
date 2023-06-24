@@ -11,5 +11,11 @@ class StaticPagesController < ApplicationController
   end
 
   def welcome
-  end 
+  end
+
+  def terms
+  end
+
+  def privacy_policy
+  end
 end
