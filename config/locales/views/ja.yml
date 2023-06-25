@@ -40,7 +40,7 @@ ja:
   users:
     new:
       title: '新規会員登録'
-      Sign Up with Google: 'Googleで登録'
+      Sign Up with Twitter: 'Twitterで登録'
       For member: 'すでに会員の方'
     create:
       success: 'ユーザー登録が完了しました'
@@ -48,10 +48,8 @@ ja:
   user_sessions:
     new:
       title: 'ログイン'
-      Log in with Google: 'Googleでログイン'
-      Guest Login: 'ゲストログイン'
+      Log in with Twitter: 'Twitterでログイン'
       Forget password?: 'パスワードをお忘れですか？'
-      Want to try?: 'お試しはこちらから'
       to_register_page: '新規会員登録'
       For beginner: 'はじめてご利用の方'
     create:
