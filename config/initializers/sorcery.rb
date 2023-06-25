@@ -117,11 +117,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.twitter.key = Rails.application.credentials.dig(:twitter, :key)
   config.twitter.secret = Rails.application.credentials.dig(:twitter, :secret_key)
-  if Rails.env.production?
-    config.twitter.callback_url = "https://archim8.net/oauth/callback?provider=twitter"
-  elsif Rails.env.development?
-    config.twitter.callback_url = "http://127.0.0.1:3000/oauth/callback?provider=twitter"
-  end
+  config.twitter.callback_url = Settings.twitter.callback_url
   config.twitter.user_info_path = "/1.1/account/verify_credentials.json?include_email=true"
   config.twitter.user_info_mapping = {
     email: 'email',
