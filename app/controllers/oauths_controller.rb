@@ -1,29 +1,28 @@
 class OauthsController < ApplicationController
-  skip_before_action :require_login # applications_controllerでbefore_action :require_loginを設定している場合
-
+  skip_before_action :require_login
   def oauth
     login_at(auth_params[:provider])
   end
 
   def callback
     provider = auth_params[:provider]
-    if @user = login_from(provider)
-      redirect_to root_path, notice: "#{provider.titleize}でログインしました"
-    else
-      begin
-        @user = create_from(provider)
-        reset_session
-        auto_login(@user)
-        redirect_to root_path, notice: "#{provider.titleize}でログインしました"
-      rescue StandardError
-        redirect_to root_path, alert: "#{provider.titleize}でのログインに失敗しました"
-      end
+    if auth_params[:denied].present?
+      redirect_to root_path, notice: "#{provider.titleize}からのログインをキャンセルしました"
+      return
     end
+    create_user_from(provider) unless (@user = login_from(provider))
+    redirect_to root_path, notice: "#{provider.titleize}でログインしました"
   end
 
   private
 
   def auth_params
-    params.permit(:code, :provider, :oauth_token, :oauth_verifier)
+    params.permit(:code, :provider, :denied)
+  end
+
+  def create_user_from(provider)
+    @user = create_from(provider)
+    reset_session
+    auto_login(@user)
   end
 end
