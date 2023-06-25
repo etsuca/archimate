@@ -3,4 +3,4 @@ default_url_options:
   host: 'example.com'
 
 twitter:
-  callback_url: https://archim8.net/oauth/callback?provider=twitter
+  callback_url: 'https://archim8.net/oauth/callback?provider=twitter'
