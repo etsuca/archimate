@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   get "/auth/failure", to: "sessions#failure"
   delete "/logout", to: "sessions#destroy"
 
-  resources :users, only: %i[new create]
   resources :architecture
   resources :likes, only: %i[index create destroy]
   resource :profile, only: %i[show edit update destroy]
