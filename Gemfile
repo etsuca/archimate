@@ -43,6 +43,8 @@ gem 'erb-formatter'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
 gem 'meta-tags'
+gem 'omniauth-twitter2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
