@@ -3,16 +3,13 @@ Rails.application.routes.draw do
   root 'static_pages#top'
   
   get 'welcome', to: 'static_pages#welcome'
-  get 'login', to: 'user_sessions#new'
-  post 'login', to: 'user_sessions#create'
-  delete 'logout', to: 'user_sessions#destroy'
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
-  post "oauth/callback", to: "oauths#callback"
-  get "oauth/callback", to: "oauths#callback"
-  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
+  get 'login', to: 'sessions#new'
+  get "/auth/:provider/callback", to: "sessions#create"
+  get "/auth/failure", to: "sessions#failure"
+  delete "/logout", to: "sessions#destroy"
 
-  resources :users, only: %i[new create]
   resources :architecture
   resources :likes, only: %i[index create destroy]
   resource :profile, only: %i[show edit update destroy]

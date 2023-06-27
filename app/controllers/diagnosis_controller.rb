@@ -1,5 +1,5 @@
 class DiagnosisController < ApplicationController
-  skip_before_action :require_login, only: %i[new index]
+  skip_before_action :authenticate_user!, only: %i[new index]
 
   def new
     questions = [

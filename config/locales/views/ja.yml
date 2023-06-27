@@ -37,15 +37,7 @@ ja:
   static_pages:
     top:
       no_result: '指定距離内に建築がありません'
-  users:
-    new:
-      title: '新規会員登録'
-      Sign Up with Twitter: 'Twitterで登録'
-      For member: 'すでに会員の方'
-    create:
-      success: 'ユーザー登録が完了しました'
-      fail: 'ユーザー登録に失敗しました'
-  user_sessions:
+  sessions:
     new:
       title: 'ログイン'
       Log in with Twitter: 'Twitterでログイン'
@@ -77,22 +69,10 @@ ja:
       success: 'Unlike'
   profiles:
     show:
-      title: 'ログ'
-      recorded_architecture_count: '記録した建築総数は、、、'
+      title: 'プロフィール'
+      recorded_architecture_count: '記録した建築数'
     edit:
-      title: 'プロフィールを編集✍️'
-  password_resets:
-    new:
-      title: 'パスワードリセット申請'
-      submit: '送信'
-      to_login_page: 'ログインはこちら→'
-    edit:
-      title: 'パスワードリセット'
-    create:
-      success: 'パスワードリセット手順を送信しました'
-    update:
-      success: 'パスワードを変更しました'
-      fail: 'パスワードの変更に失敗しました'
+      title: 'プロフィールを編集'
   diagnosis:
     new:
       title: 'マッチング'

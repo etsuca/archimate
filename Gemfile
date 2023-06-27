@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'font-awesome-sass'
-gem 'sorcery'
+gem 'sorcery', github: 'sorcery/sorcery'
 gem 'pry-byebug'
 gem 'pry-rails'
 gem 'rails-i18n'
@@ -43,6 +43,8 @@ gem 'erb-formatter'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
 gem 'meta-tags'
+gem 'omniauth-twitter2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
