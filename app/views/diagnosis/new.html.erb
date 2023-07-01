@@ -4,8 +4,8 @@
       <div class="relative flex flex-col md:flex-row items-end">
         <div class="w-full md:w-3/4 h-screen relative">
           <%= image_tag q[:image], class: 'image absolute object-cover h-full w-full' %>
-          <div class="absolute inset-0 bg-black bg-opacity-50 text-white tracking-widest">
-            <p class="text-center w-full bg-black text-white">あなたについて教えてください</p>
+          <div class="absolute inset-0 bg-first bg-opacity-50 text-white tracking-widest">
+            <p class="text-center w-full bg-first text-white">あなたについて教えてください</p>
             <div class="flex flex-col justify-center items-center h-full">
               <div class="max-w-2xl text-center pb-24">
                 <h1 class="text-3xl mb-6 md:mb-12">Q. <%= idx + 1 %> / <%= @selected_questions.length %></h1>
@@ -31,7 +31,7 @@
                 </div>
               </div>
             <% end %>
-            <i onclick="reverseButton(<%= idx %>)", class="fa-solid fa-rotate-left fa-xl md:text-black md:mb-8 hover:scale-110 hover:drop-shadow-lg cursor-pointer"></i>
+            <i onclick="reverseButton(<%= idx %>)", class="fa-solid fa-rotate-left fa-xl md:text-first md:mb-8 hover:scale-110 hover:drop-shadow-lg cursor-pointer"></i>
             <% if idx < @selected_questions.length - 1 %>
               <div onclick="showNextQuestion(<%= idx %>)" class="bg-seventh h-16 w-16 leading-16 md:leading-normal md:h-fit md:w-full ml-20 md:ml-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer md:flex md:justify-center md:items-center">
                 <p><i class="fa-solid fa-xmark fa-2xl md:hidden"></i></p>
