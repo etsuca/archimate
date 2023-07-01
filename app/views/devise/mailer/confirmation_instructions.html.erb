@@ -1,5 +1,9 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= @email %> さま</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>以下のURLをクリックして、会員登録を完了してください。
+<br>うまくリンク先に移動しない場合は、URLをコピーしてブラウザのアドレスバーにペーストして下さい。
+</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to nil, confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>引き続き、ご愛顧のほどよろしくお願い申し上げます。</p>
