@@ -17,11 +17,11 @@
     <table class="w-full ">
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t(User.human_attribute_name(:name)) %></th>
-        <td class="w-1/2 text-end"><%= current_user.name %></td>
+        <td class="w-1/2 text-end break-words"><%= current_user.name %></td>
       </tr>
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t(User.human_attribute_name(:email)) %></th>
-        <td class="w-1/2 text-end"><%= current_user.email %></td>
+        <td class="w-1/2 text-end break-words"><%= current_user.email %></td>
       </tr>
     </table>
   </div>
