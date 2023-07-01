@@ -1,13 +1,18 @@
 Rails.application.routes.draw do
-  root 'static_pages#top'
+  authenticated :user do
+    root 'static_pages#top', as: :authenticated_root
+  end
+  root 'static_pages#welcome'
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
+  devise_scope :user do
+    get 'users', to: 'users/registrations#failure'
+    get 'users/password', to: 'users/registrations#update_passwords'
+  end
   
   get 'welcome', to: 'static_pages#welcome'
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
-  get 'login', to: 'sessions#new'
-  get "/auth/:provider/callback", to: "sessions#create"
-  get "/auth/failure", to: "sessions#failure"
-  delete "/logout", to: "sessions#destroy"
 
   resources :architecture
   resources :likes, only: %i[index create destroy]
