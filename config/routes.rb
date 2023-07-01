@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   resources :architecture
   resources :likes, only: %i[index create destroy]
-  resource :profile, only: %i[show edit update destroy]
+  resource :profile, only: %i[show]
   resources :diagnosis, only: %i[new index]
 end

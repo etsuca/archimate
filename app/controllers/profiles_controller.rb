@@ -2,7 +2,9 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_user, only: %i[edit update]
 
-  def show; end
+  def show
+    @liked_count = current_user.architecture.inject(0){ |sum, architecture| sum + architecture.likes.count }
+  end
   
   def edit; end
 

@@ -20,3 +20,4 @@ import "../javascripts/shared/hamburger_menu";
 import "../javascripts/shared/progress_bar";
 import "../javascripts/shared/diagnosis_progress_bar";
 import "../javascripts/architecture/preview";
+import "../javascripts/registrations/edit";

@@ -2,6 +2,7 @@ class Architecture < ApplicationRecord
   has_many_attached :images
   has_many :tag_architecture_relationships, dependent: :destroy
   has_many :tags, through: :tag_architecture_relationships, dependent: :destroy
+  has_many :likes, dependent: :destroy
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 255 }

@@ -38,6 +38,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def failure
+    if request.referer.nil?
+      redirect_to root_path
+    else
+      redirect_to request.referer
+    end
+  end
+
+  def update_passwords
+    if request.referer.nil?
+      redirect_to root_path
+    else
+      redirect_to request.referer
+    end
+  end
+
   protected
   
   def update_resource(resource, params)
