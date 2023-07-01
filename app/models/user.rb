@@ -5,6 +5,11 @@ class User < ApplicationRecord
         :confirmable, :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
   
   validates :name, presence: true, length: { maximum: 255 }, on: :create
+  validate :password_complexity
+  def password_complexity
+    return if password.blank? || password =~ /(?=.*?[0-9])/
+    errors.add :password, "は数字と英字を混ぜたものを入力してください"
+  end
   has_many :architecture, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_architecture, through: :likes, source: :architecture
