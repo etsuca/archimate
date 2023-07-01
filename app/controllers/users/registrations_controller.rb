@@ -39,11 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def failure
-    if request.referer.nil?
-      redirect_to root_path
-    else
-      redirect_to request.referer
-    end
+    redirect_to root_path
   end
 
   def update_passwords
@@ -55,7 +51,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   protected
-  
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
