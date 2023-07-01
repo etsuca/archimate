@@ -1,19 +1,11 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_user, :user_signed_in?
 
-  private
-
-  def authenticate_user!
-    redirect_to welcome_path unless session[:user_id]
-  end
-
-  def current_user
-    return unless session[:user_id]
-    @current_user ||= User.find_by(uid: session[:user_id])
-  end
-
-  def user_signed_in?
-    !!session[:user_id]
+  protected
+  
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar, :avatar_cache])
   end
 end

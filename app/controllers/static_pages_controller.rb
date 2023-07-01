@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[welcome terms privacy_policy]
+  before_action :authenticate_user!, only: %i[top]
 
   def top
     others_architecture = Architecture.not_by(current_user)

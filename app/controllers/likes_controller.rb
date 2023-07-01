@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @q = current_user.like_architecture.ransack(params[:q])
     @like_architecture = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])

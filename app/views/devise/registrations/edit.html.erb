@@ -1,0 +1,47 @@
+<% content_for(:title, t('.title')) %>
+<div class='container mx-auto'>
+  <div class='max-w-md mx-auto p-4'>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <div class="flex relative justify-center items-center py-12 md:pt-24">
+        <h2 class="text-xl"><%= t('.title') %></h2>
+        <%= link_to profile_path, class: "absolute right-0 text-xl" do %>
+          <span class="fa-stack">
+            <i class="fa-solid fa-rotate-left text-2xl fa-stack-1x"></i>
+          </span>
+        <% end %>
+      </div>
+      <%= render 'devise/shared/error_messages', resource: resource %>
+      <div class='mb-12'>
+        <%= f.file_field :avatar, accept: 'image/*', class: 'hidden' %>
+        <%= f.hidden_field :avatar_cache %>
+        <div id="preview" class="flex justify-center items-center w-[12rem] h-[12rem] mx-auto rounded-full overflow-hidden ring-2 ring-white dark:ring-gray-800 cursor-pointer">
+          <%= image_tag @user.avatar.url, id: 'image-tag', class: 'object-cover h-full w-full' %>
+        </div>
+        <div class="relative w-[12rem] mx-auto rounded-full">
+          <div class="absolute inset-0 flex justify-center">
+            <div class="flex justify-end items-end h-full w-full">
+              <span class="text-first text-4xl bg-third border border-first p-2 rounded-full opacity-90">
+                <i class="fa-solid fa-pen-nib"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class='mb-12'>
+        <%= f.label :name, class: 'block text-first mb-2' %>
+        <%= f.text_field :name, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', placeholder: 'Name', required: true %>
+      </div>
+      <div class='mb-20'>
+        <%= f.label :email, class: 'block text-first mb-2' %>
+        <%= f.text_field :email, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', placeholder: 'Email', required: true %>
+      </div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+      <div class='flex justify-center'>
+        <%= f.submit class: 'bg-second hover:scale-105 hover:shadow-lg text-first w-full rounded-full focus:outline-none focus:shadow-outline cursor-pointer' %>
+      </div>
+      <%= link_to t('defaults.delete'), registration_path(resource_name), method: :delete, data: { confirm: t('defaults.message.user_delete_confirm') }, class: 'block mt-2 mr-2 text-xs text-end sm:text-sm text-neutral-600 hover:text-first' %>
+    <% end %>
+  </div>
+</div>

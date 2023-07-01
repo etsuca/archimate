@@ -1,19 +1,64 @@
 <% content_for(:title, t('.title')) %>
-<div>
-  <h2><%= t('.title') %></h2>
-  <%= link_to t('defaults.edit'), edit_profile_path %>
-  <table>
-    <tr>
-      <th scope="row"><%= t('.recorded_architecture_count') %></th>
-      <td><%= current_user.architecture.count %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= t(User.human_attribute_name(:name)) %></th>
-      <td><%= current_user.name %></td>
-    </tr>
-    <tr>
-      <th scope="row"><%= t(User.human_attribute_name(:avatar)) %></th>
-      <td><%= image_tag current_user.avatar.url, class: 'inline-block h-[12rem] w-[12rem] rounded-full ring-2 ring-white dark:ring-gray-800' %></td>
-    </tr>
-  </table>
+<div class="container mx-auto">
+  <div class="max-w-md mx-auto p-4">
+    <div class="flex relative justify-center items-center py-12 md:pt-24">
+      <h2 class="text-xl"><%= t('.title') %></h2>
+      <%= link_to edit_user_registration_path, class: "absolute right-0 text-xl" do %>
+        <span class="fa-stack">
+          <i class="fa-regular fa-pen-to-square text-2xl fa-stack-1x"></i>
+        </span>
+      <% end %>
+    </div>
+    <div class="flex justify-center">
+      <div class="w-[12rem] h-[12rem] mx-auto rounded-full overflow-hidden ring-2 ring-white dark:ring-gray-800 mb-8">
+        <%= image_tag current_user.avatar.url, class: 'object-cover h-full w-full' %>
+      </div>
+    </div>
+    <table class="w-full ">
+      <tr class="flex mb-12 justify-between">
+        <th class="w-1/2 text-start"><%= t(User.human_attribute_name(:name)) %></th>
+        <td class="w-1/2 text-end"><%= current_user.name %></td>
+      </tr>
+      <tr class="flex mb-12 justify-between">
+        <th class="w-1/2 text-start"><%= t(User.human_attribute_name(:email)) %></th>
+        <td class="w-1/2 text-end"><%= current_user.email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="relative mt-12 mb-6">
+    <div class="absolute inset-0 flex items-center">
+      <div class="mx-6 w-full border-t border-gray-300"></div>
+    </div>
+    <div class="relative flex justify-center">
+      <span class="px-2 text-neutral-600 bg-third"> <%= (t '.Log') %> </span>
+    </div>
+  </div>
+  <div class="max-w-md mx-auto p-4">
+    <table class="w-full">
+      <tr class="flex mb-12 justify-between">
+        <th class="w-1/2 text-start"><%= t('.recorded_architecture_count') %></th>
+        <td class="w-1/2 text-end"><%= current_user.architecture.count %></td>
+      </tr>
+      <tr class="flex mb-12 justify-between">
+        <th class="w-1/2 text-start"><%= t('.Likes_count') %></th>
+        <td class="w-1/2 text-end"><%= current_user.like_architecture.count %></td>
+      </tr>
+      <tr class="flex mb-12 justify-between">
+        <th class="w-1/2 text-start"><%= t('.Liked_count') %></th>
+        <% if @liked_count.nil? %>
+          <td>-</td>
+        <% else %>
+          <td class="w-1/2 text-end"><%= current_user.architecture.inject(0){ |sum, architecture| sum + architecture.likes.count } %></td>
+        <% end %>
+      </tr>
+      <tr class="flex mb-12 justify-between">
+        <th class="w-1/2 text-start"><%= t('.first_day_architecture_recorded') %></th>
+        <% if current_user.architecture.nil? %>
+          <td>-</td>
+        <% else %>
+          <td class="w-1/2 text-end"><%= l current_user.architecture.first.created_at %></td>
+        <% end %>
+      </tr>
+    </table>
+  </div>
 </div>

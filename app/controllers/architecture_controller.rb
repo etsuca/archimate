@@ -1,4 +1,6 @@
 class ArchitectureController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @q = Architecture.ransack(params[:q])
     @architecture = @q.result(distinct: true).where(user_id: current_user.id).includes(:user).order(created_at: :desc).page(params[:page])

@@ -1,0 +1,19 @@
+<% content_for(:title, t('.title')) %>
+<h2 class="px-16 pt-16 text-xl text-center"><%= t('.title') %></h2>
+<section>
+  <div class="p-12 md:p-24">
+    <div class="max-w-md mx-auto">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+        <div class="space-y-2">
+          <%= f.label :email, User.human_attribute_name(:email), class: "block text-md text-neutral-600" %>
+          <%= f.email_field :email, placeholder: "Email", autocomplete: "email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
+          <%= link_to (t '.Login'), new_user_session_path, class: "block pt-2 text-end text-xs sm:text-sm text-neutral-600 hover:text-first" %>
+        </div>
+        <div class="actions">
+          <%= f.submit (t '.Send me reset password instructions'), class: "mt-16 py-4 w-full bg-first text-white transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

@@ -43,6 +43,9 @@ gem 'erb-formatter'
 gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
 gem 'meta-tags'
+gem 'devise'
+gem 'devise-i18n'
+gem 'omniauth-twitter'
 gem 'omniauth-twitter2'
 gem 'omniauth-rails_csrf_protection'
 

@@ -1,0 +1,55 @@
+<% content_for(:title, t('.title')) %>
+<h2 class="px-16 pt-16 text-xl text-center"><%= t('.title') %></h2>
+<section>
+  <div class="p-12 md:p-24">
+    <div class="max-w-md mx-auto">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render 'devise/shared/error_messages', object: f.object %>
+        <div class="space-y-2">
+          <%= f.label :email, User.human_attribute_name(:email), class: "block text-md text-neutral-600" %>
+          <%= f.email_field :email, placeholder: "Email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
+        </div>
+        <div class="space-y-2">
+          <%= f.label :password, User.human_attribute_name(:password), class: "mt-8 block text-md text-neutral-600" %>
+          <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
+          <div class="pt-2 text-end">
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to (t '.Forget password?'), new_password_path(resource_name), class: "block text-xs sm:text-sm text-neutral-600 hover:text-first" %>
+            <% end %>
+          </div>
+        </div>
+        <%= f.submit (t '.title'), class: "mt-16 py-4 w-full bg-first text-white transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
+      <% end %>
+
+      <div class="relative my-4">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 text-neutral-600 bg-third"> <%= (t 'defaults.Or continue with') %></span>
+        </div>
+      </div>
+      <%- if devise_mapping.omniauthable? %>
+        <% twitter_provider = resource_class.omniauth_providers.first %>
+        <%= button_to omniauth_authorize_path(resource_name, twitter_provider), data: { turbo: false }, class: 'block w-full py-4 text-first rounded-full shadow-md transition duration-200 hover:shadow-fourth' do %>
+          <div class="flex items-center justify-center">
+            <i class="fa-brands fa-twitter"></i>
+            <span class="ml-4"><%= t ('.Log in with Twitter') %></span>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="relative mt-12 mb-4">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 text-neutral-600 bg-third"> <%= (t '.For beginner') %> </span>
+        </div>
+      </div>
+      <div class="relative mb-24">
+        <%= link_to (t 'devise.registrations.new.title'), new_registration_path(resource_name), class: "absolute py-4 w-full text-center bg-first text-white  transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
+      </div>
+    </div>
+  </div>
+</section>
