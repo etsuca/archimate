@@ -53,7 +53,7 @@
       </tr>
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.first_day_architecture_recorded') %></th>
-        <% if current_user.architecture.nil? %>
+        <% if current_user.architecture.empty? %>
           <td>-</td>
         <% else %>
           <td class="w-1/2 text-end"><%= l current_user.architecture.first.created_at %></td>
