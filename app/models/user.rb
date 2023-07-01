@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }, on: :create
   validate :password_complexity
   def password_complexity
-    return if password.blank? || password =~ /(?=.*?[0-9])/
+    return if password.blank? || password =~ /(?=.*?[a-z])(?=.*?[0-9])/
     errors.add :password, "は数字と英字を混ぜたものを入力してください"
   end
   has_many :architecture, dependent: :destroy
