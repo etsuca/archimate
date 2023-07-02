@@ -17,15 +17,15 @@
         <div class="absolute md:static bottom-5 w-full md:w-144 px-4 text-white">
           <div class="flex flex-row-reverse md:flex-col my-8 mb-20 text-center justify-center items-center">
             <% if idx < @selected_questions.length - 1 %>
-              <div onclick="storeTagIdAndShowNext(<%= idx %>)" class="flex items-center justify-center bg-eighth h-14 w-14 md:h-fit md:w-full md:mb-8 mr-20 md:mr-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
-                <p><i class="fa-regular fa-circle fa-2xl md:hidden"></i></p>
+              <div onclick="storeTagIdAndShowNext(<%= idx %>)" class="flex items-center justify-center bg-eighth h-14 w-14 md:h-fit md:w-full md:mb-8 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
+                <p><i class="fa-regular fa-circle fa-xl md:hidden"></i></p>
                 <div class="hidden md:block">
                   <p>YES</p>
                 </div>
               </div>
             <% else %>
-              <div onclick="yesAndSubmitForm(<%= idx %>)" class="flex items-center justify-center bg-eighth h-14 w-14 md:h-fit md:w-full md:mb-8 mr-20 md:mr-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
-                <p><i class="fa-regular fa-circle fa-2xl md:hidden"></i></p>
+              <div onclick="yesAndSubmitForm(<%= idx %>)" class="flex items-center justify-center bg-eighth h-14 w-14 md:h-fit md:w-full md:mb-8 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
+                <p><i class="fa-regular fa-circle fa-xl md:hidden"></i></p>
                 <div class="hidden md:block">
                   <p>YES</p>
                 </div>
@@ -33,15 +33,15 @@
             <% end %>
             <i onclick="reverseButton(<%= idx %>)", class="fa-solid fa-rotate-left fa-xl md:text-first mx-6 md:mb-8 hover:scale-110 hover:drop-shadow-lg cursor-pointer"></i>
             <% if idx < @selected_questions.length - 1 %>
-              <div onclick="showNextQuestion(<%= idx %>)" class="flex items-center justify-center bg-seventh h-14 w-14 md:h-fit md:w-full ml-20 md:ml-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
-                <p><i class="fa-solid fa-xmark fa-2xl md:hidden"></i></p>
+              <div onclick="showNextQuestion(<%= idx %>)" class="flex items-center justify-center bg-seventh h-14 w-14 md:h-fit md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
+                <p><i class="fa-solid fa-xmark fa-xl md:hidden"></i></p>
                 <div class="hidden md:block">
                   <p>NO</p>
                 </div>
               </div>
             <% else %>
-              <div onclick="noAndSubmitForm()" class="flex items-center justify-center bg-seventh h-14 w-14 md:h-fit md:w-full ml-20 md:ml-0 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
-                <p><i class="fa-solid fa-xmark fa-2xl md:hidden"></i></p>
+              <div onclick="noAndSubmitForm()" class="flex items-center justify-center bg-seventh h-14 w-14 md:h-fit md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer">
+                <p><i class="fa-solid fa-xmark fa-xl md:hidden"></i></p>
                 <div class="hidden md:block">
                   <p>NO</p>
                 </div>

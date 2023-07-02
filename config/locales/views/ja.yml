@@ -89,7 +89,7 @@ ja:
       success: 'Like'
     destroy:
       success: 'Unlike'
-  profiles:
+  users:
     show:
       title: 'プロフィール'
       recorded_architecture_count: '記録した建築の数'
