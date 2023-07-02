@@ -12,10 +12,8 @@ class ArchitectureController < ApplicationController
 
   def create
     @architecture = current_user.architecture.build(architecture_params)
-    new_images = params[:architecture][:new_images]
-    if new_images.present?
-      resize_image
-      @architecture.images.attach(new_images)
+    if params[:architecture][:new_images].present?
+      @architecture.images.attach(params[:architecture][:new_images])
     end
     if @architecture.save
       redirect_to architecture_index_path, notice: t('defaults.message.created', item: Architecture.model_name.human)
@@ -27,7 +25,7 @@ class ArchitectureController < ApplicationController
 
   def show
     @architecture = Architecture.find(params[:id])
-    @images = @architecture.images.map { |image| rails_blob_path(image) }.to_json.html_safe
+    @images = @architecture.images.map { |image| rails_representation_path(image.variant(resize:'2048x2048').processed) }.to_json.html_safe
   end
 
   def edit
@@ -46,7 +44,6 @@ class ArchitectureController < ApplicationController
     end
   
     if new_images.present?
-      resize_image
       @architecture.images.attach(new_images)
     end
       
@@ -74,11 +71,4 @@ class ArchitectureController < ApplicationController
   def architecture_params
     params.require(:architecture).permit(:name, :location, :architect, :description, :open_range, :experience, images: [], tag_ids: [])
   end
-
-  def resize_image
-    new_images = params[:architecture][:new_images]
-    new_images.each do |image|
-      image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(1920, 1920).call
-    end
-  end   
 end
