@@ -4,7 +4,7 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <div class="flex relative justify-center items-center py-12 md:pt-24">
         <h2 class="text-xl"><%= t('.title') %></h2>
-        <%= link_to profile_path, class: "absolute right-0 text-xl" do %>
+        <%= link_to user_path, class: "absolute right-0 text-xl" do %>
           <span class="fa-stack">
             <i class="fa-solid fa-rotate-left text-2xl fa-stack-1x"></i>
           </span>
