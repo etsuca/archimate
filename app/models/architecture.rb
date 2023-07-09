@@ -11,7 +11,7 @@ class Architecture < ApplicationRecord
   validates :description, length: { maximum: 65_535 }
   validates :images, attached_file_presence: true
   validates :images, attached_file_number: { maximum: 10 }
-  validates :images, attached_file_size: { maximum: 5.megabytes }
+  validates :images, attached_file_size: { maximum: 10.megabytes }
   validates :images, attached_file_type: { pattern: /^image\/(jpeg|png)$/ }
 
   enum open_range: { unpublish: 0, publish: 1 }

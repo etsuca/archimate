@@ -25,7 +25,7 @@
             <% else %>
               <%= render 'shared/like_nope_button', architecture: @architecture %>
               <%= link_to new_architecture_path, method: :get, class: 'flex items-center justify-center bg-third md:bg-first border border-first text-first md:text-white h-14 w-14 md:w-full mx-6 md:h-fit rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
-                <i class="fa-regular fa-clipboard fa-xl md:text-sm md:mr-2"></i>
+                <i class="fa-solid fa-check fa-xl md:text-sm md:mr-2"></i>
                 <div class="hidden md:block">
                   <p>Check in</p>
                 </div>
