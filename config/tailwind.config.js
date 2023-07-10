@@ -33,6 +33,23 @@ module.exports = {
       lineHeight: {
         '16': '4rem',
       },
+      animation: {
+        "scale-in-hor-left": "scale-in-hor-left 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both"
+      },
+      keyframes: {
+        "scale-in-hor-left": {
+          "0%": {
+            transform: "scaleX(0)",
+            "transform-origin": "0% 0%",
+            opacity: "1"
+          },
+          to: {
+            transform: "scaleX(1)",
+            "transform-origin": "0% 0%",
+            opacity: "1"
+          }
+        },
+      },
     },
   },
   plugins: [
