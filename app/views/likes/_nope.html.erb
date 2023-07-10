@@ -1,4 +1,4 @@
-<%= link_to like_path(current_user.likes.find_by(architecture_id: architecture.id)), method: :delete, remote: true, id: "js-nope-button-for-architecture-#{architecture.id}", class: 'flex items-center justify-center bg-seventh h-14 w-14 md:h-fit md:w-full md:mb-8 mx-6 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
+<%= link_to like_path(current_user.likes.find_by(architecture_id: architecture.id)), method: :delete, remote: true, id: "js-nope-button-for-architecture-#{architecture.id}", class: 'flex items-center justify-center bg-seventh border border-seventh h-14 w-14 md:h-fit md:w-full md:mb-8 mx-6 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
   <i class="fa-solid fa-heart-crack fa-xl md:text-sm md:mr-2"></i>
   <div class="hidden md:block">
     <p>Nope</p>
