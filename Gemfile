@@ -51,6 +51,11 @@ gem 'omniauth-rails_csrf_protection'
 gem 'mini_magick'
 gem 'image_processing'
 gem 'fog-aws'
+gem 'google_maps_service'
+gem 'geocoder'
+gem 'gon'
+gem 'mapbox-sdk'
+gem 'mapbox-gl-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
