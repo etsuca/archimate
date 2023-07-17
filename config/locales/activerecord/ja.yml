@@ -12,7 +12,8 @@ ja:
         avatar: 'プロフィール画像'
       architecture:
         name: '名称（必須）'
-        location: '所在地（必須）'
+        pref: '都道府県（必須）'
+        location: '市区町村・番地（必須）'
         open_range: '公開範囲（必須）'
         experience: '体験の可否（必須）'
         architect: '設計者'

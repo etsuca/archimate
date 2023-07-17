@@ -9,7 +9,7 @@ ja:
     Or continue with: '又は'
     record: '記録'
     National Museum of Western Art: '例 : 国立西洋美術館'
-    Taito-ku, Tokyo-to 110-0007 Japan: '例 : 東京都台東区上野公園7-7-7'
+    Taito-ku, 110-0007 Japan: '例 : 台東区上野公園7-7-7'
     Le Corbusier: '例 : ル・コルビュジエ'
     characters minimum: '文字以上'
     message:
@@ -41,6 +41,7 @@ ja:
   static_pages:
     top:
       no_result: '指定距離内に建築がありません'
+      distance: '距離'
   devise:
     sessions:
       new:
@@ -93,10 +94,13 @@ ja:
     show:
       title: 'プロフィール'
       recorded_architecture_count: '記録した建築の数'
-      Log: 'ログ'
+      Activity: 'アクティビティ'
       first_day_architecture_recorded: '初めて建築を記録した日'
       Likes_count: 'Likeした建築の数'
       Liked_count: '獲得したLikeの数'
+      visited prefecture: '都道府県制覇状況🚶'
+      visited prefecture count: '訪れた都道府県の数'
+      prefectural domination rate: '都道府県制覇率'
   diagnosis:
     new:
       title: 'マッチング'

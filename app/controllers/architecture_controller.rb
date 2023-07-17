@@ -4,6 +4,11 @@ class ArchitectureController < ApplicationController
   def index
     @q = Architecture.ransack(params[:q])
     @architecture = @q.result(distinct: true).where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
+    users_architecture = current_user.architecture
+    respond_to do |format|
+      format.html
+      format.json { render json: users_architecture }
+    end
   end
 
   def new
@@ -72,7 +77,7 @@ class ArchitectureController < ApplicationController
   private
 
   def architecture_params
-    params.require(:architecture).permit(:name, :location, :architect, :description, :open_range, :experience, images: [], tag_ids: [])
+    params.require(:architecture).permit(:name, :pref, :location, :architect, :description, :open_range, :experience, images: [], tag_ids: [])
   end
 
   def resize_image(images)

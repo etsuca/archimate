@@ -3,9 +3,8 @@
     <%= image_tag architecture.images.first.variant(resize:'1024x1024').processed, class: 'absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110'%>
   <% end %>
   <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-50"></div>
-
   <div class="relative flex flex-col">
-    <span class="text-gray-300"><%= architecture.location %></span>
+    <span class="text-gray-300"><%= architecture.pref %><%= architecture.location %></span>
     <span class="text-lg text-white lg:text-xl"><%= architecture.name %></span>
   </div>
 </div>
