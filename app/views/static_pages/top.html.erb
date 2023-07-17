@@ -8,8 +8,8 @@
       <div class="relative my-2 md:my-8 mb-20">
         <%= link_to "https://maps.google.com/maps?q=#{@architecture.location}", target: :_blank do %>
           <div class="flex items-center hover:drop-shadow-lg">
-            <p class="mr-2"><i class="fa-solid fa-map-pin"></i></p>
-            <%= simple_format(@architecture.location) %>
+            <p class="mr-2"><i class="fa-solid fa-location-dot"></i></p>
+            <%= simple_format(@architecture.pref + @architecture.location) %>
           </div>
         <% end %>
         <div class="md:static bottom-5 w-full text-white">
