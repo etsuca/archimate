@@ -1,3 +1,5 @@
+<div id="access_token" class="hidden"><%= Rails.application.credentials[:mapbox][:access_token].to_json %></div>
+
 <% content_for(:title, t('.title')) %>
 <div class="container mx-auto">
   <div class="max-w-md mx-auto p-4">
@@ -30,7 +32,7 @@
       <div class="mx-6 w-full border-t border-gray-300"></div>
     </div>
     <div class="relative flex justify-center">
-      <span class="px-2 text-neutral-600 bg-third"> <%= (t '.Log') %> </span>
+      <span class="px-2 text-neutral-600 bg-third"> <%= (t '.Activity') %> </span>
     </div>
   </div>
   <div class="max-w-md mx-auto p-4">
@@ -60,5 +62,48 @@
         <% end %>
       </tr>
     </table>
+  </div>
+  <div class="relative mt-12 mb-6">
+    <div class="absolute inset-0 flex items-center">
+      <div class="mx-6 w-full border-t border-gray-300"></div>
+    </div>
+    <div class="relative flex justify-center">
+      <span class="px-2 text-neutral-600 bg-third"> <%= (t '.visited prefecture') %> </span>
+    </div>
+  </div>
+</div>
+<div class="max-w-md mx-auto p-4">
+  <table class="w-full">
+    <tr class="flex mb-12 justify-between">
+      <th class="w-1/2 text-start"><%= t('.visited prefecture count') %></th>
+      <td class="w-1/2 text-end"><%= current_user.architecture.map { |a| a.pref }.uniq.count %></td>
+    </tr>
+  </table>
+  <table class="w-full">
+    <tr class="flex mb-12 justify-between">
+      <th class="w-1/2 text-start"><%= t('.prefectural domination rate') %></th>
+      <td class="w-1/2 text-end"><%= ((current_user.architecture.map { |a| a.pref }.uniq.count) / 47.00 * 100).floor %> %</td>
+    </tr>
+  </table>
+</div>
+<div class="relative">
+  <div id="map" class="w-full h-128"></div>
+  <div id="legend" class="map-legend bg-third p-4 rounded-lg shadow absolute bottom-8 right-4">
+    <div class="flex items-center mb-2">
+      <span class="w-4 h-4 rounded-sm mr-2 bg-legend_1 bg-opacity-80"></span>
+      <span class="text-sm">1</span>
+    </div>
+    <div class="flex items-center mb-2">
+      <span class="w-4 h-4 rounded-sm mr-2 bg-legend_2 bg-opacity-80"></span>
+      <span class="text-sm">2-4</span>
+    </div>
+    <div class="flex items-center mb-2">
+      <span class="w-4 h-4 rounded-sm mr-2 bg-legend_3 bg-opacity-80"></span>
+      <span class="text-sm">5-9</span>
+    </div>
+    <div class="flex items-center">
+      <span class="w-4 h-4 rounded-sm mr-2 bg-legend_4 bg-opacity-80"></span>
+      <span class="text-sm">10+</span>
+    </div>
   </div>
 </div>
