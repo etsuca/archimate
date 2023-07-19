@@ -28,7 +28,7 @@
         <% end %>
         <div class="md:static bottom-5 w-full text-white">
           <div class="flex flex-row-reverse md:flex-col my-8 mb-20 text-center justify-center items-center">
-            <% if logged_in? %>
+            <% if user_signed_in? %>
               <%= render 'shared/like_nope_button', architecture: architecture %>
               <%= link_to new_architecture_path, method: :get, method: :get, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit mx-6 md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
                 <i class="fa-solid fa-check fa-xl md:text-sm md:mr-2"></i>
