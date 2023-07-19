@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'font-awesome-sass'
-gem 'sorcery', github: 'sorcery/sorcery'
 gem 'pry-byebug'
 gem 'pry-rails'
 gem 'rails-i18n'
@@ -51,9 +50,6 @@ gem 'omniauth-rails_csrf_protection'
 gem 'mini_magick'
 gem 'image_processing'
 gem 'fog-aws'
-gem 'google_maps_service'
-gem 'geocoder'
-gem 'gon'
 gem 'mapbox-sdk'
 gem 'mapbox-gl-rails'
 
