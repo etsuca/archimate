@@ -10,13 +10,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        first: "#1d1d1f",
-        second: "#f4e464",
-        third: "#f3f4f6",
-        fourth: "#b2b2b2",
-        fifth: "#0E3068",
-        sixth: "#A6F147",
-        seventh: "#C96040",
+        first: '#1d1d1f',
+        second: '#f4e464',
+        third: '#f3f4f6',
+        fourth: '#b2b2b2',
+        fifth: '#0E3068',
+        sixth: '#A6F147',
+        seventh: '#C96040',
         eighth: '#1D9BF0',
         legend_1: '#F3E766',
         legend_2: '#F4AA19',
@@ -24,7 +24,7 @@ module.exports = {
         legend_4: '#0E3068'
       },
       fontFamily: {
-        open_sans: ["Open Sans", "sans-serif"],
+        open_sans: ['Open Sans', 'sans-serif']
       },
       width: {
         '128': '32rem',

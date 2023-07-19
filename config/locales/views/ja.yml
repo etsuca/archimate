@@ -93,12 +93,12 @@ ja:
   users:
     show:
       title: 'プロフィール'
+      Log: 'ログ'
       recorded_architecture_count: '記録した建築の数'
-      Activity: 'アクティビティ'
       first_day_architecture_recorded: '初めて建築を記録した日'
       Likes_count: 'Likeした建築の数'
       Liked_count: '獲得したLikeの数'
-      visited prefecture: '都道府県制覇状況🚶'
+      visited prefecture: '都道府県制覇マップ'
       visited prefecture count: '訪れた都道府県の数'
       prefectural domination rate: '都道府県制覇率'
   diagnosis:

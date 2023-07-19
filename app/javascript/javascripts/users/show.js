@@ -6,8 +6,8 @@ document.addEventListener('turbolinks:load', () => {
   const map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v10',
-    center: [139.6917, 35.6895],
-    zoom: 6,
+    center: [137.5, 38],
+    zoom: 4,
   });
 
   map.on('load', () => {
