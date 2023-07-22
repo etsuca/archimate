@@ -29,7 +29,7 @@
               <% end %>
             <% else %>
               <%= render 'shared/like_nope_button', architecture: @architecture %>
-              <%= link_to new_architecture_path, method: :get, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit mx-6 md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
+              <%= link_to check_in_architecture_index_path(name: @architecture.name, pref: @architecture.pref, location: @architecture.location, open_range: @architecture.open_range, experience: @architecture.experience, architect: @architecture.architect), method: :get, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit mx-6 md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
                 <i class="fa-solid fa-check fa-xl md:text-sm md:mr-2"></i>
                 <div class="hidden md:block">
                   <p>Check in</p>

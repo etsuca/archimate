@@ -86,6 +86,16 @@ class ArchitectureController < ApplicationController
     redirect_to architecture_index_path, notice: t('defaults.message.deleted', item: Architecture.model_name.human)
   end
 
+  def check_in
+    @architecture = Architecture.new
+    @name = params[:name]
+    @pref = params[:pref]
+    @location = params[:location]
+    @open_range = params[:open_range]
+    @experience = params[:experience]
+    @architect = params[:architect]
+  end
+
   private
 
   def architecture_params

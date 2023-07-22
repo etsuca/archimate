@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
 
-  resources :architecture
+  resources :architecture do
+    collection do
+      get :check_in
+    end
+  end
   resources :likes, only: %i[index create destroy]
   resource :user, only: %i[show]
   resources :diagnosis, only: %i[new index]
