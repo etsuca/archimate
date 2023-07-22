@@ -18,15 +18,27 @@ class ArchitectureController < ApplicationController
   def create
     @architecture = current_user.architecture.build(architecture_params)
     new_images = params[:architecture][:new_images]
+
     if new_images.present?
-      resize_image(new_images)
-      @architecture.images.attach(new_images)
+      @architecture.images.transaction do
+        resize_image(new_images)
+        raise ActiveRecord::Rollback if @architecture.errors.any?
+        @architecture.images.attach(new_images)
+      end
+    else
+      @architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
     end
-    if @architecture.save
-      redirect_to architecture_index_path, notice: t('defaults.message.created', item: Architecture.model_name.human)
+
+    if @architecture.errors.empty?
+      if @architecture.save
+        redirect_to @architecture, notice: t('defaults.message.created', item: Architecture.model_name.human)
+      else
+        flash.now['notice'] = t('defaults.message.not_created', item: Architecture.model_name.human)
+        render :new
+      end
     else
       flash.now['notice'] = @architecture.errors.full_messages.first
-      render :edit
+      render :new
     end
   end
 
@@ -52,7 +64,7 @@ class ArchitectureController < ApplicationController
         @architecture.images.attach(new_images) if new_images.present?
       end
     else
-      @architecture.errors.add(:images, '写真が一枚も選択されていません')
+      @architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
     end
   
     if @architecture.errors.empty?
@@ -82,7 +94,7 @@ class ArchitectureController < ApplicationController
 
   def resize_image(images)
     images.each do |image|
-      if image.content_type.start_with?('image/jpeg', 'image/png')
+      if image.content_type.start_with?('image/jpeg', 'image/png', 'image/tiff', 'image/heic', 'image/heif')
         image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(1920, 1920).call
       else
         @architecture.errors.add(:images, t('errors.messages.invalid_file_type'))
