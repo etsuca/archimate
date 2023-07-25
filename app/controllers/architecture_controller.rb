@@ -19,7 +19,15 @@ class ArchitectureController < ApplicationController
     @architecture = current_user.architecture.build(architecture_params)
     new_images = params[:architecture][:new_images]
 
-    @architecture.images.attach(new_images)
+    if new_images.present?
+      @architecture.images.transaction do
+        resize_and_convert(new_images)
+        raise ActiveRecord::Rollback if @architecture.errors.any?
+        @architecture.images.attach(new_images)
+      end
+    else
+      @architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
+    end
 
     if @architecture.errors.empty?
       if @architecture.save
@@ -50,7 +58,7 @@ class ArchitectureController < ApplicationController
     
     if existing_images.present? || new_images.present?
       @architecture.images.transaction do
-        specify_format(new_images) if new_images.present?
+        resize_and_convert(new_images) if new_images.present?
         raise ActiveRecord::Rollback if @architecture.errors.any?
         @architecture.images.where.not(id: existing_images).purge
         @architecture.images.attach(new_images) if new_images.present?
@@ -94,10 +102,13 @@ class ArchitectureController < ApplicationController
     params.require(:architecture).permit(:name, :pref, :location, :architect, :description, :open_range, :experience, images: [], tag_ids: [])
   end
 
-  def specify_format(images)
+  def resize_and_convert(images)
     images.each do |image|
-      if image.content_type.start_with?('image/jpeg', 'image/png', 'image/tiff', 'image/heic', 'image/heif')
-        # image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(1920, 1920).call
+      if image.content_type.start_with?('image/jpeg', 'image/png', 'image/heic', 'image/heif')
+        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(1920, 1920).call
+        if image.content_type.start_with?('image/heic', 'image/heif')
+          image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).convert("jpg").call 
+        end
       else
         @architecture.errors.add(:images, t('errors.messages.invalid_file_type'))
       end
