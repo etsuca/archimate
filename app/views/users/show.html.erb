@@ -16,7 +16,7 @@
         <%= image_tag current_user.avatar.url, class: 'object-cover h-full w-full' %>
       </div>
     </div>
-    <table class="w-full ">
+    <table class="w-full">
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t(User.human_attribute_name(:name)) %></th>
         <td class="w-1/2 text-end break-words"><%= current_user.name %></td>
@@ -58,7 +58,7 @@
         <% if current_user.architecture.empty? %>
           <td>-</td>
         <% else %>
-          <td class="w-1/2 text-end"><%= l current_user.architecture.first.created_at %></td>
+          <td class="w-1/2 text-end"><%= l current_user.architecture.order(:created_at).first.created_at %></td>
         <% end %>
       </tr>
     </table>
