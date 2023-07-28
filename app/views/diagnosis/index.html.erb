@@ -1,12 +1,13 @@
 <p class="text-center w-full bg-first text-white">次の目的地はこちらにしませんか？</p>
-<div class="mx-6 my-24 md:my-36 inset-0">
+<div class="mx-6 my-24 inset-0">
   <div class="w-full max-w-3xl mx-auto text-center">
-    <h1 class="w-full pb-24 md:pb-36 text-3xl md:text-6xl font-normal">あなたにぴったりな建築をセレクトしました。</h1>
-    <div class="bg-white p-6 mb-20 md:mb-36 md:mb-36 rounded-md">
+    <h1 class="w-full pb-24 text-3xl md:text-6xl font-normal">あなたにぴったりな建築をセレクトしました。</h1>
+    <div class="bg-white p-6 mb-24 rounded-md">
       <% @matched_architecture.each_with_index do |architecture, idx| %>
         <a href="#matched_architecture_<%= architecture.id %>" class="block my-12 text-base md:text-lg hover:scale-105 hover:drop-shadow-lg"><%= idx + 1 %>. <%= architecture.name %></a>
       <% end %>
     </div>
+    <%= render 'shared/twitter_share' %>
   </div>
 </div>
 
@@ -62,3 +63,9 @@
     </div>
   </div>
 <% end %>
+
+<div class="mx-6 mb-20 md:mt-20 inset-0">
+  <div class="w-full max-w-3xl mx-auto text-center">
+    <%= render 'shared/twitter_share' %>
+  </div>
+</div>

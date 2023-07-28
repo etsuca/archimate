@@ -21,7 +21,8 @@ module.exports = {
         legend_1: '#F3E766',
         legend_2: '#F4AA19',
         legend_3: '#BC6548',
-        legend_4: '#0E3068'
+        legend_4: '#0E3068',
+        twitter: '#479BE9'
       },
       fontFamily: {
         open_sans: ['Open Sans', 'sans-serif']
