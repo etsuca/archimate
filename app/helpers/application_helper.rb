@@ -34,4 +34,16 @@ module ApplicationHelper
       }
     }
   end
+
+  def build_tweet_text
+    text = "マッチングした建築は…%0a%0a"
+    @matched_architecture.each_with_index do |architecture, index|
+      text += "#{index + 1}. 「#{architecture.name}」"
+      if architecture.architect.present?
+        text += "#{architecture.architect}%0a"
+      end
+      text += "%0a"
+    end
+    text
+  end
 end
