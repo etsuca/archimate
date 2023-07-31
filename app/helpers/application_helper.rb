@@ -36,11 +36,11 @@ module ApplicationHelper
   end
 
   def build_tweet_text
-    text = "マッチングした建築は…%0a%0a"
+    text = "マッチングした建築は…%0a"
     @matched_architecture.each_with_index do |architecture, index|
-      text += "#{index + 1}. 「#{architecture.name}」"
+      text += "%0a#{index + 1}. 「#{architecture.name}」"
       if architecture.architect.present?
-        text += "#{architecture.architect}%0a"
+        text += "#{architecture.architect}"
       end
       text += "%0a"
     end

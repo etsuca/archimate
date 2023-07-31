@@ -35,7 +35,7 @@
         <%= f.label :description, class: 'block text-first mb-2' %>
         <%= f.text_area :description, value: @description ||= architecture.description, size: "40x10", class: 'form-input block w-full py-1 border border-gray-400 rounded-3xl transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500' %>
       </div>
-      <div class="mb-12">
+      <div class="mb-12 grid grid-cols-2 md:grid-cols-3 gap-4">
         <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
           <label class="flex items-center">
             <%= tag.check_box class: 'form-checkbox' %>

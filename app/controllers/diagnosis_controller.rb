@@ -2,27 +2,27 @@ class DiagnosisController < ApplicationController
 
   def new
     questions = [
-      { title: 'RC打ち放しが好き', tag_id: Tag.find(1).id, image: '1.jpg' },
-      { title: '木の空間に癒されたい', tag_id: Tag.find(2).id, image: '2.jpg' },
-      { title: 'ガラスの空間が好き', tag_id: Tag.find(3).id, image: '3.jpg' },
-      { title: '自然に癒されたい', tag_id: Tag.find(4).id, image: '4.jpg' },
-      { title: '私はシティボーイ or シティガール', tag_id: Tag.find(5).id, image: '5.jpg' },
-      { title: 'まだ見ぬ場所へ行ってみたい', tag_id: Tag.find(6).id, image: '6.jpg' },
-      { title: '静かな空間が好き', tag_id: Tag.find(7).id, image: '7.jpg' },
-      { title: '友達とお出掛けするのが好き', tag_id: Tag.find(8).id, image: '8.jpg' },
-      { title: '一人でゆっくりする時間が大切', tag_id: Tag.find(9).id, image: '9.jpg' },
-      { title: '素敵な景色はテンション上がる', tag_id: Tag.find(10).id, image: '10.jpg' },
-      { title: '巨匠の作品に触れてみたい！', tag_id: Tag.find(11).id, image: '11.jpg' },
-      { title: 'モノが持つ歴史に惹かれる', tag_id: Tag.find(12).id, image: '12.jpg' },
-      { title: '軽やかに生きていたい', tag_id: Tag.find(13).id, image: '13.jpg' },
-      { title: 'レトロなものに心惹かれる', tag_id: Tag.find(14).id, image: '14.jpg' },
-      { title: 'モノ持ちが良い方だ', tag_id: Tag.find(15).id, image: '15.jpg' },
-      { title: '日頃のストレスから解放されたい！', tag_id: Tag.find(16).id, image: '16.jpg' },
-      { title: '曲線の美しさに惹かれる', tag_id: Tag.find(17).id, image: '17.jpg' },
-      { title: '直線の美しさに心が惹かれる', tag_id: Tag.find(18).id, image: '18.jpg' },
-      { title: '論理より感性に忠実でいたい', tag_id: Tag.find(19).id, image: '19.jpg' },
-      { title: '常識に縛られずに生きていたい', tag_id: Tag.find(20).id, image: '20.jpg' },
-      { title: '自分はミニマリストだ', tag_id: Tag.find(21).id, image: '21.jpg' }
+      { title: 'RC打ち放しが好き🏢', tag_id: Tag.find(1).id, image: '1.jpg' },
+      { title: '木の温もりが好き🌲', tag_id: Tag.find(2).id, image: '2.jpg' },
+      { title: 'ガラスの空間が好き🏙', tag_id: Tag.find(3).id, image: '3.jpg' },
+      { title: '自然に癒されたい🍃', tag_id: Tag.find(4).id, image: '4.jpg' },
+      { title: '気軽に建築を楽しみたい🚶', tag_id: Tag.find(5).id, image: '5.jpg' },
+      { title: 'まだ見ぬ場所へ行ってみたい😮', tag_id: Tag.find(6).id, image: '6.jpg' },
+      { title: '田舎でゆっくりしたい🌳', tag_id: Tag.find(7).id, image: '7.jpg' },
+      { title: '一人でゆっくりする時間が大切🍹', tag_id: Tag.find(8).id, image: '8.jpg' },
+      { title: '友達とお出掛けするのが好き👬', tag_id: Tag.find(9).id, image: '9.jpg' },
+      { title: '素敵な眺めを楽しみたい👀', tag_id: Tag.find(10).id, image: '10.jpg' },
+      { title: '名作を体験してみたい🧐', tag_id: Tag.find(11).id, image: '11.jpg' },
+      { title: 'モノの歴史や背景を知りたいと思う😦', tag_id: Tag.find(12).id, image: '12.jpg' },
+      { title: '軽やかな空間が好き🍃', tag_id: Tag.find(13).id, image: '13.jpg' },
+      { title: '重厚な空間が好き🕋', tag_id: Tag.find(14).id, image: '14.jpg' },
+      { title: 'レトロなものが好き🏛', tag_id: Tag.find(15).id, image: '15.jpg' },
+      { title: 'リノベーションされた空間が好き🏬', tag_id: Tag.find(16).id, image: '16.jpg' },
+      { title: '最近ストレスが溜まり気味だ😔', tag_id: Tag.find(17).id, image: '17.jpg' },
+      { title: '曲線の美しさに惹かれる😳', tag_id: Tag.find(18).id, image: '18.jpg' },
+      { title: '素敵な色使いに惹かれる😳', tag_id: Tag.find(19).id, image: '19.jpg' },
+      { title: '常識に縛られずに生きていたい🥳', tag_id: Tag.find(20).id, image: '20.jpg' },
+      { title: '軽やかに生きていたい💃', tag_id: Tag.find(21).id, image: '21.jpg' }
     ]
     @selected_questions = questions.sample(5)
   end
