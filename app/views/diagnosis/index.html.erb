@@ -1,8 +1,8 @@
 <p class="text-center w-full bg-second">次の目的地はこちらにしませんか？</p>
-<div class="mx-6 my-24 inset-0">
+<div class="mx-6 my-12 md:my-24 inset-0">
   <div class="w-full max-w-3xl mx-auto text-center">
-    <h1 class="w-full pb-24 text-3xl md:text-4xl">あなたにぴったりな建築をセレクトしました。</h1>
-    <div class="bg-white p-6 mb-24 rounded-md">
+    <h1 class="w-full pb-12 md:pb-24 text-3xl md:text-4xl">あなたにぴったりな建築をセレクトしました。</h1>
+    <div class="bg-white p-6 mb-12 md:mb-24 rounded-md">
       <% @matched_architecture.each_with_index do |architecture, idx| %>
         <a href="#matched_architecture_<%= architecture.id %>" class="block my-12 text-base md:text-lg hover:scale-105 hover:drop-shadow-lg"><%= idx + 1 %>. <%= architecture.name %></a>
       <% end %>
@@ -31,7 +31,7 @@
           <div class="flex flex-row-reverse md:flex-col my-8 mb-20 text-center justify-center items-center">
             <% if user_signed_in? %>
               <%= render 'shared/like_nope_button', architecture: architecture %>
-              <%= link_to new_architecture_path, method: :get, method: :get, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit mx-6 md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
+              <%= link_to check_in_architecture_index_path(name: architecture.name, pref: architecture.pref, location: architecture.location, open_range: architecture.open_range, experience: architecture.experience, architect: architecture.architect), method: :get, method: :get, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit mx-6 md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
                 <i class="fa-solid fa-check fa-xl md:text-sm md:mr-2"></i>
                 <div class="hidden md:block">
                   <p>Check in</p>
