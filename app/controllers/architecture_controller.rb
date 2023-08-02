@@ -33,7 +33,7 @@ class ArchitectureController < ApplicationController
       if @architecture.save
         redirect_to @architecture, notice: t('defaults.message.created', item: Architecture.model_name.human)
       else
-        flash.now['notice'] = t('defaults.message.not_created', item: Architecture.model_name.human)
+        flash.now['notice'] = @architecture.errors.full_messages.first
         render :new
       end
     else
@@ -71,7 +71,7 @@ class ArchitectureController < ApplicationController
       if @architecture.update(architecture_params)
         redirect_to @architecture, notice: t('defaults.message.updated', item: Architecture.model_name.human)
       else
-        flash.now['notice'] = t('defaults.message.not_updated', item: Architecture.model_name.human)
+        flash.now['notice'] = @architecture.errors.full_messages.first
         render :edit
       end
     else

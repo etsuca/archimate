@@ -15,9 +15,7 @@ ja:
     message:
       require_login: 'ログインしてください'
       created: "%{item}を記録しました"
-      not_created: "%{item}の記録に失敗しました"
       updated: "%{item}を更新しました"
-      not_updated: "%{item}を更新できませんでした"
       deleted: "%{item}を削除しました"
       delete_confirm: '削除しますか？'
       logout_confirm: 'ログアウトしますか？'
