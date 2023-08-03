@@ -13,6 +13,7 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require('jquery')
+import '@fortawesome/fontawesome-free/js/all';
 import "../javascripts/diagnosis/like_modal";
 import "../javascripts/diagnosis/new";
 import "../javascripts/shared/description";
