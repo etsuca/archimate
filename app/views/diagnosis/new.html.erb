@@ -1,3 +1,4 @@
+<% set_meta_tags title: t('.title') %>
 <form action="/diagnosis">
   <% @selected_questions.each_with_index do |q, idx| %>
     <div id="question-container-<%= idx %>" <% if idx > 0 %>style="display: none;"<% end %>>

@@ -6,8 +6,10 @@ class Architecture < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true, length: { maximum: 255 }
+  validates :name, format: { without: /[^\w\s]/, message: "に使用できない文字が含まれています" }
   validates :location, presence: true, length: { maximum: 255 }
   validates :architect, length: { maximum: 255 }
+  validates :architect, format: { without: /[^\w\s]/, message: "に使用できない文字が含まれています" }
   validates :description, length: { maximum: 65_535 }
   validates :images, attached_file_presence: true
   validates :images, attached_file_number: { maximum: 10 }

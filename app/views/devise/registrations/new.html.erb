@@ -1,4 +1,4 @@
-<% content_for(:title, t('.title')) %>
+<% set_meta_tags title: t('.title') %>
 <h2 class="px-16 pt-16 text-xl text-center"><%= t('.title') %></h2>
 <section>
   <div class="p-12 md:p-24">
@@ -39,7 +39,7 @@
         <% twitter_provider = resource_class.omniauth_providers.first %>
         <%= button_to omniauth_authorize_path(resource_name, twitter_provider), data: { turbo: false }, class: 'block w-full py-4 text-first rounded-full shadow-md transition duration-200 hover:shadow-fourth' do %>
           <div class="flex items-center justify-center">
-            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-x-twitter"></i>
             <span class="ml-4"><%= t ('.Sign Up with Twitter') %></span>
           </div>
         <% end %>
