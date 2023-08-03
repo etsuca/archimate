@@ -29,21 +29,21 @@ module ApplicationHelper
         locale: 'ja_JP',
       },
       twitter: {
-        card: 'summary',
-        # site: '@ツイッターのアカウント名',
+        card: 'summary_large_image',
       }
     }
   end
 
   def build_tweet_text
-    text = "マッチングした建築は…%0a"
+    text = "マッチングした建築は…%0a%0a"
     @matched_architecture.each_with_index do |architecture, index|
-      text += "%0a#{index + 1}. 「#{architecture.name}」"
+      text += "#{index + 1}. 「#{architecture.name}」"
       if architecture.architect.present?
         text += "#{architecture.architect}"
       end
       text += "%0a"
     end
+    text += "%0aでした！%0a"
     text
   end
 end
