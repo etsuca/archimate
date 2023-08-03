@@ -41,6 +41,10 @@ ja:
     top:
       no_result: '指定距離内に建築がありません'
       distance: '距離'
+    privacy_policy:
+      title: 'プライバシーポリシー'
+    terms:
+      title: '利用規約'
   devise:
     sessions:
       new:
