@@ -6,30 +6,7 @@
     <h1 class="text-3xl md:text-5xl mb-4">次はどこ行く？</h1>
     <div class="relative my-8 mb-20">
       <p>archimateは、建築を記録し、新たな建築に出会うためのプラットフォームです。<br><br>クールな建築を見つけましょう。</p>
-      <%= link_to 'マッチングする', new_diagnosis_path, class: 'absolute w-full mt-6 md:mt-12 text-center text-white bg-first rounded-full hover:scale-105 hover:drop-shadow-lg' %>
-    </div>
-  </div>
-</div>
-
-<div class="flex flex-col md:flex-row items-center">
-  <div class="w-full md:w-3/4 h-96 md:h-screen relative">
-    <%= image_tag 'lp_bottom.jpg', class: 'absolute inset-0 object-cover object-top h-full w-full' %>
-  </div>
-  <div class="w-full md:w-144 px-4 md:pt-0 pt-4">
-    <h1 class="text-3xl md:text-5xl mb-4">最近どこ行った？</h1>
-    <div class="relative my-8 mb-20">
-      <p>あなたが訪れた建築を記録しましょう。<br><br>記録した建築は他のユーザーの次の目的地になります。</p>
-      <% if user_signed_in? %>
-        <%= link_to '建築を記録する', new_architecture_path, class: "absolute w-full mt-6 md:mt-12 text-center text-first bg-second rounded-full" %>
-      <% else %>
-        <button id="modalOpen" class="button w-full bg-second text-first mt-6 md:mt-12 rounded-full hover:scale-105 hover:drop-shadow-lg">建築を記録する</button>
-        <div id="easyModal" class="hidden flex fixed top-0 left-0 h-full w-full overflow-auto bg-black bg-opacity-50">
-          <div class="relative mx-auto my-auto w-2/3 md:w-1/2">
-            <h1 class="text-center text-white mb-6">建築を記録するにはログインが必要です</h1>
-            <%= link_to (t 'devise.sessions.new.title'), new_user_session_path, class: "absolute w-full bg-second text-first text-center rounded-full mb-4 hover:scale-105 hover:drop-shadow-lg" %>
-          </div>
-        </div>
-      <% end %>
+      <%= link_to 'マッチングする', new_diagnosis_path, class: 'absolute w-full mt-6 md:mt-12 text-center bg-second rounded-full hover:scale-105 hover:drop-shadow-lg' %>
     </div>
   </div>
 </div>
