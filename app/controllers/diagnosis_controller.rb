@@ -6,7 +6,7 @@ class DiagnosisController < ApplicationController
       { title: '木の温もりが好き🌲', tag_id: Tag.find(2).id, image: '2.jpg' },
       { title: 'ガラスの空間が好き🏙', tag_id: Tag.find(3).id, image: '3.jpg' },
       { title: '自然に癒されたい🍃', tag_id: Tag.find(4).id, image: '4.jpg' },
-      { title: '気軽に建築を楽しみたい🚶', tag_id: Tag.find(5).id, image: '5.jpg' },
+      { title: '私はシティボーイorシティガール🏙', tag_id: Tag.find(5).id, image: '5.jpg' },
       { title: 'まだ見ぬ場所へ行ってみたい😮', tag_id: Tag.find(6).id, image: '6.jpg' },
       { title: '田舎でゆっくりしたい🌳', tag_id: Tag.find(7).id, image: '7.jpg' },
       { title: '一人でゆっくりする時間が大切🍹', tag_id: Tag.find(8).id, image: '8.jpg' },
@@ -18,13 +18,13 @@ class DiagnosisController < ApplicationController
       { title: '重厚な空間が好き🕋', tag_id: Tag.find(14).id, image: '14.jpg' },
       { title: 'レトロなものが好き🏛', tag_id: Tag.find(15).id, image: '15.jpg' },
       { title: 'リノベーションされた空間が好き🏬', tag_id: Tag.find(16).id, image: '16.jpg' },
-      { title: '最近ストレスが溜まり気味だ😔', tag_id: Tag.find(17).id, image: '17.jpg' },
+      { title: '空が広い場所が好き🌤', tag_id: Tag.find(17).id, image: '17.jpg' },
       { title: '曲線の美しさに惹かれる😳', tag_id: Tag.find(18).id, image: '18.jpg' },
       { title: '素敵な色使いに惹かれる😳', tag_id: Tag.find(19).id, image: '19.jpg' },
       { title: '常識に縛られずに生きていたい🥳', tag_id: Tag.find(20).id, image: '20.jpg' },
-      { title: '軽やかに生きていたい💃', tag_id: Tag.find(21).id, image: '21.jpg' }
+      { title: 'シンプルなものが好き💃', tag_id: Tag.find(21).id, image: '21.jpg' }
     ]
-    @selected_questions = questions.sample(5)
+    @selected_questions = questions.sample(7)
   end
 
   def index
@@ -32,26 +32,31 @@ class DiagnosisController < ApplicationController
     selected_tag_ids = params[:answer]
     @match_tag_count = [0]
     @matched_architecture = []
-    @all_tmp_match_tag_count = []
 
     others_architecture.each do |architecture|
-      tmp_match_tag_count = 0
       architecture.tags.each do |tag|
         if selected_tag_ids&.include?(tag.id.to_s)
-          tmp_match_tag_count += 1
+          architecture.tmp_match_tag_count += 1
         end
       end
-      if @match_tag_count.min < tmp_match_tag_count
-        @match_tag_count << tmp_match_tag_count
+      if @match_tag_count.min < architecture.tmp_match_tag_count
+        @match_tag_count << architecture.tmp_match_tag_count
         if @match_tag_count.length > 3
           @match_tag_count.delete(@match_tag_count.min)
         end
         @matched_architecture << architecture
         if @matched_architecture.length > 3
-          @matched_architecture&.delete(@matched_architecture.min)
+          @matched_architecture.delete(@matched_architecture.min_by { |a| a.tmp_match_tag_count })
         end
       end
     end
+
+    @matched_architecture.shuffle!.sort! do |a, b|
+      b[:tmp_match_tag_count] <=> a[:tmp_match_tag_count]
+    end
+
+    binding.pry
+
     if @matched_architecture.length < 3
       redirect_to new_diagnosis_path, notice: 'マッチする建築がありませんでした。もう一度好みを教えてください。'
     end
