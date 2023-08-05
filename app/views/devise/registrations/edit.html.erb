@@ -27,21 +27,29 @@
           </div>
         </div>
       </div>
-      <div class='mb-12'>
-        <%= f.label :name, class: 'block text-first mb-2' %>
-        <%= f.text_field :name, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', placeholder: 'Name', required: true %>
+      <div class="space-y-2">
+        <%= f.label :name, class: "block text-md text-neutral-600" %>
+        <%= f.text_field :name, placeholder: "Name", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
       </div>
-      <div class='mb-20'>
-        <%= f.label :email, class: 'block text-first mb-2' %>
-        <%= f.text_field :email, class: 'form-input block w-full py-1 border border-gray-400 rounded-full transition duration-200 focus:border-transparent focus:ring-third focus:ring-offset-2 focus:ring-offset-gray-500', placeholder: 'Email', required: true %>
+      <div class="space-y-2">
+        <%= f.label :email, class: "mt-8 block text-md text-neutral-600" %>
+        <%= f.email_field :email, placeholder: "Email", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
       </div>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-      <div class='flex justify-center'>
-        <%= f.submit class: 'bg-second hover:scale-105 hover:shadow-lg text-first w-full rounded-full focus:outline-none focus:shadow-outline cursor-pointer' %>
+      <div class="space-y-2">
+        <%= f.label :password, class: "mt-8 block text-md text-neutral-600" %>
+        <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
       </div>
-      <%= link_to t('defaults.delete'), registration_path(resource_name), method: :delete, data: { confirm: t('defaults.message.user_delete_confirm') }, class: 'block mt-2 mr-2 text-xs text-end sm:text-sm text-neutral-600 hover:text-first' %>
+      <div class="space-y-2">
+        <%= f.label :password_confirmation, class: "mt-8 block text-md text-neutral-600" %>
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
+      </div>
+      <div class='flex justify-center'>
+        <%= f.submit class: "mt-16 py-4 w-full bg-first text-white transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
+      </div>
+      <%= link_to t('defaults.delete'), registration_path(resource_name), method: :delete, data: { confirm: t('defaults.message.user_delete_confirm') }, class: 'block mt-2 mb-12 mr-2 text-xs text-end sm:text-sm text-neutral-600 hover:text-first' %>
     <% end %>
   </div>
 </div>

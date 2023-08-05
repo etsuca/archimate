@@ -38,6 +38,17 @@
           </div>
         <% end %>
       <% end %>
+      <div class="relative my-4">
+        <div class="absolute inset-0 flex items-center">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+        <div class="relative flex justify-center text-sm">
+          <span class="px-2 text-neutral-600 bg-third"> <%= (t 'devise.sessions.new.Trial') %></span>
+        </div>
+      </div>
+      <div class="relative mb-36">
+        <%= link_to (t 'devise.sessions.new.Gueat Login'), users_guest_login_path, method: :post, class: "absolute py-4 w-full text-center bg-third shadow-md transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
+      </div>
 
       <div class="relative mt-12 mb-4">
         <div class="absolute inset-0 flex items-center">

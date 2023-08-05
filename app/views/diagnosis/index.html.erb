@@ -5,7 +5,7 @@
     <h1 class="w-full pb-12 md:pb-24 text-3xl md:text-4xl">あなたにぴったりな建築をセレクトしました。</h1>
     <div class="bg-white p-6 mb-12 md:mb-24 rounded-md">
       <% @matched_architecture.each_with_index do |architecture, idx| %>
-        <a href="#matched_architecture_<%= architecture.id %>" class="block my-12 text-base md:text-lg hover:scale-105 hover:drop-shadow-lg"><%= idx + 1 %>. <%= architecture.name %></a>
+        <a href="#matched_architecture_<%= architecture.id %>" class="block my-12 text-first md:text-lg hover:scale-105 hover:drop-shadow-lg"><%= idx + 1 %>. <%= architecture.name %></a>
       <% end %>
     </div>
     <%= render 'shared/twitter_share' %>
