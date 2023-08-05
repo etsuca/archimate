@@ -1,5 +1,5 @@
 <% set_meta_tags title: t('.title') %>
-<h2 class="px-16 pt-6 text-xl text-center"><%= t('.title') %></h2>
+<h2 class="px-16 pt-6 text-center text-base md:text-xl"><%= t('.title') %></h2>
 <div class="p-12 md:p-24">
   <div class="max-w-md mx-auto">
     <%= link_to "/auth/twitter2", method: :post, data: { turbo: false }, class: 'block w-full py-4 text-theme rounded-full shadow-md transition duration-200 hover:shadow-fourth' do %>

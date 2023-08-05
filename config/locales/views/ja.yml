@@ -39,7 +39,7 @@ ja:
     Terms of Use: '利用規約'
   static_pages:
     top:
-      no_result: '指定距離内に建築がありません'
+      no_result: '表示できる建築がありません'
       distance: '距離'
     privacy_policy:
       title: 'プライバシーポリシー'

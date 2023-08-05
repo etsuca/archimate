@@ -1,5 +1,5 @@
 <% set_meta_tags title: t('.title') %>
-<h2 class="px-16 pt-16 text-xl text-center"><%= t('.title') %></h2>
+<h2 class="px-16 pt-16 text-center text-base md:text-xl"><%= t('.title') %></h2>
 <section>
   <div class="p-12 md:p-24">
     <div class="max-w-md mx-auto">
@@ -46,11 +46,11 @@
           <span class="px-2 text-neutral-600 bg-third"> <%= (t 'devise.sessions.new.Trial') %></span>
         </div>
       </div>
-      <div class="relative mb-36">
+      <div class="relative mb-28">
         <%= link_to (t 'devise.sessions.new.Gueat Login'), users_guest_login_path, method: :post, class: "absolute py-4 w-full text-center bg-third shadow-md transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
       </div>
 
-      <div class="relative mt-12 mb-4">
+      <div class="relative mb-4">
         <div class="absolute inset-0 flex items-center">
           <div class="w-full border-t border-gray-300"></div>
         </div>
