@@ -31,7 +31,7 @@ class DiagnosisController < ApplicationController
     session_key = "architecture_order"
   
     if session[session_key].nil?
-      others_architecture = Architecture.where.not(user_id: current_user&.id).where(experience: 0).to_a.shuffle
+      others_architecture = Architecture.where(experience: 0).to_a.shuffle
       session[session_key] = others_architecture.map(&:id)
     else
       shuffled_ids = session[session_key]
