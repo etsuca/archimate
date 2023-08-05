@@ -50,7 +50,7 @@
             <div class="bg-white p-4 md:p-12 mb-12 rounded-md">
               <label class="bg-white rounded-full flex justify-center items-center border border-gray-400">
                 <i class="fa-solid fa-sd-card"></i>
-                <span class="ml-2 text-sm md:text-first">保存済みの画像</span>
+                <span class="ml-2 text-sm md:text-base">保存済みの画像</span>
               </label>
               <% architecture.images.each do |image| %>
                 <div class="preview-image-wrapper relative">
@@ -63,7 +63,7 @@
           <% end %>
           <label id="add-image-button" class="mb-4 bg-white rounded-full flex justify-center items-center border border-gray-400 hover:shadow-lg cursor-pointer">
             <i class="fa-solid fa-camera"></i>
-            <span class="ml-2 text-sm md:text-first">画像を追加</span> 
+            <span class="ml-2 text-sm md:text-base">画像を追加</span> 
             <%= f.file_field :new_images, class: "hidden", multiple: true, onchange: 'showPreview(event)' %>
           </label>
           <div id="new-images-preview"></div>
