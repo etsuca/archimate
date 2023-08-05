@@ -52,6 +52,8 @@ ja:
         Log in with Twitter: 'Twitterでログイン'
         Forget password?: 'パスワードをお忘れですか？'
         to_register_page: '新規会員登録'
+        Trial: 'お試しはこちらから'
+        Gueat Login: 'ゲストログイン'
         For beginner: 'はじめてご利用の方'
       create:
         success: 'ログインしました'
@@ -73,7 +75,7 @@ ja:
       edit:
         title: '新しいパスワードを設定'
         New Password: '新しいパスワード'
-        Confirm New Password: '新しいパスワード（確認）'
+        Confirm New Password: '新しいパスワード (確認)'
         Change my password: 'パスワードを変更'
   architecture:
     index:

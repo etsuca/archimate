@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users', to: 'users/registrations#failure'
     get 'users/password', to: 'users/registrations#update_passwords'
+    post 'users/guest_login', to: 'users/sessions#guest_login'
   end
   
   get 'welcome', to: 'static_pages#welcome'

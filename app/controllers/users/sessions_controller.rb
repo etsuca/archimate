@@ -24,6 +24,15 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def guest_login
+    redirect_to root_path, alert: 'すでにログインしています' if current_user
+
+    random_value = SecureRandom.hex
+    user = User.create!(name: 'ゲストユーザー', email: "guest#{random_value}@example.com", password: random_value)
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。ログアウトする前にプロフィールを更新してください。'
+  end
  
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource_or_scope) || super
