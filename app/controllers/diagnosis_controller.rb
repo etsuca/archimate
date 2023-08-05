@@ -28,11 +28,20 @@ class DiagnosisController < ApplicationController
   end
 
   def index
-    others_architecture = Architecture.where.not(user_id: current_user&.id).where(experience: 0)
+    session_key = "architecture_order"
+  
+    if session[session_key].nil?
+      others_architecture = Architecture.where.not(user_id: current_user&.id).where(experience: 0).to_a.shuffle
+      session[session_key] = others_architecture.map(&:id)
+    else
+      shuffled_ids = session[session_key]
+      others_architecture = Architecture.where(id: shuffled_ids)
+    end
+
     selected_tag_ids = params[:answer]
     @match_tag_count = [0]
     @matched_architecture = []
-
+  
     others_architecture.each do |architecture|
       architecture.tags.each do |tag|
         if selected_tag_ids&.include?(tag.id.to_s)
@@ -50,15 +59,13 @@ class DiagnosisController < ApplicationController
         end
       end
     end
-
-    @matched_architecture.shuffle!.sort! do |a, b|
+  
+    @matched_architecture.sort! do |a, b|
       b[:tmp_match_tag_count] <=> a[:tmp_match_tag_count]
     end
-
-    binding.pry
-
+  
     if @matched_architecture.length < 3
       redirect_to new_diagnosis_path, notice: 'マッチする建築がありませんでした。もう一度好みを教えてください。'
     end
-  end
+  end  
 end
