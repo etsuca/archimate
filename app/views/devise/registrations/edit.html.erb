@@ -38,14 +38,6 @@
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-      <div class="space-y-2">
-        <%= f.label :password, class: "mt-8 block text-md text-neutral-600" %>
-        <%= f.password_field :password, placeholder: "Password", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
-      </div>
-      <div class="space-y-2">
-        <%= f.label :password_confirmation, class: "mt-8 block text-md text-neutral-600" %>
-        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "block w-full px-5 py-3 text-neutral-600 placeholder-gray-300 transition duration-200 border border-transparent rounded-full bg-gray-50 focus:border-transparent focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300", required:true %>
-      </div>
       <div class='flex justify-center'>
         <%= f.submit class: "mt-16 py-4 w-full bg-first text-white transition duration-200 hover:scale-105 rounded-full cursor-pointer" %>
       </div>

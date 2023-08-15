@@ -67,6 +67,8 @@ ja:
         For member: '会員登録がお済みの方'
       edit:
         title: 'プロフィールを編集'
+      edit_password:
+       title: 'パスワードを変更'
     passwords:
       new:
         title: 'パスワードリセット'
@@ -97,7 +99,7 @@ ja:
       success: 'Unlike'
   users:
     show:
-      title: 'プロフィール'
+      title: 'マイページ'
       Log: 'ログ'
       recorded_architecture_count: '記録した建築の数'
       first_day_architecture_recorded: '初めて建築を記録した日'

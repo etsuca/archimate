@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     get 'users', to: 'users/registrations#failure'
     get 'users/password', to: 'users/registrations#update_passwords'
     post 'users/guest_login', to: 'users/sessions#guest_login'
+    get 'registrations/edit_password', to: 'users/registrations#edit_password'
+    put 'registrations/update_password', to: 'users/registrations#update_password'
+    get 'registrations/update_password', to: 'users/registrations#failure'
   end
   
   get 'welcome', to: 'static_pages#welcome'
