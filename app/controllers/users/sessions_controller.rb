@@ -29,7 +29,8 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to root_path, alert: 'すでにログインしています' if current_user
 
     random_value = SecureRandom.hex
-    user = User.create!(name: 'ゲストユーザー', email: "guest#{random_value}@example.com", password: random_value)
+    random_password = Devise.friendly_token[0, 20]
+    user = User.create!(name: 'ゲストユーザー', email: "guest_#{random_value}@example.com", password: random_password)
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。ログアウトする前にプロフィールを更新してください。'
   end

@@ -26,8 +26,11 @@
         <td class="w-2/3 text-end break-all"><%= current_user.email %></td>
       </tr>
     </table>
+    <div class="relative mb-12 text-end">
+      <%= link_to (t 'devise.registrations.edit_password.title'), registrations_edit_password_path, class: "block text-xs sm:text-sm text-neutral-600 hover:text-first" %>
+    </div>
   </div>
-  <div class="relative mt-12 mb-6">
+  <div class="relative mb-6">
     <div class="absolute inset-0 flex items-center">
       <div class="mx-6 w-full border-t border-gray-300"></div>
     </div>

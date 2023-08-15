@@ -67,6 +67,8 @@ ja:
         For member: '会員登録がお済みの方'
       edit:
         title: 'プロフィールを編集'
+      edit_password:
+       title: 'パスワードを変更'
     passwords:
       new:
         title: 'パスワードリセット'
