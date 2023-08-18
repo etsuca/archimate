@@ -20,6 +20,7 @@ https://archim8.net
 	- EC2
 - RSpec
 - RuboCop
+- Heroku
 - Mpabox API
 - X API
 ## メインのターゲットユーザー  
@@ -90,7 +91,7 @@ https://www.figma.com/file/BaXInUfwCKFp8vtqC02B7c/%E7%94%BB%E9%9D%A2%E9%81%B7%E7
 <br>
 ## ER図リンク  
 https://gyazo.com/cc78f93b47d675b71a6dcd67b3c1cfe7  
-<br><br>
+<br>
 ## スケジュール<br>
 企画〜技術調査：3/25 〆切
 <br>
