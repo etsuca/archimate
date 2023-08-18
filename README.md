@@ -17,8 +17,6 @@ https://archim8.net
 - PostgreSQL 14.8
 - Puma
 - AWS S3
-- RSpec
-- RuboCop
 - Heroku
 - Mpabox API
 - X API
