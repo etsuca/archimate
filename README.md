@@ -15,9 +15,10 @@ https://archim8.net
 - Ruby 3.2.2
 - Ruby on Rails 6.1.7.3
 - PostgreSQL 14.8
+- jQuery
 - Puma
-- AWS S3
 - Heroku
+- AWS S3
 - Mpabox API
 - X API
 ## メインのターゲットユーザー  
