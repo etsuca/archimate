@@ -16,8 +16,7 @@ https://archim8.net
 - Ruby on Rails 6.1.7.3
 - PostgreSQL 14.8
 - Puma
-- AWS
-	- EC2
+- AWS S3
 - RSpec
 - RuboCop
 - Heroku
