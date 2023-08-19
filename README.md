@@ -4,7 +4,7 @@
 建築特化型サービスarchimateです。  
 <br>
 <img width="1200" src="https://i.gyazo.com/4abc834c8eaec60a73d29819760778a1.jpg">
-<img width="350" src="https://i.gyazo.com/a9a0bd632c9aeb24c3ced3ca29d395ae.jpgg">
+<img width="300" src="https://i.gyazo.com/a9a0bd632c9aeb24c3ced3ca29d395ae.jpgg">
 <br>
 ## URL
 https://archim8.net  
@@ -19,7 +19,7 @@ https://archim8.net
 - Puma
 - Heroku
 - AWS S3
-- Mpabox API
+- Mapbox API
 - X API
 ## メインのターゲットユーザー  
 建築学生、美大生、建築に興味はあるけど知識はあまり無い人  
