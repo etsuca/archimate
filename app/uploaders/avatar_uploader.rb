@@ -14,5 +14,4 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def extension_whitelist
     %i[jpg jpeg gif png]
   end
-
 end

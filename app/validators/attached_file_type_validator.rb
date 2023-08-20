@@ -5,8 +5,6 @@ class AttachedFileTypeValidator < ActiveModel::EachValidator
 
     pattern = options[:pattern]
     attachments = value.is_a?(ActiveStorage::Attached::Many) ? value.attachments : [value.attachment]
-    if attachments.any? { |attachment| !attachment.content_type.match?(pattern) }
-      record.errors.add(attribute, :invalid_file_type)
-    end
+    record.errors.add(attribute, :invalid_file_type) if attachments.any? { |attachment| !attachment.content_type.match?(pattern) }
   end
 end

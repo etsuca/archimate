@@ -11,8 +11,17 @@ class ArchitectureController < ApplicationController
     end
   end
 
+  def show
+    @architecture = Architecture.find(params[:id])
+    @images = @architecture.images.map { |image| rails_blob_path(image) }.to_json.html_safe
+  end
+
   def new
     @architecture = Architecture.new
+  end
+
+  def edit
+    @architecture = current_user.architecture.find(params[:id])
   end
 
   def create
@@ -23,6 +32,7 @@ class ArchitectureController < ApplicationController
       @architecture.images.transaction do
         resize_and_convert(new_images)
         raise ActiveRecord::Rollback if @architecture.errors.any?
+
         @architecture.images.attach(new_images)
       end
     else
@@ -42,31 +52,23 @@ class ArchitectureController < ApplicationController
     end
   end
 
-  def show
-    @architecture = Architecture.find(params[:id])
-    @images = @architecture.images.map { |image| rails_blob_path(image) }.to_json.html_safe
-  end
-
-  def edit
-    @architecture = current_user.architecture.find(params[:id])
-  end
-
   def update
     @architecture = current_user.architecture.find(params[:id])
     existing_images = params[:architecture][:existing_images]
     new_images = params[:architecture][:new_images]
-    
+
     if existing_images.present? || new_images.present?
       @architecture.images.transaction do
         resize_and_convert(new_images) if new_images.present?
         raise ActiveRecord::Rollback if @architecture.errors.any?
+
         @architecture.images.where.not(id: existing_images).purge
         @architecture.images.attach(new_images) if new_images.present?
       end
     else
       @architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
     end
-  
+
     if @architecture.errors.empty?
       if @architecture.update(architecture_params)
         redirect_to @architecture, notice: t('defaults.message.updated', item: Architecture.model_name.human)
@@ -79,7 +81,7 @@ class ArchitectureController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @architecture = current_user.architecture.find(params[:id])
     @architecture.destroy!
@@ -106,9 +108,7 @@ class ArchitectureController < ApplicationController
     images.each do |image|
       if image.content_type.start_with?('image/jpeg', 'image/png', 'image/heic', 'image/heif')
         image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(1920, 1920).call
-        if image.content_type.start_with?('image/heic', 'image/heif')
-          image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).convert("jpg").call 
-        end
+        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).convert('jpg').call if image.content_type.start_with?('image/heic', 'image/heif')
       else
         @architecture.errors.add(:images, t('errors.messages.invalid_file_type'))
       end

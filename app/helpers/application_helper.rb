@@ -2,7 +2,7 @@ module ApplicationHelper
   def page_title(page_title = '')
     base_title = 'archimate'
 
-    page_title.empty? ? base_title : page_title + ' | ' + base_title
+    page_title.empty? ? base_title : "#{page_title} | #{base_title}"
   end
 
   def default_meta_tags
@@ -17,7 +17,7 @@ module ApplicationHelper
       separator: '|',
       icon: [
         { href: image_url('favicon.ico') },
-        { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+        { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' }
       ],
       og: {
         site_name: :site,
@@ -26,24 +26,22 @@ module ApplicationHelper
         type: 'website',
         url: request.original_url,
         image: image_url('lp_top.jpg'),
-        locale: 'ja_JP',
+        locale: 'ja_JP'
       },
       twitter: {
-        card: 'summary',
+        card: 'summary'
       }
     }
   end
 
-  def build_tweet_text
-    text = "マッチングした建築は…%0a%0a"
-    @matched_architecture.each_with_index do |architecture, index|
+  def build_tweet_text(matched_architecture)
+    text = 'マッチングした建築は…%0a%0a'
+    matched_architecture.each_with_index do |architecture, index|
       text += "#{index + 1}. 「#{architecture.name}」"
-      if architecture.architect.present?
-        text += "#{architecture.architect}"
-      end
-      text += "%0a"
+      text += architecture.architect.to_s if architecture.architect.present?
+      text += '%0a'
     end
-    text += "%0aでした！%0a"
+    text += '%0aでした！%0a'
     text
   end
 end

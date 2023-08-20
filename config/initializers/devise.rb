@@ -273,9 +273,9 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :twitter, Rails.application.credentials.twitter[:key], Rails.application.credentials.twitter[:secret_key], {
-    :authorize_params => {
-      :force_login => 'true',
-      :lang => 'ja'
+    authorize_params: {
+      force_login: 'true',
+      lang: 'ja'
     }
   }
 
@@ -285,8 +285,8 @@ Devise.setup do |config|
   #
   config.warden do |manager|
     manager.failure_app = CustomAuthenticationFailure
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
+    #   manager.intercept_401 = false
+    #   manager.default_strategies(scope: :user).unshift :some_external_strategy
   end
 
   # ==> Mountable engine configurations

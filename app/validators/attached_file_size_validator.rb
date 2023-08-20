@@ -5,8 +5,6 @@ class AttachedFileSizeValidator < ActiveModel::EachValidator
 
     maximum = options[:maximum]
     attachements = value.is_a?(ActiveStorage::Attached::Many) ? value.attachments : [value.attachment]
-    if attachements.any? { |attachment| attachment.byte_size >= maximum }
-      record.errors.add(attribute, :less_than, count: maximum.to_s(:human_size))
-    end
+    record.errors.add(attribute, :less_than, count: maximum.to_s(:human_size)) if attachements.any? { |attachment| attachment.byte_size >= maximum }
   end
 end
