@@ -27,9 +27,6 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
-gem 'pry-byebug'
-gem 'pry-rails'
 gem 'rails-i18n'
 gem 'enum_help'
 gem 'carrierwave'
@@ -39,12 +36,10 @@ gem 'config'
 gem 'tailwindcss-rails'
 gem 'erb-formatter'
 gem 'aws-sdk-s3', require: false
-gem 'dotenv-rails'
 gem 'meta-tags'
 gem 'devise'
 gem 'devise-i18n'
 gem 'omniauth-twitter'
-gem 'omniauth-twitter2'
 gem 'omniauth-rails_csrf_protection'
 gem 'mini_magick'
 gem 'image_processing'
@@ -67,6 +62,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'letter_opener_web'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
