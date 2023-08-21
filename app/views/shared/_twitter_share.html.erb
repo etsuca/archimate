@@ -1,6 +1,6 @@
 <div class="share_button">
   <div class="w-full mx-auto">
-    <%= link_to "https://twitter.com/share?url=%0ahttps://archim8.net&hashtags=建築マッチング,archimate&text=#{build_tweet_text}", target: '_blank',
+    <%= link_to "https://twitter.com/share?url=%0ahttps://archim8.net&hashtags=建築マッチング,archimate&text=#{build_tweet_text(@matched_architecture)}", target: '_blank',
       class: 'block w-full py-2 text-white bg-first rounded-full shadow-md transition duration-200 hover:scale-105 hover:shadow-fourth' do %>
       <div class="flex items-center justify-center">
         <i class="fa-brands fa-x-twitter"></i>

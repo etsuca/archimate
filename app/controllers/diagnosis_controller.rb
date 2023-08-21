@@ -1,4 +1,37 @@
 class DiagnosisController < ApplicationController
+  def index
+    session_key = 'architecture_order'
+
+    if session[session_key].nil?
+      others_architecture = Architecture.where(experience: 0).to_a.shuffle
+      session[session_key] = others_architecture.map(&:id)
+    else
+      shuffled_ids = session[session_key]
+      others_architecture = Architecture.where(id: shuffled_ids)
+    end
+
+    selected_tag_ids = params[:answer]
+    @match_tag_count = [0]
+    @matched_architecture = []
+
+    others_architecture.each do |architecture|
+      architecture.tags.each do |tag|
+        architecture.tmp_match_tag_count += 1 if selected_tag_ids&.include?(tag.id.to_s)
+      end
+      next unless @match_tag_count.min < architecture.tmp_match_tag_count
+
+      @match_tag_count << architecture.tmp_match_tag_count
+      @match_tag_count.delete(@match_tag_count.min) if @match_tag_count.length > 3
+      @matched_architecture << architecture
+      @matched_architecture.delete(@matched_architecture.min_by(&:tmp_match_tag_count)) if @matched_architecture.length > 3
+    end
+
+    @matched_architecture.sort! do |a, b|
+      b[:tmp_match_tag_count] <=> a[:tmp_match_tag_count]
+    end
+
+    redirect_to new_diagnosis_path, notice: 'マッチする建築がありませんでした。もう一度好みを教えてください。' if @matched_architecture.length < 3
+  end
 
   def new
     questions = [
@@ -26,46 +59,4 @@ class DiagnosisController < ApplicationController
     ]
     @selected_questions = questions.sample(7)
   end
-
-  def index
-    session_key = "architecture_order"
-  
-    if session[session_key].nil?
-      others_architecture = Architecture.where(experience: 0).to_a.shuffle
-      session[session_key] = others_architecture.map(&:id)
-    else
-      shuffled_ids = session[session_key]
-      others_architecture = Architecture.where(id: shuffled_ids)
-    end
-
-    selected_tag_ids = params[:answer]
-    @match_tag_count = [0]
-    @matched_architecture = []
-  
-    others_architecture.each do |architecture|
-      architecture.tags.each do |tag|
-        if selected_tag_ids&.include?(tag.id.to_s)
-          architecture.tmp_match_tag_count += 1
-        end
-      end
-      if @match_tag_count.min < architecture.tmp_match_tag_count
-        @match_tag_count << architecture.tmp_match_tag_count
-        if @match_tag_count.length > 3
-          @match_tag_count.delete(@match_tag_count.min)
-        end
-        @matched_architecture << architecture
-        if @matched_architecture.length > 3
-          @matched_architecture.delete(@matched_architecture.min_by { |a| a.tmp_match_tag_count })
-        end
-      end
-    end
-  
-    @matched_architecture.sort! do |a, b|
-      b[:tmp_match_tag_count] <=> a[:tmp_match_tag_count]
-    end
-  
-    if @matched_architecture.length < 3
-      redirect_to new_diagnosis_path, notice: 'マッチする建築がありませんでした。もう一度好みを教えてください。'
-    end
-  end  
 end

@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :trackable, :validatable,
-        :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
-  
+         :recoverable, :rememberable, :trackable, :validatable,
+         :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
+
   validates :name, presence: true, length: { maximum: 255 }, on: :create
   # validate :password_complexity
   has_many :architecture, dependent: :destroy
@@ -13,15 +13,13 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.where(uid: auth.uid, provider: auth.provider).first
 
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        name:     auth[:info][:name],
-        email:    User.dummy_email(auth),
-        password: Devise.friendly_token[0, 20]
-      )
-    end
+    user ||= User.create(
+      uid: auth.uid,
+      provider: auth.provider,
+      name: auth[:info][:name],
+      email: User.dummy_email(auth),
+      password: Devise.friendly_token[0, 20]
+    )
     user
   end
 
@@ -41,27 +39,28 @@ class User < ApplicationRecord
     like_architecture.include?(architecture)
   end
 
-  def update_without_password(params, *options)
+  def update_without_password(params, *)
     params.delete(:current_password)
 
-    if params[:password].blank? && params[:password_confirmation].blank? 
+    if params[:password].blank? && params[:password_confirmation].blank?
       params.delete(:password)
       params.delete(:password_confirmation)
     end
 
-    result = update(params, *options)
+    result = update(params, *)
     clean_up_passwords
     result
   end
 
   private
-  
-  def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
-  end
 
   def password_complexity
     return if password.blank? || password =~ /(?=.*?[a-z])(?=.*?[0-9])/
-    errors.add :password, "は数字と英字を混ぜたものを入力してください"
+
+    errors.add :password, 'は数字と英字を混ぜたものを入力してください'
+  end
+
+  private_class_method def self.dummy_email(auth)
+    "#{auth.uid}-#{auth.provider}@example.com"
   end
 end

@@ -9,9 +9,7 @@ class LikesController < ApplicationController
   def create
     @architecture = Architecture.find(params[:architecture_id])
     current_user.like(@architecture)
-    if URI(request.referer.to_s).path == root_path
-      redirect_back fallback_location: root_path
-    end
+    redirect_back fallback_location: root_path if URI(request.referer.to_s).path == root_path
   end
 
   def destroy
