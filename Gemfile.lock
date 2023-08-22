@@ -109,6 +109,7 @@ GEM
       warden (~> 1.2.3)
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
+    diff-lcs (1.5.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dry-configurable (1.0.1)
@@ -149,6 +150,11 @@ GEM
       syntax_tree (~> 6.0)
     erubi (1.12.0)
     excon (0.100.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.15.5)
     fog-aws (3.19.0)
       fog-core (~> 2.1)
@@ -345,6 +351,23 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    rspec-core (3.12.2)
+      rspec-support (~> 3.12.0)
+    rspec-expectations (3.12.3)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-mocks (3.12.6)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.12.0)
+    rspec-rails (6.0.3)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
+    rspec-support (3.12.1)
     rubocop (1.56.0)
       base64 (~> 0.1.1)
       json (~> 2.3)
@@ -445,6 +468,7 @@ DEPENDENCIES
   devise-i18n
   enum_help
   erb-formatter
+  factory_bot_rails
   fog-aws
   image_processing
   jbuilder (~> 2.7)
@@ -465,6 +489,7 @@ DEPENDENCIES
   rails (~> 6.1.7, >= 6.1.7.3)
   rails-i18n
   ransack
+  rspec-rails
   rubocop
   rubocop-performance
   rubocop-rails
