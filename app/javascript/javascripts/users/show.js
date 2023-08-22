@@ -14,7 +14,7 @@ document.addEventListener('turbolinks:load', () => {
     fetch('data/prefectures.geojson')
       .then(response => response.json())
       .then(data => {
-        fetch('architecture.json')
+        fetch('users_architecture.json')
           .then(response => response.json())
           .then(architecture => {
             const prefCounts = {};

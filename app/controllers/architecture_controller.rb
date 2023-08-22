@@ -4,11 +4,6 @@ class ArchitectureController < ApplicationController
   def index
     @q = Architecture.ransack(params[:q])
     @architecture = @q.result(distinct: true).where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
-    users_architecture = current_user.architecture
-    respond_to do |format|
-      format.html
-      format.json { render json: users_architecture }
-    end
   end
 
   def show
