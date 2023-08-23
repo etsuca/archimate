@@ -89,6 +89,9 @@ ja:
       title: '%{architecture_name}'
     edit:
       title: '建築を編集'
+    search:
+      title: '建築をさがす'
+      search_index: '検索結果'
   likes:
     index:
       title: 'Likeした建築'

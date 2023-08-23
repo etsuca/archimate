@@ -17,11 +17,12 @@ Rails.application.routes.draw do
   get 'welcome', to: 'static_pages#welcome'
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
-  get '/users_architecture', to: 'json_data#users_architecture'
+  get 'users_architecture', to: 'json_data#users_architecture'
 
   resources :architecture do
     collection do
       get :check_in
+      get :search
     end
   end
   resources :likes, only: %i[index create destroy]

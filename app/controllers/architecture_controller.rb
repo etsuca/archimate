@@ -93,6 +93,11 @@ class ArchitectureController < ApplicationController
     @architect = params[:architect]
   end
 
+  def search
+    @q = Architecture.ransack(params[:q])
+    @architecture = @q.result(distinct: true).where.not(user_id: current_user.id).order(created_at: :desc).page(params[:page])
+  end
+
   private
 
   def architecture_params
