@@ -13,12 +13,12 @@ Turbolinks.start()
 ActiveStorage.start()
 
 require('jquery')
-import "../javascripts/diagnosis/like_modal";
-import "../javascripts/diagnosis/new";
-import "../javascripts/shared/description";
-import "../javascripts/shared/hamburger_menu";
-import "../javascripts/shared/progress_bar";
-import "../javascripts/shared/diagnosis_progress_bar";
-import "../javascripts/architecture/preview";
-import "../javascripts/registrations/edit";
-import "../javascripts/users/show";
+import "./diagnosis/like_modal";
+import "./diagnosis/new";
+import "./shared/description";
+import "./shared/hamburger_menu";
+import "./shared/progress_bar";
+import "./shared/diagnosis_progress_bar";
+import "./architecture/preview";
+import "./registrations/edit";
+import "./users/show";
