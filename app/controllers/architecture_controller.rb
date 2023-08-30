@@ -1,13 +1,13 @@
 class ArchitectureController < ApplicationController
+  include BaseQueryConcern
+
   before_action :authenticate_user!
 
   def index
-    @q = Architecture.ransack(params[:q])
-    @architecture = @q.result(distinct: true).where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
-    users_architecture = current_user.architecture
+    @architecture = @base_query.distinct.order(created_at: :desc).page(params[:page])
     respond_to do |format|
       format.html
-      format.json { render json: users_architecture }
+      format.js { render 'index.js.erb', formats: [:js], handlers: [:erb] }
     end
   end
 

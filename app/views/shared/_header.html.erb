@@ -3,9 +3,8 @@
     <%= link_to 'archimate', root_path, class: 'text-xl mr-12' %>
     <% if user_signed_in? %>
       <div class="space-x-12 hidden lg:flex items-center text-sm">
-        <%= link_to (t 'architecture.new.title'), new_architecture_path %>
         <%= link_to (t 'architecture.index.title'), architecture_index_path %>
-        <%= link_to (t 'likes.index.title'), likes_path %>
+        <%= link_to (t 'architecture.new.title'), new_architecture_path %>
         <%= link_to (t 'diagnosis.new.title'), new_diagnosis_path %>
         <%= link_to (t 'users.show.title'), user_path %>
         <%= link_to (t 'defaults.logout'), destroy_user_session_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %>
@@ -24,9 +23,8 @@
           </button>
           <ul id="menu" class="fixed top-0 left-0 z-10 w-full translate-x-full text-sm bg-third text-center transition duration-300 ease-linear">
             <li class="p-3"><%= link_to (t 'header.top'), root_path %></li>
-            <li class="p-3"><%= link_to (t 'architecture.new.title'), new_architecture_path %></li>
             <li class="p-3"><%= link_to (t 'architecture.index.title'), architecture_index_path %></li>
-            <li class="p-3"><%= link_to (t 'likes.index.title'), likes_path %></li>
+            <li class="p-3"><%= link_to (t 'architecture.new.title'), new_architecture_path %></li>
             <li class="p-3"><%= link_to (t 'diagnosis.new.title'), new_diagnosis_path %></li>
             <li class="p-3"><%= link_to (t 'users.show.title'), user_path %></li>
             <li class="p-3"><%= link_to (t 'defaults.logout'), destroy_user_session_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %></li>
