@@ -22,3 +22,5 @@ import "./shared/diagnosis_progress_bar";
 import "./architecture/preview";
 import "./registrations/edit";
 import "./users/show";
+import "./shared/keep_search_params";
+import "./shared/tag";

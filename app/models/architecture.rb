@@ -19,19 +19,11 @@ class Architecture < ApplicationRecord
   enum open_range: { unpublish: 0, publish: 1 }
   enum experience: { possible: 0, impossible: 1 }
 
-  def self.ransackable_attributes(_auth_object = nil)
-    ['architect', 'created_at', 'description', 'id', 'images', 'location', 'name', 'open_range', 'updated_at', 'user_id']
-  end
-
   def self.not_by(user)
     where.not(user_id: user.id)
   end
 
   def by?(user)
     user_id == user.id
-  end
-
-  def self.ransackable_associations(_auth_object = nil)
-    ['tag_architecture_relationships', 'tags', 'user']
   end
 end

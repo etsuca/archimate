@@ -21,7 +21,7 @@ ja:
       logout_confirm: 'ログアウトしますか？'
       destroy_confirm: '削除しますか？'
       user_delete_confirm: '退会しますか？'
-      keywords: 'キーワードを入力'
+      keywords: 'キーワードを入力（例）コルビュジエ 東京'
   errors:
     messages:
       too_many_files: は%{count}枚以内で入力してください
@@ -81,21 +81,18 @@ ja:
         Change my password: 'パスワードを変更'
   architecture:
     index:
-      title: '訪れた建築'
-      no_result: '記録した建築がありません'
+      title: '建築を探す'
+      no_result: '建築がありません'
+      Visited Architecture: '訪れた建築'
+      Others Architecture: '他のユーザーの建築'
+      Liked Architecture: 'Likeした建築'
     new:
       title: '建築を記録'
     show:
       title: '%{architecture_name}'
     edit:
       title: '建築を編集'
-    search:
-      title: '建築をさがす'
-      search_index: '検索結果'
   likes:
-    index:
-      title: 'Likeした建築'
-      no_result: 'Likeした建築がありません'
     create:
       success: 'Like'
     destroy:

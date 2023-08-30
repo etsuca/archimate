@@ -1,9 +1,18 @@
 class ArchitectureController < ApplicationController
+  include BaseQueryConcern
+
   before_action :authenticate_user!
 
   def index
-    @q = Architecture.ransack(params[:q])
-    @architecture = @q.result(distinct: true).where(user_id: current_user.id).order(created_at: :desc).page(params[:page])
+    @architecture = @base_query.distinct.order(created_at: :desc).page(params[:page])
+    respond_to do |format|
+      format.html do
+      end
+
+      format.js do
+        render 'index.js.erb', formats: [:js], handlers: [:erb]
+      end
+    end
   end
 
   def show
@@ -91,11 +100,6 @@ class ArchitectureController < ApplicationController
     @open_range = params[:open_range]
     @experience = params[:experience]
     @architect = params[:architect]
-  end
-
-  def search
-    @q = Architecture.ransack(params[:q])
-    @architecture = @q.result(distinct: true).where.not(user_id: current_user.id).order(created_at: :desc).page(params[:page])
   end
 
   private
