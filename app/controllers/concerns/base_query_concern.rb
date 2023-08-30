@@ -13,7 +13,7 @@ module BaseQueryConcern
     keyword = params[:keyword]
 
     @base_query = if params[:category] == 'others_architecture'
-                    Architecture.not_by(current_user)
+                    Architecture.not_by(current_user).where(open_range: 1)
                   elsif params[:category] == 'liked_architecture'
                     current_user.like_architecture
                   else
