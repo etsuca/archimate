@@ -65,6 +65,7 @@ document.addEventListener('turbolinks:load', () => {
   // 選択されたカテゴリに応じてラジオボタンの選択状態を設定
   if (visitedRadio || othersRadio || likedRadio) {
     const selectedCategory = urlParams.get('category');
+    const form = document.querySelector('form');
     visitedRadio.checked = selectedCategory === 'visited_architecture';
     othersRadio.checked = selectedCategory === 'others_architecture';
     likedRadio.checked = selectedCategory === 'liked_architecture';
@@ -72,18 +73,21 @@ document.addEventListener('turbolinks:load', () => {
     visitedRadio.addEventListener('change', () => {
       if (visitedRadio.checked) {
         updateQueryParam('category', 'visited_architecture');
+        form.submit();
       }
     });
 
     othersRadio.addEventListener('change', () => {
       if (othersRadio.checked) {
         updateQueryParam('category', 'others_architecture');
+        form.submit();
       }
     });
 
     likedRadio.addEventListener('change', () => {
       if (likedRadio.checked) {
         updateQueryParam('category', 'liked_architecture');
+        form.submit();
       }
     });
   }
