@@ -4,6 +4,7 @@ document.addEventListener('turbolinks:load', () => {
   tagButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const checkbox = button.previousElementSibling;
+      const form = document.querySelector('form');
 
       checkbox.checked = !checkbox.checked;
 
@@ -19,6 +20,7 @@ document.addEventListener('turbolinks:load', () => {
         .map((checkbox) => checkbox.value);
 
       updateQueryParam('tag_ids[]', selectedTagIds);
+      form.submit();
     });
   });
 
