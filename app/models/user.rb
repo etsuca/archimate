@@ -2,24 +2,27 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :timeoutable, :omniauthable, omniauth_providers: [:twitter]
+         :lockable, :timeoutable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :name, presence: true, length: { maximum: 255 }, on: :create
-  # validate :password_complexity
   has_many :architecture, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_architecture, through: :likes, source: :architecture
 
   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+    user = User.where(provider: auth.provider, uid: auth.uid).first
 
-    user ||= User.create(
-      uid: auth.uid,
-      provider: auth.provider,
-      name: auth[:info][:name],
-      email: User.dummy_email(auth),
-      password: Devise.friendly_token[0, 20]
-    )
+    unless user
+      user = User.create(
+        name: auth.info.name,
+        provider: auth.provider,
+        uid: auth.uid,
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20],
+        avatar: auth.info.image
+      )
+    end
+    
     user
   end
 

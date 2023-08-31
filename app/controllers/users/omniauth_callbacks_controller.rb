@@ -1,6 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def twitter
-    callback_from :twitter
+  def google_oauth2
+    callback_from :google_oauth2
   end
 
   private
