@@ -30,12 +30,14 @@
         </div>
       </div>
       <%- if devise_mapping.omniauthable? %>
-        <% twitter_provider = resource_class.omniauth_providers.first %>
-        <%= button_to omniauth_authorize_path(resource_name, twitter_provider), data: { turbo: false }, class: 'block w-full py-4 text-first rounded-full shadow-md transition duration-200 hover:shadow-fourth' do %>
-          <div class="flex items-center justify-center">
-            <i class="fa-brands fa-x-twitter"></i>
-            <span class="ml-4"><%= t ('.Log in with Twitter') %></span>
-          </div>
+        <% google_provider = resource_class.omniauth_providers.include?(:google_oauth2) ? :google_oauth2 : nil %>
+        <% if google_provider %>
+          <%= button_to omniauth_authorize_path(resource_name, google_provider), data: { turbo: false }, class: 'block w-full py-4 text-first rounded-full shadow-md transition duration-200 hover:shadow-fourth' do %>
+            <div class="flex items-center justify-center">
+              <i class="fa-brands fa-google"></i>
+              <span class="ml-4"><%= t('.Log in with Google') %></span>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
       <div class="relative my-4">

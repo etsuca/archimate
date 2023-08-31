@@ -49,7 +49,7 @@ ja:
     sessions:
       new:
         title: 'ログイン'
-        Log in with Twitter: 'Twitterでログイン'
+        Log in with Google: 'Googleでログイン'
         Forget password?: 'パスワードをお忘れですか？'
         to_register_page: '新規会員登録'
         Trial: 'お試しはこちらから'
@@ -63,7 +63,7 @@ ja:
     registrations:
       new:
         title: '新規会員登録'
-        Sign Up with Twitter: 'Twitterで登録'
+        Sign Up with Google: 'Googleで登録'
         For member: '会員登録がお済みの方'
       edit:
         title: 'プロフィールを編集'

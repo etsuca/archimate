@@ -39,7 +39,7 @@ gem 'aws-sdk-s3', require: false
 gem 'meta-tags'
 gem 'devise'
 gem 'devise-i18n'
-gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'mini_magick'
 gem 'image_processing'
