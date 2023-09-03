@@ -1,14 +1,11 @@
 class ArchitectureController < ApplicationController
   include BaseQueryConcern
-
+  include ArchitectureImagesConcern
   before_action :authenticate_user!
+  before_action :find_architecture, only: [:edit, :update, :destroy]
 
   def index
     @architecture = @base_query.distinct.order(created_at: :desc).page(params[:page])
-    respond_to do |format|
-      format.html
-      format.js { render 'index.js.erb', formats: [:js], handlers: [:erb] }
-    end
   end
 
   def show
@@ -20,32 +17,13 @@ class ArchitectureController < ApplicationController
     @architecture = Architecture.new
   end
 
-  def edit
-    @architecture = current_user.architecture.find(params[:id])
-  end
+  def edit; end
 
   def create
     @architecture = current_user.architecture.build(architecture_params)
-    new_images = params[:architecture][:new_images]
 
-    if new_images.present?
-      @architecture.images.transaction do
-        resize_and_convert(new_images)
-        raise ActiveRecord::Rollback if @architecture.errors.any?
-
-        @architecture.images.attach(new_images)
-      end
-    else
-      @architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
-    end
-
-    if @architecture.errors.empty?
-      if @architecture.save
-        redirect_to @architecture, notice: t('defaults.message.created', item: Architecture.model_name.human)
-      else
-        flash.now['notice'] = @architecture.errors.full_messages.first
-        render :new
-      end
+    if save_architecture_with_images(@architecture)
+      redirect_to @architecture, notice: t('defaults.message.created', item: Architecture.model_name.human)
     else
       flash.now['notice'] = @architecture.errors.full_messages.first
       render :new
@@ -53,29 +31,8 @@ class ArchitectureController < ApplicationController
   end
 
   def update
-    @architecture = current_user.architecture.find(params[:id])
-    existing_images = params[:architecture][:existing_images]
-    new_images = params[:architecture][:new_images]
-
-    if existing_images.present? || new_images.present?
-      @architecture.images.transaction do
-        resize_and_convert(new_images) if new_images.present?
-        raise ActiveRecord::Rollback if @architecture.errors.any?
-
-        @architecture.images.where.not(id: existing_images).purge
-        @architecture.images.attach(new_images) if new_images.present?
-      end
-    else
-      @architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
-    end
-
-    if @architecture.errors.empty?
-      if @architecture.update(architecture_params)
-        redirect_to @architecture, notice: t('defaults.message.updated', item: Architecture.model_name.human)
-      else
-        flash.now['notice'] = @architecture.errors.full_messages.first
-        render :edit
-      end
+    if update_architecture_with_images(@architecture)
+      redirect_to @architecture, notice: t('defaults.message.updated', item: Architecture.model_name.human)
     else
       flash.now['notice'] = @architecture.errors.full_messages.first
       render :edit
@@ -83,7 +40,6 @@ class ArchitectureController < ApplicationController
   end
 
   def destroy
-    @architecture = current_user.architecture.find(params[:id])
     @architecture.destroy!
     redirect_to architecture_index_path, notice: t('defaults.message.deleted', item: Architecture.model_name.human)
   end
@@ -104,14 +60,43 @@ class ArchitectureController < ApplicationController
     params.require(:architecture).permit(:name, :pref, :location, :architect, :description, :open_range, :experience, images: [], tag_ids: [])
   end
 
-  def resize_and_convert(images)
-    images.each do |image|
-      if image.content_type.start_with?('image/jpeg', 'image/png', 'image/heic', 'image/heif')
-        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(1920, 1920).call
-        image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).convert('jpg').call if image.content_type.start_with?('image/heic', 'image/heif')
-      else
-        @architecture.errors.add(:images, t('errors.messages.invalid_file_type'))
+  def find_architecture
+    @architecture = current_user.architecture.find(params[:id])
+  end
+
+  def save_architecture_with_images(architecture)
+    new_images = params[:architecture][:new_images]
+
+    if new_images.present?
+      architecture.images.transaction do
+        resize_and_convert(new_images)
+        architecture.save
+        raise ActiveRecord::Rollback if architecture.errors.any?
+
+        architecture.images.attach(new_images)
       end
+    else
+      architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
+      false
+    end
+  end
+
+  def update_architecture_with_images(architecture)
+    existing_images = params[:architecture][:existing_images]
+    new_images = params[:architecture][:new_images]
+
+    if existing_images.present? || new_images.present?
+      architecture.images.transaction do
+        resize_and_convert(new_images) if new_images.present?
+        architecture.update(architecture_params)
+        raise ActiveRecord::Rollback if architecture.errors.any?
+
+        architecture.images.where.not(id: existing_images).purge
+        architecture.images.attach(new_images) if new_images.present?
+      end
+    else
+      architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
+      false
     end
   end
 end

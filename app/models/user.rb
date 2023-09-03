@@ -12,17 +12,15 @@ class User < ApplicationRecord
   def self.find_for_oauth(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
-    unless user
-      user = User.create(
-        name: auth.info.name,
-        provider: auth.provider,
-        uid: auth.uid,
-        email: auth.info.email,
-        password: Devise.friendly_token[0, 20],
-        avatar: auth.info.image
-      )
-    end
-    
+    user ||= User.create(
+      name: auth.info.name,
+      provider: auth.provider,
+      uid: auth.uid,
+      email: auth.info.email,
+      password: Devise.friendly_token[0, 20],
+      avatar: auth.info.image
+    )
+
     user
   end
 
