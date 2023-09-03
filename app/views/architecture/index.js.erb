@@ -1,5 +1,0 @@
-<% if @architecture.present? %>
-  $('.grid').html('<%= j render @architecture %>');
-<% else %>
-  $('.grid').html('<p><%= j t('.no_result') %></p>');
-<% end %>

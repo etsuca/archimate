@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   resources :architecture do
     collection do
       get :check_in
-      get :search
     end
   end
   resources :likes, only: %i[index create destroy]

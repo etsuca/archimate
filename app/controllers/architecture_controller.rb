@@ -5,10 +5,6 @@ class ArchitectureController < ApplicationController
 
   def index
     @architecture = @base_query.distinct.order(created_at: :desc).page(params[:page])
-    respond_to do |format|
-      format.html
-      format.js { render 'index.js.erb', formats: [:js], handlers: [:erb] }
-    end
   end
 
   def show
