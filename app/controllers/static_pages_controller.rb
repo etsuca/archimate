@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  include ArchitectureHelper
   before_action :authenticate_user!, only: %i[top]
 
   def top
