@@ -70,7 +70,6 @@ class ArchitectureController < ApplicationController
     if new_images.present?
       architecture.images.transaction do
         resize_and_convert(new_images)
-        architecture.save
         raise ActiveRecord::Rollback if architecture.errors.any?
 
         architecture.images.attach(new_images)
@@ -79,6 +78,8 @@ class ArchitectureController < ApplicationController
       architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
       false
     end
+
+    architecture.errors.empty? && architecture.save
   end
 
   def update_architecture_with_images(architecture)
@@ -88,9 +89,8 @@ class ArchitectureController < ApplicationController
     if existing_images.present? || new_images.present?
       architecture.images.transaction do
         resize_and_convert(new_images) if new_images.present?
-        architecture.update(architecture_params)
         raise ActiveRecord::Rollback if architecture.errors.any?
-
+        
         architecture.images.where.not(id: existing_images).purge
         architecture.images.attach(new_images) if new_images.present?
       end
@@ -98,5 +98,7 @@ class ArchitectureController < ApplicationController
       architecture.errors.add(:images, t('errors.messages.no_picture_selected'))
       false
     end
+
+    architecture.errors.empty? && architecture.update(architecture_params)
   end
 end
