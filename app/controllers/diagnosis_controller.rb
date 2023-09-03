@@ -25,14 +25,16 @@ class DiagnosisController < ApplicationController
   def find_matched_architecture(selected_tag_ids)
     shuffled_ids = session['architecture_order']
     others_architecture = Architecture.where(id: shuffled_ids)
-    match_tag_count = 0
+    match_tag_count = [0]
     matched_architecture = []
 
     others_architecture.each do |architecture|
       architecture.tmp_match_tag_count = architecture.tags.where(id: selected_tag_ids).count
-      next if match_tag_count >= architecture.tmp_match_tag_count
+      next if match_tag_count.min >= architecture.tmp_match_tag_count
 
-      match_tag_count = architecture.tmp_match_tag_count
+      match_tag_count << architecture.tmp_match_tag_count
+      match_tag_count.delete(match_tag_count.min) if match_tag_count.length > 3
+
       matched_architecture.push(architecture)
       matched_architecture.sort_by! { |a| -a.tmp_match_tag_count }
       matched_architecture.pop if matched_architecture.length > 3
