@@ -32,7 +32,7 @@ class Users::SessionsController < Devise::SessionsController
     random_password = Devise.friendly_token[0, 20]
     user = User.create!(name: 'ゲストユーザー', email: "guest_#{random_value}@example.com", password: random_password)
     sign_in user
-    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。ログアウトする前にプロフィールを更新してください。'
+    redirect_to after_sign_in_path_for(user), notice: 'ゲストユーザーとしてログインしました。ログアウトする前にプロフィールを更新してください。'
   end
 
   def after_sign_in_path_for(resource_or_scope)
