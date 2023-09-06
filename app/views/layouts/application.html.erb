@@ -18,6 +18,16 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.css" rel="stylesheet" />
   </head>
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9R819YPTPL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9R819YPTPL');
+  </script>
+
   <body class="font-open_sans text-sm md:text-base text-first bg-third">
     <%= render 'shared/header' %>
     <%= render 'shared/flash_message' %>
