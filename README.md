@@ -15,12 +15,12 @@ https://archim8.net
 - Ruby 3.2.2
 - Ruby on Rails 6.1.7.3
 - PostgreSQL 14.8
-- jQuery
+- Javascript
 - Puma
 - Heroku
 - AWS S3
 - Mapbox API
-- X API
+- Google API
 ## メインのターゲットユーザー  
 建築学生、美大生、建築に興味はあるけど知識はあまり無い人  
 自分がこれまでに訪れた建築を記録したい人  
