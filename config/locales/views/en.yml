@@ -1,0 +1,5 @@
+en:
+  faker:
+    architecture:
+      building_name: ['Modern Tower', 'Classic Mansion', 'Urban Loft', 'Rural Cottage', 'Contemporary Villa']
+      description: ['A beautiful modern structure.', 'A historic landmark.', 'A cozy family home.']
