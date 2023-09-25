@@ -13,7 +13,7 @@ class User < ApplicationRecord
     user = User.where(provider: auth.provider, uid: auth.uid).first
 
     user ||= User.create(
-      name: auth.info.name,
+      name: 'ゲストユーザー',
       provider: auth.provider,
       uid: auth.uid,
       email: auth.info.email,
@@ -51,17 +51,5 @@ class User < ApplicationRecord
     result = update(params, *)
     clean_up_passwords
     result
-  end
-
-  private
-
-  def password_complexity
-    return if password.blank? || password =~ /(?=.*?[a-z])(?=.*?[0-9])/
-
-    errors.add :password, 'は数字と英字を混ぜたものを入力してください'
-  end
-
-  private_class_method def self.dummy_email(auth)
-    "#{auth.uid}-#{auth.provider}@example.com"
   end
 end
