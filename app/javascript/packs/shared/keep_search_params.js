@@ -124,11 +124,9 @@ document.addEventListener('turbolinks:load', () => {
 
   const currentPageURL = window.location.pathname;
   if (currentPageURL === '/architecture') {
-    const defaultCategory = 'visited_architecture'; // デフォルトのカテゴリを設定
+    const defaultCategory = 'visited_architecture';
     const currentCategory = urlParams.get('category');
     if (!currentCategory) {
-      // URLにカテゴリが設定されていない場合に設定
-      updateQueryParam('category', defaultCategory);
       visitedRadio.checked = true;
     }
   }

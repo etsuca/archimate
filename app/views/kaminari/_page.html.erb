@@ -8,5 +8,9 @@
     remote:        data-remote
 -%>
 <span class="page<%= ' current' if page.current? %>">
-  <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} %>
+  <% if page.current? %>
+    <span class="text-white bg-first px-3 py-2 rounded"><%= page %></span>
+  <% else %>
+    <%= link_to page, url, remote: remote, rel: page.rel, class: "text-first hover:bg-third transition duration-300 ease-in-out text-gray-800 font-light py-2 px-3 border border-none rounded" %>
+  <% end %>
 </span>

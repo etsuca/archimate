@@ -21,5 +21,5 @@ module QuestionsData
     { title: '素敵な色使いに惹かれる😳', tag_id: Tag.find(19).id, image: '19.jpg' },
     { title: '常識に縛られずに生きていたい🥳', tag_id: Tag.find(20).id, image: '20.jpg' },
     { title: 'シンプルなものが好き💃', tag_id: Tag.find(21).id, image: '21.jpg' }
-  ]
+  ].freeze
 end

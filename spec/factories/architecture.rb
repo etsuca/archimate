@@ -14,10 +14,10 @@ FactoryBot.define do
     end
 
     after(:build) do |architecture, evaluator|
-      architecture.images.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'sample.jpg')), filename: 'sample.jpg', content_type: 'image/jpeg')
+      architecture.images.attach(io: Rails.root.join('spec/fixtures/sample.jpg').open, filename: 'sample.jpg', content_type: 'image/jpeg')
       if evaluator.image_count > 1
         (evaluator.image_count - 1).times do
-          architecture.images.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'sample.jpg')), filename: 'sample.jpg', content_type: 'image/jpeg')
+          architecture.images.attach(io: Rails.root.join('spec/fixtures/sample.jpg').open, filename: 'sample.jpg', content_type: 'image/jpeg')
         end
       end
     end
