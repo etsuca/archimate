@@ -6,7 +6,7 @@ FactoryBot.define do
     password_confirmation { 'password123' }
 
     factory :user_with_avatar do
-      avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec', 'support', 'avatar.jpg')) }
+      avatar { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/avatar.jpg').to_s) }
     end
   end
 end

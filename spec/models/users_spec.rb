@@ -73,7 +73,7 @@ RSpec.describe User, type: :model do
 
   describe '#own?' do
     it 'returns true if the user owns the object' do
-      object = create(:architecture, user: user)
+      object = create(:architecture, user:)
       expect(user.own?(object)).to eq(true)
     end
 
@@ -104,7 +104,7 @@ RSpec.describe User, type: :model do
       user.like(architecture)
       expect(user.like?(architecture)).to be(true)
     end
-  
+
     it 'returns false if the user does not like the architecture' do
       expect(user.like?(architecture)).to be(false)
     end
@@ -118,7 +118,7 @@ RSpec.describe User, type: :model do
       expect(user.name).to eq('New Name')
       expect(user.email).to eq('new_email@example.com')
     end
-  
+
     it 'does not change the password when password params are blank' do
       old_password = user.encrypted_password
       params = { name: 'New Name', email: 'new_email@example.com', password: '', password_confirmation: '' }

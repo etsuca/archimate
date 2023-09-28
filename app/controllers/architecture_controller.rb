@@ -90,7 +90,7 @@ class ArchitectureController < ApplicationController
       architecture.images.transaction do
         resize_and_convert(new_images) if new_images.present?
         raise ActiveRecord::Rollback if architecture.errors.any?
-        
+
         architecture.images.where.not(id: existing_images).purge
         architecture.images.attach(new_images) if new_images.present?
       end
