@@ -81,6 +81,9 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
   database: archimate_production
-  username: archimate
-  password: <%= ENV['ARCHIMATE_DATABASE_PASSWORD'] %>
+  username: postgres
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: ip-172-31-47-198.ap-northeast-1.compute.internal
+  port: 5432
