@@ -83,7 +83,6 @@ production:
   <<: *default
   adapter: postgresql
   database: archimate_production
-  username: postgres
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: ip-172-31-47-198.ap-northeast-1.compute.internal
-  port: 5432
+  username: <%= Rails.application.credentials.db[:user_name] %>
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:host] %>
