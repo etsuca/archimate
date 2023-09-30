@@ -85,4 +85,4 @@ production:
   database: archimate_production
   username: <%= Rails.application.credentials.db[:user_name] %>
   password: <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:host] %>
+  host: <%= Rails.application.credentials.db[:endpoint] %>
