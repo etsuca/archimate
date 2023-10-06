@@ -1,42 +1,46 @@
-<%= form_with url: url, method: :get, id: 'search-form' do |f| %>
-  <div class="flex flex-col justify-center mb-6 text-xs">
-    <form class="flex">
-      <div class="w-full mb-2">
-        <%= f.search_field :keyword, id: 'search-field', placeholder: t('defaults.message.keywords'), class: 'w-full px-4 py-1 text-sm rounded-full focus:border-transparent focus:ring-2 focus:ring-second' %>
-      </div>
-      <div class="w-full mb-2">
-        <%= f.select :pref, all_prefectures_options, { include_blank: '都道府県を選択', class: 'text-second' }, id: 'pref-select', class: 'w-full px-4 py-1 text-sm rounded-full focus:border-transparent focus:ring-2 focus:ring-second' %>
-      </div>
-      <div class="flex px-4 py-1 mb-2 w-full bg-second text-center rounded-full hover:scale-105 hover:shadow-lg">
-        <%= button_tag type: "submit", class: "w-full" do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <a>Search</a>
-        <% end %>
-      </div>
-      <div class="flex flex-wrap">
-        <label class="flex items-center mr-4 mb-2">
-          <%= f.radio_button :category, 'visited_architecture', id: 'visited-radio', class: 'form-radio' %>
-          <span class="ml-2"><%= t('architecture.index.Visited Architecture') %></span>
-        </label>
-        <label class="flex items-center mr-4 mb-2">
-          <%= f.radio_button :category, 'others_architecture', id: 'others-radio', class: 'form-radio' %>
-          <span class="ml-2"><%= t('architecture.index.Others Architecture') %></span>
-        </label>
-        <label class="flex items-center mb-2">
-          <%= f.radio_button :category, 'liked_architecture', id: 'liked-radio', class: 'form-radio' %>
-          <span class="ml-2"><%= t('architecture.index.Liked Architecture') %></span>
-        </label>
-      </div>
-      <div class="flex flex-wrap">
-        <% Tag.all.each do |tag| %>
-          <label class="flex items-center mr-2 mb-2">
-            <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>" class="tag-button form-checkbox hidden">
-            <button type="button" class="tag-button px-2 py-1 rounded-full border border-gray-300 text-gray-600">
-              <a># <%= tag.name %></a>
-            </button>
+<div class="result-container relative">
+  <%= form_with url: url, local: false, method: :get, id: 'search-form' do |f| %>
+    <div class="flex flex-col justify-center bg-third p-6 md:p-12 mb-6 sm:mb-8 lg:mb-12 text-xs">
+      <form class="flex">
+        <div class="flex flex-col md:flex-row">
+          <div class="w-full mb-6 md:mr-6">
+            <%= f.search_field :keyword, id: 'search-field', placeholder: t('defaults.message.keywords'), class: 'w-full px-4 py-1 rounded-full text-sm focus:border-transparent focus:ring-2 focus:ring-second' %>
+          </div>
+          <div class="w-full flex mb-6 md:flex-none md:w-[12rem]">
+            <%= f.select :pref, all_prefectures_options, { include_blank: '都道府県を選択', class: 'text-second' }, id: 'pref-select', class: 'w-full px-4 py-1 rounded-full text-sm focus:border-transparent focus:ring-2 focus:ring-second' %>
+          </div>
+        </div>
+        <div class="flex px-4 py-1 mb-6 w-full bg-second text-center rounded-full hover:scale-105 hover:shadow-lg">
+          <%= button_tag type: "submit", class: "w-full" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <a>Search</a>
+          <% end %>
+        </div>
+        <div class="flex flex-wrap">
+          <label class="flex items-center mr-4 mb-6">
+            <%= f.radio_button :category, 'visited_architecture', id: 'visited-radio', class: 'form-radio' %>
+            <span class="ml-1"><%= t('architecture.index.Visited Architecture') %></span>
           </label>
-        <% end %>
-      </div>
-    </form>
-  </div>
-<% end %>
+          <label class="flex items-center mr-4 mb-6">
+            <%= f.radio_button :category, 'others_architecture', id: 'others-radio', class: 'form-radio' %>
+            <span class="ml-1"><%= t('architecture.index.Others Architecture') %></span>
+          </label>
+          <label class="flex items-center mb-6">
+            <%= f.radio_button :category, 'liked_architecture', id: 'liked-radio', class: 'form-radio' %>
+            <span class="ml-1"><%= t('architecture.index.Liked Architecture') %></span>
+          </label>
+        </div>
+        <div class="flex flex-wrap">
+          <% Tag.all.each do |tag| %>
+            <label class="flex items-center mr-2 mb-2 md:mb-3 text-xxs md:text-xs">
+              <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>" class="tag-button form-checkbox hidden">
+              <button type="button" class="tag-button px-2 py-1 rounded-full border border-gray-300 text-gray-600">
+                <a># <%= tag.name %></a>
+              </button>
+            </label>
+          <% end %>
+        </div>
+      </form>
+    </div>
+  <% end %>
+</div>
