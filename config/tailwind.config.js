@@ -27,9 +27,6 @@ module.exports = {
       fontFamily: {
         open_sans: ['Open Sans', 'sans-serif']
       },
-      fontSize: {
-        xxs:['0.625em',{lineHeight:'1rem'}],
-      },
       width: {
         '128': '32rem',
         '144': '36rem',

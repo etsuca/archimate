@@ -19,7 +19,6 @@ document.addEventListener('turbolinks:load', () => {
       const selectedTagIds = Array.from(document.querySelectorAll('input[name="tag_ids[]"]:checked'))
         .map((checkbox) => checkbox.value);
 
-      updateQueryParam('tag_ids[]', selectedTagIds);
       form.submit();
     });
   });
@@ -40,17 +39,3 @@ document.addEventListener('turbolinks:load', () => {
     }
   });
 });
-
-function updateQueryParam(paramName, paramValue) {
-  const newUrlParams = new URLSearchParams(window.location.search);
-  if (Array.isArray(paramValue)) {
-    newUrlParams.delete(paramName); // 既存の同名パラメータを削除
-    paramValue.forEach(value => {
-      newUrlParams.append(paramName, value); // 配列の要素を追加
-    });
-  } else {
-    newUrlParams.set(paramName, paramValue); // パラメータを設定
-  }
-  // ページの URL を更新
-  history.replaceState(null, null, `?${newUrlParams.toString()}`);
-}
