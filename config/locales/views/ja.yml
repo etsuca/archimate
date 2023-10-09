@@ -13,9 +13,9 @@ ja:
     Le Corbusier: '例 : ル・コルビュジエ'
     characters minimum: '文字以上'
     message:
-      require_login: 'ログインしてください'
-      created: "%{item}を記録しました"
-      updated: "%{item}を更新しました"
+      require_login: 'ログインしてください。'
+      created: "%{item}を記録しました。"
+      updated: "%{item}を更新しました。"
       deleted: "%{item}を削除しました"
       delete_confirm: '削除しますか？'
       logout_confirm: 'ログアウトしますか？'
@@ -24,10 +24,10 @@ ja:
       keywords: 'キーワードを入力（例）コルビュジエ 東京'
   errors:
     messages:
-      too_many_files: は%{count}枚以内で入力してください
-      too_few_files: は%{count}枚以上で入力してください
-      invalid_file_type: は不正なファイル形式です
-      no_picture_selected: 'が一枚も選択されていません'
+      too_many_files: は%{count}枚以内で入力してください。
+      too_few_files: は%{count}枚以上で入力してください。
+      invalid_file_type: は不正なファイル形式です。
+      no_picture_selected: 'が一枚も選択されていません。'
   time:
     formats:
       default: "%Y/%m/%d"
@@ -39,7 +39,7 @@ ja:
     Terms of Use: '利用規約'
   static_pages:
     top:
-      no_result: '表示できる建築がありません'
+      no_result: '表示できる建築がありません。'
       distance: '距離'
     privacy_policy:
       title: 'プライバシーポリシー'
@@ -56,10 +56,10 @@ ja:
         Gueat Login: 'ゲストログイン'
         For beginner: 'はじめてご利用の方'
       create:
-        success: 'ログインしました'
-        fail: 'ログインに失敗しました'
+        success: 'ログインしました。'
+        fail: 'ログインに失敗しました。'
       destroy:
-        success: 'ログアウトしました'
+        success: 'ログアウトしました。'
     registrations:
       new:
         title: '新規会員登録'
@@ -81,8 +81,8 @@ ja:
         Change my password: 'パスワードを変更'
   architecture:
     index:
-      title: '建築を探す'
-      no_result: '建築がありません'
+      title: '建築一覧'
+      no_result: '建築がありません。'
       Visited Architecture: '訪れた建築'
       Others Architecture: '他のユーザーの建築'
       Liked Architecture: 'Likeした建築'
