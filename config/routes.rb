@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     get 'registrations/update_password', to: 'users/registrations#failure'
   end
 
-  get 'welcome', to: 'static_pages#welcome'
   get 'terms', to: 'static_pages#terms'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'users_architecture', to: 'json_data#users_architecture'
