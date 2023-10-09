@@ -2,6 +2,6 @@ class CustomAuthenticationFailure < Devise::FailureApp
   protected
 
   def redirect_url
-    welcome_path
+    root_path
   end
 end
