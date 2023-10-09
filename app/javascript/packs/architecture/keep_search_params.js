@@ -1,21 +1,4 @@
 document.addEventListener('turbolinks:load', () => {
-  // クエリパラメータから選択されたタグIDを取得し、対応するチェックボックスをチェック状態にする
-  const urlParams = new URLSearchParams(window.location.search);
-  const selectedTagIds = urlParams.getAll('tag_ids[]');
-  const tagCheckboxes = document.querySelectorAll('input[type="checkbox"][name="tag_ids[]"]');
-
-  tagCheckboxes.forEach(checkbox => {
-    const tagId = checkbox.value;
-    const isChecked = selectedTagIds.includes(tagId);
-    checkbox.checked = isChecked;
-
-    checkbox.addEventListener('change', () => {
-      const selectedTags = Array.from(tagCheckboxes)
-        .filter(checkbox => checkbox.checked)
-        .map(checkbox => checkbox.value);
-      updateQueryParam('tag_ids[]', selectedTags);
-    });
-  });
 
   // フリーワード検索欄の入力状態を保持・復元
   const searchField = document.getElementById('search-field');
@@ -56,39 +39,12 @@ document.addEventListener('turbolinks:load', () => {
       }
     });
   }
-
-  // ラジオボタンの要素を取得
-  const visitedRadio = document.getElementById('visited-radio');
-  const othersRadio = document.getElementById('others-radio');
-  const likedRadio = document.getElementById('liked-radio');
-
-  // 選択されたカテゴリに応じてラジオボタンの選択状態を設定
-  if (visitedRadio || othersRadio || likedRadio) {
-    const selectedCategory = urlParams.get('category');
-    const form = document.querySelector('form');
-    visitedRadio.checked = selectedCategory === 'visited_architecture';
-    othersRadio.checked = selectedCategory === 'others_architecture';
-    likedRadio.checked = selectedCategory === 'liked_architecture';
-
-    visitedRadio.addEventListener('change', () => {
-      if (visitedRadio.checked) {
-        updateQueryParam('category', 'visited_architecture');
-        form.submit();
-      }
-    });
-
-    othersRadio.addEventListener('change', () => {
-      if (othersRadio.checked) {
-        updateQueryParam('category', 'others_architecture');
-        form.submit();
-      }
-    });
-
-    likedRadio.addEventListener('change', () => {
-      if (likedRadio.checked) {
-        updateQueryParam('category', 'liked_architecture');
-        form.submit();
-      }
+  
+  // フォームが送信されたときに 'page' パラメータを削除
+  const searchForm = document.getElementById('search-form');
+  if (searchForm) {
+    searchForm.addEventListener('submit', () => {
+      removeQueryParam('page');
     });
   }
 
@@ -120,14 +76,5 @@ document.addEventListener('turbolinks:load', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const storedValue = urlParams.get(paramName);
     return storedValue !== null ? storedValue : defaultValue;
-  }
-
-  const currentPageURL = window.location.pathname;
-  if (currentPageURL === '/architecture') {
-    const defaultCategory = 'visited_architecture';
-    const currentCategory = urlParams.get('category');
-    if (!currentCategory) {
-      visitedRadio.checked = true;
-    }
   }
 });
