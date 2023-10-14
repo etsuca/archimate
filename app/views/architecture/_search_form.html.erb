@@ -36,8 +36,8 @@
             </a>
           </label>
         </div>
-        <div id="open-button" class="flex justify-center mb-6">
-          <button type="button" class="tag-button px-2 py-1 rounded-full border border-gray-300 text-gray-600">
+        <div class="flex justify-center mb-6">
+          <button type="button" id="open-button" class="px-2 py-1 rounded-full border border-gray-300 text-gray-600">
             # タグを追加
             <i id="open-icon" class="fa-solid fa-chevron-down ml-1"></i>
             <i id="close-icon" class="fa-solid fa-chevron-up ml-1 hidden"></i>
@@ -47,7 +47,7 @@
           <div class="flex flex-wrap">
             <% Tag.all.each do |tag| %>
               <label class="flex items-center mr-2 mb-2 md:mb-3">
-                <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>" class="tag-button form-checkbox hidden">
+                <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>" class="form-checkbox hidden">
                 <button type="button" class="tag-button px-2 py-1 rounded-full border border-gray-300 text-gray-600">
                   <a># <%= tag.name %></a>
                 </button>

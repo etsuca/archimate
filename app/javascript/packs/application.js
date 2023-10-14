@@ -21,6 +21,7 @@ import "./shared/progress_bar";
 import "./diagnosis/diagnosis_progress_bar";
 import "./architecture/preview";
 import "./architecture/keep_search_params";
+import "./architecture/pagination";
 import "./architecture/tag";
 import "./architecture/tag_open";
 import "./architecture/search_range";

@@ -3,13 +3,19 @@
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8 pb-6 md:pb-12">
     <h2 class="py-12 md:py-24 text-base md:text-xl text-center"><%= t('.title') %></h2>
     <%= render 'search_form', url: architecture_index_path %>
-    <div class="grid gap-6 sm:grid-cols-2 mb-12 md:mb-20 lg:mb-24">
+    <div class="architecture-container">
       <% if @architecture.present? %>
-        <%= render @architecture %>
+        <div class="grid gap-6 sm:grid-cols-2 mb-6">
+          <%= render @architecture %>
+        </div>
       <% else %>
         <p><%= t('.no_result') %></p>
       <% end %>
+      <div class="pagination">
+        <% if @architecture_size > 10 %>
+          <%= link_to 'もっとみる', architecture_index_path, class: 'more-button', data: { page: @architecture.next_page } %>
+        <% end %>
+      </div>
     </div>
-    <%= paginate @architecture %>
   </div>
 </div>
