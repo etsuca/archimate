@@ -5,6 +5,7 @@ class ArchitectureController < ApplicationController
   before_action :find_architecture, only: [:edit, :update, :destroy]
 
   def index
+    @architecture_size = @base_query.distinct.size
     @architecture = @base_query.distinct.order(created_at: :desc).page(params[:page])
   end
 

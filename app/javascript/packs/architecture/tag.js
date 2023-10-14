@@ -1,10 +1,15 @@
 document.addEventListener('turbolinks:load', () => {
   const tagButtons = document.querySelectorAll('.tag-button');
   const gridElement = document.querySelector('.grid');
-  const paginationContainer = document.querySelector('.pagination'); // ページネーションを表示するコンテナ
+  const paginationContainer = document.querySelector('.pagination');
 
   tagButtons.forEach((button) => {
     button.addEventListener('click', () => {
+      const addedByPaginationContainer = document.querySelector('.added-by-pagination');
+      if (addedByPaginationContainer) {
+        addedByPaginationContainer.remove();
+      }
+
       const checkbox = button.previousElementSibling;
       checkbox.checked = !checkbox.checked;
       saveSelectedTagsToLocalStorage();
@@ -21,16 +26,14 @@ document.addEventListener('turbolinks:load', () => {
       const currentUrl = new URL(window.location.href);
       const existingParams = currentUrl.searchParams;
 
-      // 現在のクエリパラメータからkeyword, pref, categoryを取得
       const currentKeyword = existingParams.get('keyword');
       const currentPref = existingParams.get('pref');
       const currentCategory = existingParams.get('category');
 
-      // 新しいクエリパラメータを作成
       const newParams = new URLSearchParams();
-      newParams.set('keyword', currentKeyword || ''); // keywordを追加、存在しなければ空文字列
-      newParams.set('pref', currentPref || ''); // prefを追加、存在しなければ空文字列
-      newParams.set('category', currentCategory || ''); // categoryを追加、存在しなければ空文字列
+      newParams.set('keyword', currentKeyword || '');
+      newParams.set('pref', currentPref || '');
+      newParams.set('category', currentCategory || '');
 
       if (selectedTagIds.length > 0) {
         selectedTagIds.forEach((tagId) => {
@@ -40,7 +43,6 @@ document.addEventListener('turbolinks:load', () => {
 
       const queryParams = newParams.toString();
 
-      // リクエストを送信
       fetch(`/architecture?${queryParams}`, {
         method: 'GET',
       })
@@ -48,24 +50,22 @@ document.addEventListener('turbolinks:load', () => {
       .then((data) => {
         const resultContainer = document.createElement('div');
         resultContainer.innerHTML = data;
-        const newResults = resultContainer.querySelector('.grid');
-        const newPagination = resultContainer.querySelector('.pagination'); // 新しいページネーション
 
-        gridElement.innerHTML = newResults.innerHTML;
+        const newResults = resultContainer.querySelector('.grid');
+        const newPagination = resultContainer.querySelector('.pagination');
+
+        if (gridElement) {
+          if (newResults) {
+            gridElement.innerHTML = newResults.innerHTML;
+          } else {
+            gridElement.innerHTML = '<p>条件に当てはまる建築がありません。</p>';
+          }
+        }
 
         if (newPagination) {
           paginationContainer.innerHTML = newPagination.innerHTML;
         } else {
-          // 新しいページネーションが存在しない場合はクリア
           paginationContainer.innerHTML = '';
-        }
-        
-        // タグを選択または選択解除した後、クエリパラメータにpageが存在する場合はpageを削除
-        const currentUrl = new URL(window.location.href);
-        const existingParams = currentUrl.searchParams;
-        if (existingParams.has('page')) {
-          existingParams.delete('page');
-          history.replaceState(null, null, `?${existingParams.toString()}`);
         }
       })
       .catch((error) => {
@@ -76,7 +76,6 @@ document.addEventListener('turbolinks:load', () => {
 
   const saveSelectedTagsToLocalStorage = () => {
     const selectedTagIds = Array.from(document.querySelectorAll('input[name="tag_ids[]"]:checked')).map((checkbox) => checkbox.value);
-    // キャッシュに選択されたタグ情報を保存
     localStorage.setItem('selectedTags', JSON.stringify(selectedTagIds));
   }
 });
