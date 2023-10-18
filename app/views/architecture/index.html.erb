@@ -13,7 +13,7 @@
       <% end %>
       <div class="pagination">
         <% if @architecture_size > 10 %>
-          <%= link_to 'もっとみる', architecture_index_path, class: 'more-button', data: { page: @architecture.next_page } %>
+          <%= link_to 'もっとみる', architecture_index_path, class: 'more-button text-xs md:text-base', data: { page: @architecture.next_page } %>
         <% end %>
       </div>
     </div>
