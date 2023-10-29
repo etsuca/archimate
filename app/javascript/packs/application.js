@@ -15,9 +15,11 @@ ActiveStorage.start()
 require('jquery')
 import "./diagnosis/like_modal";
 import "./diagnosis/new";
+import "./diagnosis/index";
 import "./shared/description";
 import "./shared/hamburger_menu";
 import "./shared/progress_bar";
+import "./shared/animation";
 import "./diagnosis/diagnosis_progress_bar";
 import "./architecture/preview";
 import "./architecture/keep_search_params";
