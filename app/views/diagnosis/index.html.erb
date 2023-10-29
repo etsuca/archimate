@@ -1,6 +1,6 @@
 <% set_meta_tags title: t('.title') %>
 <p class="text-center w-full bg-second">次の目的地はこちらにしませんか？</p>
-<div class="mx-6 my-12 md:my-24 inset-0">
+<div id="heading" class="mx-6 my-12 md:my-24 inset-0">
   <div class="w-full max-w-3xl mx-auto text-center">
     <h1 class="w-full pb-12 md:pb-24 text-3xl md:text-4xl">あなたにぴったりな建築をセレクトしました。</h1>
     <div class="bg-white p-6 mb-12 md:mb-24 rounded-md">
@@ -14,8 +14,8 @@
 
 <% @matched_architecture.each do |architecture| %>
   <% @images = architecture.images.map { |image| rails_blob_path(image) }.to_json.html_safe %>
-  <input name="images" type="hidden" value="<%= @images %>" class="images" />
-  <div id="matched_architecture_<%= architecture.id %>" class="flex flex-col h-screen md:flex-row items-end">
+  <input name="images" type="hidden" value="<%= @images %>"/>
+  <div id="matched_architecture_<%= architecture.id %>" class="architecture-images flex flex-col h-screen md:flex-row items-end">
     <div class="w-full md:w-3/4 h-full md:h-screen relative">
       <%= render 'shared/architecture', architecture: architecture %>
     </div>
