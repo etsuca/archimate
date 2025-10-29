@@ -78,11 +78,3 @@ production:
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
-#
-production:
-  <<: *default
-  adapter: postgresql
-  database: archimate_production
-  username: <%= Rails.application.credentials.db[:user_name] %>
-  password: <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:endpoint] %>
