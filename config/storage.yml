@@ -13,6 +13,7 @@ amazon:
   secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   region: ap-northeast-1
   bucket: archim8
+  force_path_style: false
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
