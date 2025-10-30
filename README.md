@@ -2,9 +2,6 @@
 新たな建築と出会い、訪れた建築を記録したい人に、  
 建築に関する情報の収集、記録機能を提供する、  
 建築特化型サービスarchimateです。  
-
-## URL
-https://archim8.net  
 <br>
 <img width="1200" src="https://i.gyazo.com/4abc834c8eaec60a73d29819760778a1.jpg">
 <img width="300" src="https://i.gyazo.com/a9a0bd632c9aeb24c3ced3ca29d395ae.jpgg">
