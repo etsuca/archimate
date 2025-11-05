@@ -94,14 +94,14 @@ https://www.figma.com/file/BaXInUfwCKFp8vtqC02B7c/%E7%94%BB%E9%9D%A2%E9%81%B7%E7
 https://gyazo.com/1885721ad7e04a1fee59b4ee4678023b  
 <br>
 ## スケジュール<br>
-企画〜技術調査：3/25 〆切
+企画〜技術調査：2023/3/25 〆切
 <br>
-README〜ER図作成：4/10 〆切
+README〜ER図作成：2023/4/10 〆切
 <br>
-メイン機能実装：6/16 〆切
+メイン機能実装：2023/6/16 〆切
 <br>
-β版をRUNTEQ内リリース（MVP）7/4 〆切
+β版をRUNTEQ内リリース（MVP）2023/7/4 〆切
 <br>
-本番リリース：7/31
+本番リリース：2023/7/31
 <br>
   
