@@ -1,7 +1,6 @@
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process resize_to_fit: [800, 800]
-  storage :fog
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -13,5 +12,9 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   def extension_whitelist
     %i[jpg jpeg gif png]
+  end
+
+  def fog_authenticated_url_expiration
+    3.hours
   end
 end
