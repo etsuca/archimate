@@ -1,10 +1,14 @@
 document.addEventListener('turbolinks:load', () => {
-  const accessTokenElement = document.getElementById('access_token');
-  const accessToken = JSON.parse(accessTokenElement.textContent);
+  const mapElement = document.getElementById('map');
+  if (!mapElement) return;
+
+  const accessToken = mapElement.dataset.mapboxAccessToken;
+  if (!accessToken) return;
+
   mapboxgl.accessToken = accessToken;
 
   const map = new mapboxgl.Map({
-    container: 'map',
+    container: mapElement,
     style: 'mapbox://styles/mapbox/light-v10',
     center: [137.5, 38],
     zoom: 4,
