@@ -4,7 +4,7 @@ module QuestionsData
     { title: '木の温もりが好き🌲', tag_id: 2, image: '2.jpg' },
     { title: 'ガラスの空間が好き🏙', tag_id: 3, image: '3.jpg' },
     { title: '自然に癒されたい🍃', tag_id: 4, image: '4.jpg' },
-    { title: '私はシティボーイorシティガール🏙', 5, image: '5.jpg' },
+    { title: '私はシティボーイorシティガール🏙', tag_id: 5, image: '5.jpg' },
     { title: 'まだ見ぬ場所へ行ってみたい😮', tag_id: 6, image: '6.jpg' },
     { title: '田舎でゆっくりしたい🌳', tag_id: 7, image: '7.jpg' },
     { title: '一人でゆっくりする時間が大切🍹', tag_id: 8, image: '8.jpg' },
