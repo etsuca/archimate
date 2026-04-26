@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+ENV["NODE_OPTIONS"] = [ENV["NODE_OPTIONS"], "--openssl-legacy-provider"].compact.join(" ") if (ENV["RAILS_ENV"].nil? || ENV["RAILS_ENV"] == "development") && !ENV["NODE_OPTIONS"].to_s.include?("--openssl-legacy-provider")
 load File.expand_path("spring", __dir__)
 APP_PATH = File.expand_path('../config/application', __dir__)
 require_relative "../config/boot"
