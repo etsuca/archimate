@@ -2,7 +2,7 @@ ja:
   activerecord:
     models:
       user: 'ユーザー'
-      architecture: '建築'
+      building: '建築'
     attributes:
       user:
         name: 'ユーザーネーム'
@@ -10,7 +10,7 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード確認'
         avatar: 'プロフィール画像'
-      architecture:
+      building:
         name: '名称（必須）'
         pref: '都道府県（必須）'
         location: '市区町村・番地（必須）'
@@ -23,7 +23,7 @@ ja:
         updated_at: '更新日時'
 
   enums:
-    architecture:
+    building:
       open_range:
         unpublish: '非公開'
         publish: '公開'

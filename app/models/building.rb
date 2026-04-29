@@ -1,7 +1,7 @@
-class Architecture < ApplicationRecord
+class Building < ApplicationRecord
   has_many_attached :images
-  has_many :tag_architecture_relationships, dependent: :destroy
-  has_many :tags, through: :tag_architecture_relationships, dependent: :destroy
+  has_many :tag_building_relationships, dependent: :destroy
+  has_many :tags, through: :tag_building_relationships, dependent: :destroy
   has_many :likes, dependent: :destroy
   belongs_to :user
 

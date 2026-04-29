@@ -18,12 +18,12 @@ document.addEventListener('turbolinks:load', () => {
     fetch('data/prefectures.geojson')
       .then(response => response.json())
       .then(data => {
-        fetch('users_architecture.json')
+        fetch('users_buildings.json')
           .then(response => response.json())
-          .then(architecture => {
+          .then(building => {
             const prefCounts = {};
-            architecture.forEach(architecture => {
-              const pref = architecture.pref;
+            building.forEach(building => {
+              const pref = building.pref;
               prefCounts[pref] = (prefCounts[pref] || 0) + 1;
             });
 

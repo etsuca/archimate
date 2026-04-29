@@ -1,7 +1,7 @@
 class JsonDataController < ApplicationController
-  def users_architecture
+  def users_buildings
     # 都道府県制覇マップ用データ
-    users_architecture = current_user.architecture
-    render json: users_architecture
+    users_buildings = current_user.buildings
+    render json: users_buildings
   end
 end

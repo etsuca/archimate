@@ -1,4 +1,4 @@
-module ArchitectureImagesConcern
+module BuildingImagesConcern
   extend ActiveSupport::Concern
 
   def resize_and_convert(images)
@@ -7,7 +7,7 @@ module ArchitectureImagesConcern
         resize_image(image)
         convert_to_jpg(image) if heic_or_heif?(image)
       else
-        @architecture.errors.add(:images, t('errors.messages.invalid_file_type'))
+        @building.errors.add(:images, t('errors.messages.invalid_file_type'))
       end
     end
   end

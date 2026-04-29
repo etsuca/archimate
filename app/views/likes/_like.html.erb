@@ -1,4 +1,4 @@
-<%= link_to likes_path(architecture_id: architecture.id), method: :post, remote: true, id: "js-like-button-for-architecture-#{architecture.id}", class: 'flex items-center justify-center bg-third border border-seventh text-seventh h-14 w-14 md:h-fit mx-6 md:w-full md:mb-8 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
+<%= link_to likes_path(building_id: building.id), method: :post, remote: true, id: "js-like-button-for-building-#{building.id}", class: 'flex items-center justify-center bg-third border border-seventh text-seventh h-14 w-14 md:h-fit mx-6 md:w-full md:mb-8 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
   <i class="fa-solid fa-heart fa-xl md:text-sm md:mr-2"></i>
   <div class="hidden md:block">
     <p>Like</p>

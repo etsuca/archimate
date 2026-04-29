@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :architecture do
+  factory :building do
     user
     name { Faker::Lorem.words(number: 3).join(' ') }
     location { Faker::Address.city }
@@ -13,11 +13,11 @@ FactoryBot.define do
       image_count { 3 }
     end
 
-    after(:build) do |architecture, evaluator|
-      architecture.images.attach(io: Rails.root.join('spec/fixtures/sample.jpg').open, filename: 'sample.jpg', content_type: 'image/jpeg')
+    after(:build) do |building, evaluator|
+      building.images.attach(io: Rails.root.join('spec/fixtures/sample.jpg').open, filename: 'sample.jpg', content_type: 'image/jpeg')
       if evaluator.image_count > 1
         (evaluator.image_count - 1).times do
-          architecture.images.attach(io: Rails.root.join('spec/fixtures/sample.jpg').open, filename: 'sample.jpg', content_type: 'image/jpeg')
+          building.images.attach(io: Rails.root.join('spec/fixtures/sample.jpg').open, filename: 'sample.jpg', content_type: 'image/jpeg')
         end
       end
     end

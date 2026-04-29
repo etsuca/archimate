@@ -1,5 +1,5 @@
-<% if current_user.like?(architecture) %>
-  <%= render 'likes/nope', architecture: architecture %>
+<% if current_user.like?(building) %>
+  <%= render 'likes/nope', building: building %>
 <% else %>
-  <%= render 'likes/like', architecture: architecture %>
+  <%= render 'likes/like', building: building %>
 <% end %>

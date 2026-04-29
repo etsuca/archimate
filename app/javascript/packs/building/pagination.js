@@ -2,7 +2,7 @@ document.addEventListener('click', async (e) => {
   if (e.target.classList.contains('more-button')) {
     e.preventDefault();
     const nextPage = e.target.dataset.page;
-    const architectureContainer = document.querySelector('.architecture-container');
+    const buildingContainer = document.querySelector('.building-container');
 
     try {
       const selectedTagIds = Array.from(document.querySelectorAll('input[name="tag_ids[]"]:checked')).map((checkbox) => checkbox.value);
@@ -35,7 +35,7 @@ document.addEventListener('click', async (e) => {
         queryParams.set('category', currentCategory);
       }
 
-      const response = await fetch(`/architecture?${queryParams.toString()}`, {
+      const response = await fetch(`/buildings?${queryParams.toString()}`, {
         method: 'GET',
       });
 
@@ -48,27 +48,27 @@ document.addEventListener('click', async (e) => {
       newDiv.innerHTML = data;
 
       // 新しい建築情報のみを追加
-      const newArchitecture = newDiv.querySelectorAll('.architecture-container');
+      const newBuilding = newDiv.querySelectorAll('.building-container');
 
-      newArchitecture.forEach((architecture) => {
-        architecture.classList.add('added-by-pagination');
-        architectureContainer.appendChild(architecture);
+      newBuilding.forEach((building) => {
+        building.classList.add('added-by-pagination');
+        buildingContainer.appendChild(building);
       });
 
       // もっとみるボタンを更新
       const moreButton = document.createElement('a');
-      moreButton.href = `/architecture?${queryParams.toString()}`;
+      moreButton.href = `/buildings?${queryParams.toString()}`;
 
       // 既存のもっとみるボタンを置き換える
       const oldMoreButton = document.querySelector('.more-button');
       oldMoreButton.replaceWith(moreButton);
       
-      const eachArchitecture = document.querySelectorAll('.group');
-      const exisistingArchitectureCount = eachArchitecture.length;
-      console.log(exisistingArchitectureCount);
+      const eachBuilding = document.querySelectorAll('.group');
+      const exisistingBuildingCount = eachBuilding.length;
+      console.log(exisistingBuildingCount);
 
       // 現在表示しているページが最後の場合、ページネーションを非表示にする
-      if (exisistingArchitectureCount % 10 != 0) {
+      if (exisistingBuildingCount % 10 != 0) {
         const paginationContainer = document.querySelector('.more-button');
         paginationContainer.innerHTML = '';
       }

@@ -1,6 +1,6 @@
-class CreateArchitecture < ActiveRecord::Migration[6.1]
+class CreateBuildings < ActiveRecord::Migration[6.1]
   def change
-    create_table :architecture do |t|
+    create_table :buildings do |t|
       t.string :name, null: false
       t.string :location, null: false
       t.string :architect

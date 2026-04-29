@@ -79,17 +79,17 @@ ja:
         New Password: '新しいパスワード'
         Confirm New Password: '新しいパスワード (確認)'
         Change my password: 'パスワードを変更'
-  architecture:
+  building:
     index:
       title: '建築一覧'
       no_result: '建築がありません。'
-      Visited Architecture: '訪れた建築'
-      Others Architecture: '他のユーザーの建築'
-      Liked Architecture: 'Likeした建築'
+      Visited Building: '訪れた建築'
+      Others Building: '他のユーザーの建築'
+      Liked Building: 'Likeした建築'
     new:
       title: '建築を記録'
     show:
-      title: '%{architecture_name}'
+      title: '%{building_name}'
     edit:
       title: '建築を編集'
   likes:
@@ -101,8 +101,8 @@ ja:
     show:
       title: 'マイページ'
       Log: 'ログ'
-      recorded_architecture_count: '記録した建築の数'
-      first_day_architecture_recorded: '初めて建築を記録した日'
+      recorded_building_count: '記録した建築の数'
+      first_day_building_recorded: '初めて建築を記録した日'
       Likes_count: 'Likeした建築の数'
       Liked_count: '獲得したLikeの数'
       visited prefecture: '都道府県制覇マップ'

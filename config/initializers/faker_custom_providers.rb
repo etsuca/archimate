@@ -1,1 +1,1 @@
-require 'faker/architecture'
+require 'faker/building'
