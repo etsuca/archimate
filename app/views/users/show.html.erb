@@ -40,18 +40,18 @@
     <table class="w-full">
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.recorded_architecture_count') %></th>
-        <td class="w-1/2 text-end"><%= current_user.architecture.count %></td>
+        <td class="w-1/2 text-end"><%= @architectures_count %></td>
       </tr>
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.Likes_count') %></th>
-        <td class="w-1/2 text-end"><%= current_user.like_architecture.count %></td>
+        <td class="w-1/2 text-end"><%= @liked_architectures_count %></td>
       </tr>
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.Liked_count') %></th>
         <% if @liked_count.nil? %>
           <td>-</td>
         <% else %>
-          <td class="w-1/2 text-end"><%= current_user.architecture.inject(0){ |sum, architecture| sum + architecture.likes.count } %></td>
+          <td class="w-1/2 text-end"><%= @received_likes_count %></td>
         <% end %>
       </tr>
       <tr class="flex mb-12 justify-between">
@@ -59,20 +59,20 @@
         <% if current_user.architecture.empty? %>
           <td>-</td>
         <% else %>
-          <td class="w-1/2 text-end"><%= l current_user.architecture.order(:created_at).first.created_at %></td>
+          <td class="w-1/2 text-end"><%= @first_architecture_created_at %></td>
         <% end %>
       </tr>
     </table>
     <table class="w-full">
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.visited prefecture count') %></th>
-        <td class="w-1/2 text-end"><%= current_user.architecture.map { |a| a.pref }.uniq.count %></td>
+        <td class="w-1/2 text-end"><%= @visited_prefecture_count %></td>
       </tr>
     </table>
     <table class="w-full">
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.prefectural domination rate') %></th>
-        <td class="w-1/2 text-end"><%= ((current_user.architecture.map { |a| a.pref }.uniq.count) / 47.00 * 100).floor %> %</td>
+        <td class="w-1/2 text-end"><%= @prefecture_completion_percentage %> %</td>
       </tr>
     </table>
   </div>
