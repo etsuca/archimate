@@ -43,7 +43,7 @@ document.addEventListener('turbolinks:load', () => {
 
       const queryParams = newParams.toString();
 
-      fetch(`/architecture?${queryParams}`, {
+      fetch(`/buildings?${queryParams}`, {
         method: 'GET',
       })
       .then((response) => response.text())

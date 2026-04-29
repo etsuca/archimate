@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { create(:user) }
-  let(:architecture) { create(:architecture) }
+  let(:building) { create(:building) }
 
   describe 'validations' do
     it 'is valid with valid attributes' do
@@ -37,9 +37,9 @@ RSpec.describe User, type: :model do
   end
 
   describe 'associations' do
-    it { should have_many(:architecture).dependent(:destroy) }
+    it { should have_many(:buildings).dependent(:destroy) }
     it { should have_many(:likes).dependent(:destroy) }
-    it { should have_many(:like_architecture).through(:likes).source(:architecture) }
+    it { should have_many(:liked_buildings).through(:likes).source(:building) }
   end
 
   describe '#find_for_oauth' do
@@ -73,40 +73,40 @@ RSpec.describe User, type: :model do
 
   describe '#own?' do
     it 'returns true if the user owns the object' do
-      object = create(:architecture, user:)
+      object = create(:building, user:)
       expect(user.own?(object)).to eq(true)
     end
 
     it 'returns false if the user does not own the object' do
       other_user = create(:user)
-      object = create(:architecture, user: other_user)
+      object = create(:building, user: other_user)
       expect(user.own?(object)).to eq(false)
     end
   end
 
   describe '#like' do
-    it 'adds an architecture to the liked architecture' do
-      user.like(architecture)
-      expect(user.like_architecture).to include(architecture)
+    it 'adds a building to the liked building' do
+      user.like(building)
+      expect(user.liked_buildings).to include(building)
     end
   end
 
   describe '#unlike' do
-    it 'removes an architecture from the liked architecture' do
-      user.like(architecture)
-      user.unlike(architecture)
-      expect(user.like_architecture).not_to include(architecture)
+    it 'removes a building from the liked building' do
+      user.like(building)
+      user.unlike(building)
+      expect(user.liked_buildings).not_to include(building)
     end
   end
 
   describe '#like?' do
-    it 'returns true if the user likes the architecture' do
-      user.like(architecture)
-      expect(user.like?(architecture)).to be(true)
+    it 'returns true if the user likes the building' do
+      user.like(building)
+      expect(user.like?(building)).to be(true)
     end
 
-    it 'returns false if the user does not like the architecture' do
-      expect(user.like?(architecture)).to be(false)
+    it 'returns false if the user does not like the building' do
+      expect(user.like?(building)).to be(false)
     end
   end
 

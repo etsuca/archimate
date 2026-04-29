@@ -1,8 +1,8 @@
 module Faker
-  class Architecture < Base
+  class Building < Base
     class << self
       def building_name
-        fetch('architecture.building_name')
+        fetch('building.building_name')
       end
 
       def location
@@ -14,7 +14,7 @@ module Faker
       end
 
       def description
-        fetch('architecture.description')
+        fetch('building.description')
       end
     end
   end

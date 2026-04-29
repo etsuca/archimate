@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
   belongs_to :user
-  belongs_to :architecture
+  belongs_to :building
 
-  validates :user_id, uniqueness: { scope: :architecture_id }
+  validates :user_id, uniqueness: { scope: :building_id }
 end

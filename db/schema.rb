@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_04_095924) do
+ActiveRecord::Schema.define(version: 2026_04_29_122000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2023_08_04_095924) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "architecture", force: :cascade do |t|
+  create_table "buildings", force: :cascade do |t|
     t.string "name", null: false
     t.string "location", null: false
     t.string "architect"
@@ -55,27 +55,27 @@ ActiveRecord::Schema.define(version: 2023_08_04_095924) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "pref", null: false
     t.integer "tmp_match_tag_count", default: 0
-    t.index ["user_id"], name: "index_architecture_on_user_id"
+    t.index ["user_id"], name: "index_buildings_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "architecture_id"
+    t.bigint "building_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["architecture_id"], name: "index_likes_on_architecture_id"
-    t.index ["user_id", "architecture_id"], name: "index_likes_on_user_id_and_architecture_id", unique: true
+    t.index ["building_id"], name: "index_likes_on_building_id"
+    t.index ["user_id", "building_id"], name: "index_likes_on_user_id_and_building_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "tag_architecture_relationships", force: :cascade do |t|
-    t.bigint "architecture_id", null: false
+  create_table "tag_building_relationships", force: :cascade do |t|
+    t.bigint "building_id", null: false
     t.bigint "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["architecture_id"], name: "index_tag_architecture_relationships_on_architecture_id"
-    t.index ["tag_id", "architecture_id"], name: "tag_archi_relationships", unique: true
-    t.index ["tag_id"], name: "index_tag_architecture_relationships_on_tag_id"
+    t.index ["building_id"], name: "index_tag_building_relationships_on_building_id"
+    t.index ["tag_id", "building_id"], name: "index_tag_building_relationships_on_tag_id_and_building_id", unique: true
+    t.index ["tag_id"], name: "index_tag_building_relationships_on_tag_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -116,9 +116,9 @@ ActiveRecord::Schema.define(version: 2023_08_04_095924) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "architecture", "users"
-  add_foreign_key "likes", "architecture"
+  add_foreign_key "buildings", "users"
+  add_foreign_key "likes", "buildings"
   add_foreign_key "likes", "users"
-  add_foreign_key "tag_architecture_relationships", "architecture"
-  add_foreign_key "tag_architecture_relationships", "tags"
+  add_foreign_key "tag_building_relationships", "buildings"
+  add_foreign_key "tag_building_relationships", "tags"
 end

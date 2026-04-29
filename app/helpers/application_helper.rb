@@ -34,11 +34,11 @@ module ApplicationHelper
     }
   end
 
-  def build_tweet_text(matched_architecture)
+  def build_tweet_text(matched_building)
     text = 'マッチングした建築は…%0a%0a'
-    matched_architecture.each_with_index do |architecture, index|
-      text += "#{index + 1}. 「#{architecture.name}」"
-      text += architecture.architect.to_s if architecture.architect.present?
+    matched_building.each_with_index do |building, index|
+      text += "#{index + 1}. 「#{building.name}」"
+      text += building.architect.to_s if building.architect.present?
       text += '%0a'
     end
     text += '%0aでした！%0a'

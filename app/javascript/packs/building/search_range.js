@@ -15,9 +15,9 @@ document.addEventListener('turbolinks:load', () => {
   const form = document.querySelector('form');
 
   if (visitedRadio || othersRadio || likedRadio) {
-    visitedRadio.checked = currentCategory === 'visited_architecture';
-    othersRadio.checked = currentCategory === 'others_architecture';
-    likedRadio.checked = currentCategory === 'liked_architecture';
+    visitedRadio.checked = currentCategory === 'visited_building';
+    othersRadio.checked = currentCategory === 'others_building';
+    likedRadio.checked = currentCategory === 'liked_building';
 
     // 選択されたラジオボタンのラベルにクラスを追加/削除
     const updateLabelClasses = () => {
@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
 
     visitedRadio.addEventListener('change', () => {
       if (visitedRadio.checked) {
-        updateQueryParam('category', 'visited_architecture');
+        updateQueryParam('category', 'visited_building');
         form.submit();
         updateLabelClasses(); // ラベルのクラスを更新
       }
@@ -44,7 +44,7 @@ document.addEventListener('turbolinks:load', () => {
 
     othersRadio.addEventListener('change', () => {
       if (othersRadio.checked) {
-        updateQueryParam('category', 'others_architecture');
+        updateQueryParam('category', 'others_building');
         form.submit();
         updateLabelClasses(); // ラベルのクラスを更新
       }
@@ -52,7 +52,7 @@ document.addEventListener('turbolinks:load', () => {
 
     likedRadio.addEventListener('change', () => {
       if (likedRadio.checked) {
-        updateQueryParam('category', 'liked_architecture');
+        updateQueryParam('category', 'liked_building');
         form.submit();
         updateLabelClasses(); // ラベルのクラスを更新
       }

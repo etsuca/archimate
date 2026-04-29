@@ -1,10 +1,10 @@
 class StaticPagesController < ApplicationController
-  include ArchitectureHelper
+  include BuildingsHelper
   before_action :authenticate_user!, only: %i[top]
 
   def top
-    @architecture = random_architecture
-    @images = architecture_images_url(@architecture)
+    @building = random_building
+    @images = building_images_url(@building)
   end
 
   def welcome; end

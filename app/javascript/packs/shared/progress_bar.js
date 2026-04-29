@@ -1,10 +1,10 @@
 document.addEventListener('turbolinks:load', () => {
-  initializeArchitecture();
+  initializeBuilding();
 });
 
-const initializeArchitecture = () => {
+const initializeBuilding = () => {
   let images = $('.images').val();
-  let architectureImages = JSON.parse(images);
+  let buildingImages = JSON.parse(images);
   const image = document.querySelector(".image");
   const progressBar = document.querySelector(".progress-bar");
   const arrowLeft = document.querySelector(".fa-chevron-left");
@@ -12,25 +12,25 @@ const initializeArchitecture = () => {
   let currentIndex = 0;
 
   const updateProgressBar = () => {
-    const progressBarWidth = (currentIndex + 1) * (100 / architectureImages.length);
+    const progressBarWidth = (currentIndex + 1) * (100 / buildingImages.length);
     progressBar.style.width = `${progressBarWidth}%`;
   };
 
   const updateImage = () => {
-    image.src = architectureImages[currentIndex];
+    image.src = buildingImages[currentIndex];
   };
 
   updateProgressBar();
   updateImage();
 
   arrowLeft.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + architectureImages.length) % architectureImages.length;
+    currentIndex = (currentIndex - 1 + buildingImages.length) % buildingImages.length;
     updateImage();
     updateProgressBar();
   });
 
   arrowRight.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % architectureImages.length;
+    currentIndex = (currentIndex + 1) % buildingImages.length;
     updateImage();
     updateProgressBar();
   });
@@ -41,9 +41,9 @@ const initializeArchitecture = () => {
     const halfWidth = event.target.clientWidth / 2;
 
     if (clickedX >= halfWidth) {
-      currentIndex = (currentIndex + 1) % architectureImages.length;
+      currentIndex = (currentIndex + 1) % buildingImages.length;
     } else {
-      currentIndex = (currentIndex - 1 + architectureImages.length) % architectureImages.length;
+      currentIndex = (currentIndex - 1 + buildingImages.length) % buildingImages.length;
     }
 
     updateImage();

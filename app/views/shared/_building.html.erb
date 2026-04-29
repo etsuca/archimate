@@ -1,10 +1,10 @@
 <input name="images" type="hidden" value=<%= @images %> class='images'/>
 
 <% if controller.controller_name == "static_pages" %>
-  <%= image_tag architecture.images.first, class: 'image absolute object-cover object-top h-full w-full animate-scale-in-hor-left' %>
+  <%= image_tag building.images.first, class: 'image absolute object-cover object-top h-full w-full animate-scale-in-hor-left' %>
   <%= render 'shared/arrow' %>
 <% else %>
-  <%= image_tag architecture.images.first, class: 'image absolute object-cover object-top h-full w-full' %>
+  <%= image_tag building.images.first, class: 'image absolute object-cover object-top h-full w-full' %>
   <%= render 'shared/arrow' %>
 <% end %>
 <div class="progress-bar h-1 bg-second absolute top-0 left-0 ease-in-out duration-300"></div>
@@ -17,13 +17,13 @@
   </button>
   <div class="flex flex-col justify-center items-center p-6 h-full leading-7">
     <div class="max-w-2xl sm:mt-12 mt-10 max-h-full overflow-auto">
-      <p><%= safe_join(architecture.description.split("\n"), tag(:br)) %></p>
+      <p><%= safe_join(building.description.split("\n"), tag(:br)) %></p>
       <br>
-      <% if architecture.architect.present? %>
-        <p><%= Architecture.human_attribute_name(:architect) %> : <%= architecture.architect %></p>
+      <% if building.architect.present? %>
+        <p><%= Building.human_attribute_name(:architect) %> : <%= building.architect %></p>
       <% end %>
       <br>
-      <% architecture.tags.each do |tag| %>
+      <% building.tags.each do |tag| %>
         <a>#<%= tag.name %> </a>
       <% end %>
     </div>

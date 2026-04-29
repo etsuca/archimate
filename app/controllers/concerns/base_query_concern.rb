@@ -12,18 +12,18 @@ module BaseQueryConcern
     selected_pref = params[:pref]
     keyword = params[:keyword]
 
-    @base_query = if params[:category] == 'others_architecture'
-                    Architecture.not_by(current_user).where(open_range: 1)
-                  elsif params[:category] == 'liked_architecture'
-                    current_user.like_architecture
+    @base_query = if params[:category] == 'others_building'
+                    Building.not_by(current_user).where(open_range: 1)
+                  elsif params[:category] == 'liked_building'
+                    current_user.liked_buildings
                   else
-                    Architecture.where(user_id: current_user.id)
+                    Building.where(user_id: current_user.id)
                   end
 
     if selected_tag_ids.present?
       @base_query = @base_query.joins(:tags).where(tags: { id: selected_tag_ids.first })
       selected_tag_ids[1..].each do |tag_id|
-        @base_query = @base_query.where(id: Architecture.joins(:tags).where(tags: { id: tag_id }))
+        @base_query = @base_query.where(id: Building.joins(:tags).where(tags: { id: tag_id }))
       end
     end
 
@@ -32,7 +32,7 @@ module BaseQueryConcern
     if keyword.present?
       keywords = keyword.split
       keywords.each do |kw|
-        @base_query = @base_query.where('architecture.name LIKE ? OR architecture.pref LIKE ? OR architecture.location LIKE ? OR architecture.architect LIKE ? OR architecture.description LIKE ?', "%#{kw}%", "%#{kw}%", "%#{kw}%", "%#{kw}%", "%#{kw}%")
+        @base_query = @base_query.where('buildings.name LIKE ? OR buildings.pref LIKE ? OR buildings.location LIKE ? OR buildings.architect LIKE ? OR buildings.description LIKE ?', "%#{kw}%", "%#{kw}%", "%#{kw}%", "%#{kw}%", "%#{kw}%")
       end
     end
   end
