@@ -11,7 +11,6 @@ class BuildingsController < ApplicationController
 
   def show
     @building = Building.find(params[:id])
-    @images = @building.images.map { |image| rails_blob_path(image) }.to_json.html_safe
   end
 
   def new

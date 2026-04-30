@@ -12,6 +12,6 @@ module BuildingsHelper
   end
 
   def building_images_url(building)
-    building.images.map { |image| rails_blob_path(image) }.to_json.html_safe if building
+    building.images.map { |image| rails_blob_path(image) }.to_json if building
   end
 end

@@ -4,7 +4,6 @@ class StaticPagesController < ApplicationController
 
   def top
     @building = random_building
-    @images = building_images_url(@building)
   end
 
   def welcome; end

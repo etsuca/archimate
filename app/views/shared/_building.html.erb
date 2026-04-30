@@ -1,4 +1,4 @@
-<input name="images" type="hidden" value=<%= @images %> class='images'/>
+<%= hidden_field_tag :images, building_images_url(building), class: 'images' %>
 
 <% if controller.controller_name == "static_pages" %>
   <%= image_tag building.images.first, class: 'image absolute object-cover object-top h-full w-full animate-scale-in-hor-left' %>
