@@ -2,7 +2,8 @@ class BuildingsController < ApplicationController
   include BaseQueryConcern
   include BuildingImagesConcern
   before_action :authenticate_user!
-  before_action :find_building, only: [:edit, :update, :destroy]
+  before_action :find_building, only: %i[edit update destroy]
+  before_action :set_tags, only: %i[new edit check_in create update]
 
   def index
     @buildings_size = @base_query.distinct.size
@@ -11,7 +12,6 @@ class BuildingsController < ApplicationController
 
   def show
     @building = Building.find(params[:id])
-    @images = @building.images.map { |image| rails_blob_path(image) }.to_json.html_safe
   end
 
   def new
@@ -46,13 +46,14 @@ class BuildingsController < ApplicationController
   end
 
   def check_in
-    @building = Building.new
-    @name = params[:name]
-    @pref = params[:pref]
-    @location = params[:location]
-    @open_range = params[:open_range]
-    @experience = params[:experience]
-    @architect = params[:architect]
+    @building = Building.new(
+      name: params[:name],
+      pref: params[:pref],
+      location: params[:location],
+      open_range: params[:open_range],
+      experience: params[:experience],
+      architect: params[:architect]
+    )
   end
 
   private
@@ -63,6 +64,10 @@ class BuildingsController < ApplicationController
 
   def find_building
     @building = current_user.buildings.find(params[:id])
+  end
+
+  def set_tags
+    @tags = Tag.all
   end
 
   def save_building_with_images(building)
