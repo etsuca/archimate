@@ -4,8 +4,13 @@ module BuildingImagesConcern
   def resize_and_convert(images)
     images.each do |image|
       if image.content_type.start_with?('image/jpeg', 'image/png', 'image/heic', 'image/heif')
-        resize_image(image)
-        convert_to_jpg(image) if heic_or_heif?(image)
+        begin
+          resize_image(image)
+          convert_to_jpg(image) if heic_or_heif?(image)
+        rescue MiniMagick::Error, ImageProcessing::Error => e
+          Rails.logger.error("Image processing failed: #{e.message}")
+          @building.errors.add(:images, t('errors.messages.invalid_file_type'))
+        end
       else
         @building.errors.add(:images, t('errors.messages.invalid_file_type'))
       end
