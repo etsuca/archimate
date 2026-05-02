@@ -59,7 +59,7 @@
         <% if current_user.buildings.empty? %>
           <td>-</td>
         <% else %>
-          <td class="w-1/2 text-end"><%= @first_building_created_at %></td>
+          <td class="w-1/2 text-end"><%= l(@first_building_created_at) %></td>
         <% end %>
       </tr>
     </table>
