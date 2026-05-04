@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get :check_in
     end
   end
-  resources :likes, only: %i[index create destroy]
+  resources :likes, only: %i[create destroy]
   resource :user, only: %i[show]
   resources :diagnosis, only: %i[new index]
 end
