@@ -16,6 +16,14 @@ class Building < ApplicationRecord
   enum open_range: { unpublish: 0, publish: 1 }
   enum experience: { possible: 0, impossible: 1 }
 
+  def self.ransackable_attributes(_auth_object = nil)
+    %w[name pref location architect description created_at]
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[tags]
+  end
+
   def self.not_by(user)
     where.not(user_id: user.id)
   end
