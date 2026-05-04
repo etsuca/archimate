@@ -6,7 +6,7 @@ class BuildingsController < ApplicationController
   before_action :set_tags, only: %i[new edit check_in create update]
 
   def index
-    @buildings_size = @base_query.distinct.size
+    @buildings_size = Building.from(@base_query.select(:id), :buildings).count
     @buildings = @base_query.distinct.order(created_at: :desc).page(params[:page])
   end
 
