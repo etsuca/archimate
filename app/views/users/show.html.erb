@@ -48,18 +48,14 @@
       </tr>
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.Liked_count') %></th>
-        <% if @liked_count.nil? %>
-          <td>-</td>
-        <% else %>
-          <td class="w-1/2 text-end"><%= @received_likes_count %></td>
-        <% end %>
+        <td class="w-1/2 text-end"><%= @received_likes_count %></td>
       </tr>
       <tr class="flex mb-12 justify-between">
         <th class="w-1/2 text-start"><%= t('.first_day_building_recorded') %></th>
-        <% if current_user.buildings.empty? %>
-          <td>-</td>
-        <% else %>
+        <% if @first_building_created_at %>
           <td class="w-1/2 text-end"><%= l(@first_building_created_at) %></td>
+        <% else %>
+          <td>-</td>
         <% end %>
       </tr>
     </table>
