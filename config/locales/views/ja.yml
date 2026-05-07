@@ -79,7 +79,7 @@ ja:
         New Password: '新しいパスワード'
         Confirm New Password: '新しいパスワード (確認)'
         Change my password: 'パスワードを変更'
-  building:
+  buildings:
     index:
       title: '建築一覧'
       no_result: '建築がありません。'
