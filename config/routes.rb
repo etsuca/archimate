@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'users_buildings', to: 'json_data#users_buildings'
 
+  namespace :admin do
+    resources :users, only: %i[index]
+  end
+
   resources :buildings do
     collection do
       get :check_in

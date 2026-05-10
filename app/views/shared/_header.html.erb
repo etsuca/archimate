@@ -7,6 +7,9 @@
         <li class="border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200"><%= link_to (t 'buildings.new.title'), new_building_path %></li>
         <li class="border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200"><%= link_to (t 'diagnosis.new.title'), new_diagnosis_path %></li>
         <li class="border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200"><%= link_to (t 'users.show.title'), user_path %></li>
+        <% if current_user.admin? %>
+          <li class="border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200"><%= link_to (t 'admin.users.index.title'), admin_users_path %></li>
+        <% end %>
         <li class="border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200"><%= link_to (t 'defaults.logout'), destroy_user_session_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %></li>
       </ul>
     <% else %>
@@ -27,6 +30,9 @@
             <li class="p-3"><%= link_to (t 'building.new.title'), new_building_path %></li>
             <li class="p-3"><%= link_to (t 'diagnosis.new.title'), new_diagnosis_path %></li>
             <li class="p-3"><%= link_to (t 'users.show.title'), user_path %></li>
+            <% if current_user.admin? %>
+              <li class="p-3"><%= link_to (t 'admin.users.index.title'), admin_users_path %></li>
+            <% end %>
             <li class="p-3"><%= link_to (t 'defaults.logout'), destroy_user_session_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %></li>
           </ul>
         </nav>

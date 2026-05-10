@@ -22,6 +22,7 @@ ja:
       destroy_confirm: '削除しますか？'
       user_delete_confirm: '退会しますか？'
       keywords: 'キーワードを入力（例）コルビュジエ 東京'
+      not_authorized: '権限がありません。'
   errors:
     messages:
       too_many_files: は%{count}枚以内で入力してください。
@@ -108,6 +109,15 @@ ja:
       visited prefecture: '都道府県制覇マップ'
       visited prefecture count: '訪れた都道府県の数'
       prefectural domination rate: '都道府県制覇率'
+  admin:
+    users:
+      index:
+        title: 'ユーザー管理'
+        id: 'ID'
+        role: '権限'
+        admin: '管理者'
+        user: '一般ユーザー'
+        created_at: '登録日'
   diagnosis:
     new:
       title: 'マッチング'

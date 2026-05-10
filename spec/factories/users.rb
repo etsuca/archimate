@@ -5,6 +5,10 @@ FactoryBot.define do
     password { 'password123' }
     password_confirmation { 'password123' }
 
+    trait :admin do
+      admin { true }
+    end
+
     factory :user_with_avatar do
       avatar { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/avatar.jpg').to_s) }
     end

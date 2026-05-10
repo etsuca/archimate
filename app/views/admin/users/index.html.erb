@@ -1,0 +1,30 @@
+<% set_meta_tags title: t('.title') %>
+
+<div class="container mx-auto px-4 md:px-8">
+  <h2 class="py-12 md:py-24 text-base md:text-xl text-center"><%= t('.title') %></h2>
+
+  <div class="overflow-x-auto pb-12">
+    <table class="w-full min-w-[48rem] text-left bg-white">
+      <thead class="border-b border-gray-300">
+        <tr>
+          <th class="p-3"><%= t('.id') %></th>
+          <th class="p-3"><%= User.human_attribute_name(:name) %></th>
+          <th class="p-3"><%= User.human_attribute_name(:email) %></th>
+          <th class="p-3"><%= t('.role') %></th>
+          <th class="p-3"><%= t('.created_at') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr class="border-b border-gray-100">
+            <td class="p-3"><%= user.id %></td>
+            <td class="p-3"><%= user.name %></td>
+            <td class="p-3 break-all"><%= user.email %></td>
+            <td class="p-3"><%= user.admin? ? t('.admin') : t('.user') %></td>
+            <td class="p-3"><%= l(user.created_at, format: :default) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
