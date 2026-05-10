@@ -5,6 +5,7 @@ ja:
     logout: 'ログアウト'
     edit: '編集'
     delete: '退会する'
+    delete_user: '削除'
     password_reset: 'パスワードリセット'
     Or continue with: '又は'
     record: '記録'
@@ -21,6 +22,7 @@ ja:
       logout_confirm: 'ログアウトしますか？'
       destroy_confirm: '削除しますか？'
       user_delete_confirm: '退会しますか？'
+      admin_user_delete_confirm: 'ユーザーを削除しますか？'
       keywords: 'キーワードを入力（例）コルビュジエ 東京'
       not_authorized: '権限がありません。'
   errors:
@@ -118,6 +120,7 @@ ja:
         admin: '管理者'
         user: '一般ユーザー'
         created_at: '登録日'
+        actions: '操作'
   diagnosis:
     new:
       title: 'マッチング'

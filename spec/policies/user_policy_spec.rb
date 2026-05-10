@@ -21,6 +21,35 @@ RSpec.describe UserPolicy do
     end
   end
 
+  describe '#destroy?' do
+    let(:target_user) { build(:user) }
+    let(:policy) { described_class.new(current_user, target_user) }
+
+    context 'when the user is an admin and the target is another user' do
+      let(:current_user) { build(:user, :admin) }
+
+      it 'permits access' do
+        expect(policy.destroy?).to be true
+      end
+    end
+
+    context 'when the user is an admin and the target is themselves' do
+      let(:current_user) { target_user.tap { |user| user.admin = true } }
+
+      it 'denies access' do
+        expect(policy.destroy?).to be false
+      end
+    end
+
+    context 'when the user is not an admin' do
+      let(:current_user) { build(:user) }
+
+      it 'denies access' do
+        expect(policy.destroy?).to be false
+      end
+    end
+  end
+
   describe 'scope' do
     let!(:admin) { create(:user, :admin) }
     let!(:user) { create(:user) }

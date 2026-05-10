@@ -12,6 +12,7 @@
           <th class="p-3"><%= User.human_attribute_name(:email) %></th>
           <th class="p-3"><%= t('.role') %></th>
           <th class="p-3"><%= t('.created_at') %></th>
+          <th class="p-3"><%= t('.actions') %></th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,13 @@
             <td class="p-3 break-all"><%= user.email %></td>
             <td class="p-3"><%= user.admin? ? t('.admin') : t('.user') %></td>
             <td class="p-3"><%= l(user.created_at, format: :default) %></td>
+            <td class="p-3">
+              <% if policy(user).destroy? %>
+                <%= link_to t('defaults.delete_user'), admin_user_path(user), method: :delete, data: { confirm: t('defaults.message.admin_user_delete_confirm') }, class: 'text-seventh hover:text-first' %>
+              <% else %>
+                -
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

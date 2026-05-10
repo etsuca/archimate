@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'users_buildings', to: 'json_data#users_buildings'
 
   namespace :admin do
-    resources :users, only: %i[index]
+    resources :users, only: %i[index destroy]
   end
 
   resources :buildings do
