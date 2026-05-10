@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit::Authorization
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
   helper_method :current_user, :user_signed_in?
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   protected
 
@@ -18,5 +21,9 @@ class ApplicationController < ActionController::Base
 
   def store_user_location!
     store_location_for(:user, request.fullpath)
+  end
+
+  def user_not_authorized
+    redirect_to root_path, alert: t('defaults.message.not_authorized')
   end
 end
