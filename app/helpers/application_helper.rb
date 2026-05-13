@@ -28,7 +28,7 @@ module ApplicationHelper
         image: image_url('lp_top.jpg'),
         locale: 'ja_JP'
       },
-      twitter: {
+      X: {
         card: 'summary'
       }
     }

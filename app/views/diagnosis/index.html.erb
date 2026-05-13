@@ -4,7 +4,7 @@
   <div class="w-full max-w-3xl mx-auto text-center">
     <h1 class="w-full pb-12 md:pb-24 text-3xl md:text-4xl">あなたにぴったりな建築をセレクトしました。</h1>
     <div class="bg-white p-6 mb-12 md:mb-24 rounded-md">
-      <% @matched_building.each_with_index do |building, idx| %>
+      <% @matched_buildings.each_with_index do |building, idx| %>
         <a href="#matched_building_<%= building.id %>" class="block my-12 md:text-lg hover:scale-105 hover:drop-shadow-lg"><%= idx + 1 %>. <%= building.name %></a>
       <% end %>
     </div>
@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<% @matched_building.each do |building| %>
+<% @matched_buildings.each do |building| %>
   <div id="matched_building_<%= building.id %>" class="flex flex-col h-screen md:flex-row items-end">
     <div class="w-full md:w-3/4 h-full md:h-screen relative">
       <%= render 'shared/building', building: building %>
