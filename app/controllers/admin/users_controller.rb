@@ -7,7 +7,7 @@ class Admin::UsersController < ApplicationController
     # falseの場合、その時点でPundit::NotAuthorizedErrorを投げて処理が中断される。
     authorize User
     # policy_scopeはデフォルトでApplicationPolicy::Scopeのresolveメソッドを呼び出す。
-    # 第1引数には自動的にcurrent_userが渡され、。第2引数でUserクラスを渡している。
+    # 第1引数には自動的にcurrent_userが渡され、第2引数でUserクラスを渡している。
     @users = policy_scope(User).order(created_at: :desc).page(params[:page])
   end
 

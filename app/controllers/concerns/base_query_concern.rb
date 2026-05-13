@@ -24,8 +24,11 @@ module BaseQueryConcern
     if selected_tag_ids.present?
       @base_query = @base_query
         .joins(:tags)
+        # この時点ではOR条件
         .where(tags: { id: selected_tag_ids })
+        # 建物毎にグループ化する
         .group('buildings.id')
+        # タグが3つ選択されているなら、3つのタグ全てを持つ建物のみを抽出する
         .having('COUNT(DISTINCT tags.id) = ?', selected_tag_ids.size)
     end
   end
