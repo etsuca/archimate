@@ -2,7 +2,7 @@ module BaseQueryConcern
   extend ActiveSupport::Concern
 
   included do
-    before_action :set_base_query, only: %i(index)
+    before_action :set_base_query, only: %i[index]
   end
 
   private

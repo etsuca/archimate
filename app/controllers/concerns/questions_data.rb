@@ -1,5 +1,5 @@
 module QuestionsData
-  Question = Struct.new(:title, :tag_id, :image, keyword_init: true) 
+  Question = Struct.new(:title, :tag_id, :image, keyword_init: true)
 
   QUESTIONS = [
     Question.new(title: 'RC打ち放しが好き🏢', tag_id: 1, image: '1.jpg'),

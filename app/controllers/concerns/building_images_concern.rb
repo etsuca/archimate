@@ -1,6 +1,10 @@
 module BuildingImagesConcern
   extend ActiveSupport::Concern
 
+  MAX_IMAGE_WIDTH = 1920
+  MAX_IMAGE_HEIGHT = 1920
+  private_constant :MAX_IMAGE_WIDTH, :MAX_IMAGE_HEIGHT
+
   def resize_and_convert(images)
     images.each do |image|
       if image.content_type.start_with?('image/jpeg', 'image/png', 'image/heic', 'image/heif')
@@ -20,7 +24,7 @@ module BuildingImagesConcern
   private
 
   def resize_image(image)
-    image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(1920, 1920).call
+    image.tempfile = ImageProcessing::MiniMagick.source(image.tempfile).resize_to_fit(MAX_IMAGE_WIDTH, MAX_IMAGE_HEIGHT).call
   end
 
   def convert_to_jpg(image)

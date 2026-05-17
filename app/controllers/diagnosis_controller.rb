@@ -37,7 +37,7 @@ class DiagnosisController < ApplicationController
       .includes(:tags)
       .index_by(&:id)
 
-    shuffled_ids
+    matched_buildings = shuffled_ids
       # シャッフルされたIDの順番で建築を取得
       # 例: [#<Building id: 5, ...>, #<Building id: 2, ...>, ...]
       .map { |id| buildings_by_id[id] }
@@ -47,6 +47,8 @@ class DiagnosisController < ApplicationController
 
         building
       end
+
+    matched_buildings
       .sort_by { |building| -building.tmp_match_tag_count }
       .first(3)
   end
