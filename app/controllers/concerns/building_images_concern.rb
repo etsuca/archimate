@@ -3,11 +3,13 @@ module BuildingImagesConcern
 
   MAX_IMAGE_WIDTH = 1920
   MAX_IMAGE_HEIGHT = 1920
-  private_constant :MAX_IMAGE_WIDTH, :MAX_IMAGE_HEIGHT
+  CONVERTIBLE_IMAGE_CONTENT_TYPES = %w[image/jpeg image/png image/heic image/heif].freeze
+  HEIC_IMAGE_CONTENT_TYPES = %w[image/heic image/heif].freeze
+  private_constant :MAX_IMAGE_WIDTH, :MAX_IMAGE_HEIGHT, :CONVERTIBLE_IMAGE_CONTENT_TYPES, :HEIC_IMAGE_CONTENT_TYPES
 
   def resize_and_convert(images)
     images.each do |image|
-      if image.content_type.start_with?('image/jpeg', 'image/png', 'image/heic', 'image/heif')
+      if image.content_type.start_with?(*CONVERTIBLE_IMAGE_CONTENT_TYPES)
         begin
           resize_image(image)
           convert_to_jpg(image) if heic_or_heif?(image)
@@ -32,6 +34,6 @@ module BuildingImagesConcern
   end
 
   def heic_or_heif?(image)
-    image.content_type.start_with?('image/heic', 'image/heif')
+    image.content_type.start_with?(*HEIC_IMAGE_CONTENT_TYPES)
   end
 end
