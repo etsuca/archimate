@@ -14,7 +14,7 @@ module BuildingImagesConcern
           resize_image(image)
           convert_to_jpg(image) if heic_or_heif?(image)
         rescue MiniMagick::Error, ImageProcessing::Error => e
-          Rails.logger.error("Image processing failed: #{e.message}")
+          Rails.logger.error("Image processing failed: content_type=#{image.content_type}, filename=#{image.original_filename}, error=#{e.class}: #{e.message}")
           @building.errors.add(:images, t('errors.messages.invalid_file_type'))
         end
       else
