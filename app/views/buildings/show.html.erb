@@ -15,7 +15,7 @@
         <% end %>
         <div class="md:static bottom-5 w-full text-white">
           <div class="flex flex-row-reverse md:flex-col mt-8 mb-28 text-center justify-center items-center">
-            <% if @building.by?(current_user) %>
+            <% if user_signed_in? && @building.by?(current_user) %>
               <%= link_to edit_building_path(@building), method: :get, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit md:w-full md:mb-8 mx-6 rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
                 <i class="fa-regular fa-pen-to-square fa-xl md:text-sm md:mr-2"></i>
                 <div class="hidden md:block">
@@ -28,12 +28,19 @@
                   <p>Delete</p>
                 </div>
               <% end %>
-            <% else %>
+            <% elsif user_signed_in? %>
               <%= render 'shared/like_nope_button', building: @building %>
               <%= link_to check_in_buildings_path(name: @building.name, pref: @building.pref, location: @building.location, open_range: @building.open_range, experience: @building.experience, architect: @building.architect), method: :get, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit mx-6 md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
                 <i class="fa-solid fa-check fa-xl md:text-sm md:mr-2"></i>
                 <div class="hidden md:block">
                   <p>Check in</p>
+                </div>
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path, class: 'flex items-center justify-center bg-third border border-first text-first h-14 w-14 md:h-fit mx-6 md:w-full rounded-full hover:scale-105 hover:drop-shadow-lg cursor-pointer' do %>
+                <i class="fa-solid fa-right-to-bracket fa-xl md:text-sm md:mr-2"></i>
+                <div class="hidden md:block">
+                  <p>Login</p>
                 </div>
               <% end %>
             <% end %>

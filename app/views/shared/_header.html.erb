@@ -13,7 +13,9 @@
         <li class="border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200"><%= link_to (t 'defaults.logout'), destroy_user_session_path, method: :delete, data: { confirm: t('defaults.message.logout_confirm') } %></li>
       </ul>
     <% else %>
-      <div class="hidden lg:flex">
+      <div class="hidden lg:flex items-center space-x-6 text-sm">
+        <%= link_to (t 'buildings.index.title'), buildings_path, class: 'border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200' %>
+        <%= link_to (t 'diagnosis.new.title'), new_diagnosis_path, class: 'border-b border-transparent hover:border-fifth px-3 py-2 hover:text-fifth transition duration-200' %>
         <%= link_to (t 'defaults.login'), new_user_session_path %>
       </div>
     <% end %>
@@ -37,9 +39,18 @@
           </ul>
         </nav>
       <% else %>
-      <div>
-        <%= link_to (t 'defaults.login'), new_user_session_path %>
-      </div>
+        <nav>
+          <button id="button" type="button" class="fixed z-20 top-1 right-6">
+            <i id="bars" class="fa-solid fa-bars text-2xl"></i>
+            <i id="xmark" class="hidden fa-solid fa-x text-2xl"></i>
+          </button>
+          <ul id="menu" class="fixed top-0 left-0 z-10 w-full translate-x-full text-sm bg-third text-center transition duration-200 ease-linear">
+            <li class="p-3"><%= link_to (t 'header.top'), root_path %></li>
+            <li class="p-3"><%= link_to (t 'buildings.index.title'), buildings_path %></li>
+            <li class="p-3"><%= link_to (t 'diagnosis.new.title'), new_diagnosis_path %></li>
+            <li class="p-3"><%= link_to (t 'defaults.login'), new_user_session_path %></li>
+          </ul>
+        </nav>
     <% end %>
     </div>
   </div>

@@ -1,9 +1,9 @@
 class BuildingsController < ApplicationController
-  include BaseQueryConcern
-  include BuildingImagesConcern
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[index show]
   before_action :find_building, only: %i[edit update destroy]
   before_action :set_tags, only: %i[new edit check_in create update]
+  include BaseQueryConcern
+  include BuildingImagesConcern
 
   def index
     @buildings_size = Building.from(@base_query.select(:id), :buildings).count
@@ -11,7 +11,7 @@ class BuildingsController < ApplicationController
   end
 
   def show
-    @building = Building.find(params[:id])
+    @building = accessible_buildings.find(params[:id])
   end
 
   def new
@@ -68,6 +68,11 @@ class BuildingsController < ApplicationController
 
   def set_tags
     @tags = Tag.all
+  end
+
+  def accessible_buildings
+    return Building.publish unless user_signed_in?
+    Building.where(user_id: current_user.id).or(Building.publish)
   end
 
   def save_building_with_images(building)
