@@ -11,11 +11,14 @@ module BaseQueryConcern
     selected_tag_ids = params[:tag_ids] || []
 
     base_scope = if params[:category] == 'others_building'
-                   Building.not_by(current_user).publish
+                   user_signed_in? ? Building.not_by(current_user).publish : Building.publish
                  elsif params[:category] == 'liked_building'
+                   authenticate_user!
                    current_user.liked_buildings
-                 else
+                 elsif user_signed_in?
                    current_user.buildings
+                 else
+                   Building.publish
                  end
 
     @q = base_scope.ransack(building_search_params)

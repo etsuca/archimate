@@ -16,26 +16,28 @@
             <a>Search</a>
           <% end %>
         </div>
-        <div class="flex flex-wrap justify-center">
-          <label class="flex items-center mb-6">
-            <%= f.radio_button :category, "visited_building", id: "visited-radio", class: "form-radio hidden" %>
-            <a type="button" class="radio-button px-2 md:px-4 py-2 border-b border-gray-400 text-gray-400 cursor-pointer" id="visited-label">
-              <%= t('buildings.index.Visited Building') %>
-            </a>
-          </label>
-          <label class="flex items-center mb-6">
-            <%= f.radio_button :category, "others_building", id: "others-radio", class: "form-radio hidden" %>
-            <a type="button" class="radio-button px-2 md:px-4 py-2 border-b border-gray-400 text-gray-400 cursor-pointer" id="others-label">
-              <%= t('buildings.index.Others Building') %>
-            </a>
-          </label>
-          <label class="flex items-center mb-6">
-            <%= f.radio_button :category, "liked_building", id: "liked-radio", class: "form-radio hidden" %>
-            <a type="button" class="radio-button px-2 md:px-4 py-2 border-b border-gray-400 text-gray-400 cursor-pointer" id="liked-label">
-              <%= t('buildings.index.Liked Building') %>
-            </a>
-          </label>
-        </div>
+        <% if user_signed_in? %>
+          <div class="flex flex-wrap justify-center">
+            <label class="flex items-center mb-6">
+              <%= f.radio_button :category, "visited_building", id: "visited-radio", class: "form-radio hidden" %>
+              <a type="button" class="radio-button px-2 md:px-4 py-2 border-b border-gray-400 text-gray-400 cursor-pointer" id="visited-label">
+                <%= t('buildings.index.Visited Building') %>
+              </a>
+            </label>
+            <label class="flex items-center mb-6">
+              <%= f.radio_button :category, "others_building", id: "others-radio", class: "form-radio hidden" %>
+              <a type="button" class="radio-button px-2 md:px-4 py-2 border-b border-gray-400 text-gray-400 cursor-pointer" id="others-label">
+                <%= t('buildings.index.Others Building') %>
+              </a>
+            </label>
+            <label class="flex items-center mb-6">
+              <%= f.radio_button :category, "liked_building", id: "liked-radio", class: "form-radio hidden" %>
+              <a type="button" class="radio-button px-2 md:px-4 py-2 border-b border-gray-400 text-gray-400 cursor-pointer" id="liked-label">
+                <%= t('buildings.index.Liked Building') %>
+              </a>
+            </label>
+          </div>
+        <% end %>
         <div class="flex justify-center mb-6">
           <button type="button" id="open-button" class="px-2 py-1 rounded-full border border-gray-300 text-gray-600">
             #タグを追加
