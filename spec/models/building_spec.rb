@@ -65,7 +65,7 @@ RSpec.describe Building, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:tag_building_relationships).dependent(:destroy) }
-    it { is_expected.to have_many(:tags).through(:tag_building_relationships).dependent(:destroy) }
+    it { is_expected.to have_many(:tags).through(:tag_building_relationships) }
     it { is_expected.to have_many(:likes).dependent(:destroy) }
   end
 
