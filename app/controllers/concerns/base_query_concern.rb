@@ -37,9 +37,14 @@ module BaseQueryConcern
   end
 
   def building_search_params
+    keywords = params[:keyword].to_s.gsub(/[[:space:]]+/, ' ').split
+
     {
+      m: 'and',
       pref_eq: params[:pref].presence,
-      name_or_pref_or_location_or_architect_or_description_cont_all: params[:keyword].to_s.gsub(/[[:space:]]+/, ' ').split.presence
+      g: keywords.map do |keyword|
+        { name_or_pref_or_location_or_architect_or_description_cont: keyword }
+      end.presence
     }.compact
   end
 end
